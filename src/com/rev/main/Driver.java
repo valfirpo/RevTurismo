@@ -7,7 +7,7 @@ public class Driver {
 		JenkinsTest jenks = new JenkinsTest();
 		jenks.setOld("balddd");
 		jenks.setAge(90000);
-		jenks.setButler("Jeffery!");
+		jenks.setButler("Jeffeddary!");
 		
 		System.out.println("Jenkins is extremely " + jenks.getOld() + "!" + " Jenkins is " + jenks.getAge()+ " years old!" + " Jenkins is also a " + jenks.getButler());
 	}
