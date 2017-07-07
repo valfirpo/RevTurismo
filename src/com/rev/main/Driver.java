@@ -5,7 +5,7 @@ import com.rev.bean.JenkinsTest;
 public class Driver {
 	public static void main(String [] args) {
 		JenkinsTest jenks = new JenkinsTest();
-		jenks.setOld("bald");
+		jenks.setOld("balddd");
 		jenks.setAge(90000);
 		jenks.setButler("Jeffery!");
 		
