@@ -2,6 +2,14 @@
     <wb-module deploy-name="RevTurismo-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+>>>>>>> refs/heads/master
         <property name="context-root" value="RevTurismo"/>
         <property name="java-output-path" value="/RevTurismo/build/classes"/>
     </wb-module>
