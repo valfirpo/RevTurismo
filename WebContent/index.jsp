@@ -48,8 +48,7 @@
 			<div id = "wl" class = "well">
 				<h2>Login</h2>
 			
-			
-			
+
 				<%if(session.getAttribute("issue") != null){%>
 					<div class = "alert alert-danger">Invalid credentials!!</div>
 				<%}%>
@@ -76,6 +75,18 @@
 	</div>
 </div>
 <%}else{%>
+	<div id = "jd" class = "jumbotron">
+		<div id = "wl" class = "well">
+			<h1 id = "welcome">Welcome to RevTurismo</h1>
+		</div>
+		<div id = "wl" class = "well">
+			<p>
+				You are logged in to RevTurismo as (role type) (user name)! 
+				RevTurismo is a car collecting application was created by RevTurismo Group.
+				Group members: Lucas Vance, Paul Wesson, Matthew Young & Valentin Firpo.
+			</p>
+		</div>
+	</div>
 <%}%>
 
 </body>
