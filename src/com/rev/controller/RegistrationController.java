@@ -14,18 +14,11 @@ import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
-<<<<<<< HEAD
 @RequestMapping(value="/createAccount")
 public class RegistrationController {
 @Autowired
   public UserService userService;
-  @RequestMapping(value = "/createAccount", method = RequestMethod.GET)
-=======
-public class RegistrationController {
-@Autowired
-  public UserService userService;
   @RequestMapping(value = "/register", method = RequestMethod.GET)
->>>>>>> master
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("register");
     mav.addObject("user", new User());
