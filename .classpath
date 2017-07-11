@@ -31,5 +31,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="/Users/pwess/Downloads/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="/Users/pwess/Downloads/spring-beans-4.3.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/pwess/Downloads/spring-core-4.3.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/pwess/Downloads/spring-jdbc-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
