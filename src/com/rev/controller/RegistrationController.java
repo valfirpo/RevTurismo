@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.User;
-import com.revature.service.UserService;
+import com.rev.service.UserService;
 
 @Controller
 public class RegistrationController {
