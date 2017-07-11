@@ -1,10 +1,14 @@
 package com.rev.bean;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "RT_USERS")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class User 
 {
 	@Id
@@ -33,13 +37,18 @@ public class User
 	private String email;
 	@Column(name = "U_CASH")
 	private double cash;
+	
 	@Column(name = "UR_ID")
 	private int urId;
 	
-	public User(){}
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "RT_ROLE")
+	private Role role;
 	
-	public User(int id, String username, String password, String firstname, String lastname, String email, int cash,
-			int urId) {
+	public User(){}
+
+	public User(int id, String username, String password, String firstname, String lastname, String email, double cash, int urId, Role role) 
+	{
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -48,9 +57,10 @@ public class User
 		this.email = email;
 		this.cash = cash;
 		this.urId = urId;
+		this.role = role;
 	}
 	
-	public User(String username, String password, String firstname, String lastname, String email, int cash, int urId) 
+	public User(String username, String password, String firstname, String lastname, String email, double cash, int urId, Role role) 
 	{
 		this.username = username;
 		this.password = password;
@@ -59,6 +69,7 @@ public class User
 		this.email = email;
 		this.cash = cash;
 		this.urId = urId;
+		this.role = role;
 	}
 
 	public int getId() {
@@ -125,9 +136,19 @@ public class User
 		this.urId = urId;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", urId=" + urId + "]";
+				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", urId=" + urId + ", role=" + role
+				+ "]";
 	}
+	
 }
