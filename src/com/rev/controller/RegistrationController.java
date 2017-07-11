@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import jbr.springmvc.model.User;
-import jbr.springmvc.service.UserService;
+
+import com.rev.bean.User;
+
 @Controller
 public class RegistrationController {
-  @Autowired
+ /* @Autowired
   public UserService userService;
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
@@ -25,5 +26,5 @@ public class RegistrationController {
   @ModelAttribute("user") User user) {
   userService.register(user);
   return new ModelAndView("welcome", "firstname", user.getFirstname());
-  }
+  }*/
 }

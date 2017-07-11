@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.rev.bean.Login;
+import com.rev.bean.User;
+
 @Controller
 public class LoginController {
-  @Autowired
+/*  @Autowired
   UserService userService;
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
@@ -32,5 +35,5 @@ public class LoginController {
     mav.addObject("message", "Username or Password is wrong!!");
     }
     return mav;
-  }
+  }*/
 }
