@@ -1,6 +1,6 @@
 package com.rev.bean;
 
-<<<<<<< HEAD
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +27,6 @@ public class Challenge
 	@Column(name = "CH_REWARD")
 	private int reward;
 	@Column(name = "CH_MIN_LEVEL")
-=======
-public class Challenge 
-{
-	private int id;
-	private String name;
-	private int reward;
->>>>>>> master
 	private int level;
 
 	public Challenge(){}
@@ -46,10 +39,6 @@ public class Challenge
 	}
 	
 	public Challenge(String name, int reward, int level) {
-<<<<<<< HEAD
-=======
-		this.id = id;
->>>>>>> master
 		this.name = name;
 		this.reward = reward;
 		this.level = level;

@@ -12,11 +12,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-<<<<<<< HEAD
 @Table(name = "RT_USERS")
-=======
-@Table(name = "USERS")
->>>>>>> master
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
 public class User 
 {

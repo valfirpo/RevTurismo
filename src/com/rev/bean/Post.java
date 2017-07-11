@@ -1,6 +1,5 @@
 package com.rev.bean;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,14 +28,6 @@ public class Post
 	private String content;
 	
 	@Column(name = "P_ACTIVE")
-=======
-public class Post 
-{
-	private int postId;
-	private int threadId;
-	private int userId;
-	private String content;
->>>>>>> master
 	private int active;
 	
 	public Post(){}

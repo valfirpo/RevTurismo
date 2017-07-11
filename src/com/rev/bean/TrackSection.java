@@ -1,6 +1,5 @@
 package com.rev.bean;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,42 +22,25 @@ public class TrackSection
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRACK_SECTIONS_TS_ID")
 	private int id;
 	@Column(name = "CH_ID")
-	private int challeneId;
+	private int challengeId;
 	@Column(name = "TS_CURVE_RATING")
 	private int curveRating;
 	@Column(name = "TS_DISTANCE")
 	private int distance;
 	
 	public TrackSection(){}
-	
-	public TrackSection(int id, int challeneId, int curveRating, int distance) {
-		this.id = id;
-		this.challeneId = challeneId;
-		this.curveRating = curveRating;
-		this.distance = distance;
-	}
-	
-	public TrackSection(int challeneId, int curveRating, int distance) {
-		this.id = id;
-		this.challeneId = challeneId;
-		this.curveRating = curveRating;
-		this.distance = distance;
-=======
-public class TrackSection 
-{
-	private int id;
-	private int challeneId;
-	
-	public TrackSection(){}
-	
-	public TrackSection(int id, int challeneId) {
-		this.id = id;
-		this.challeneId = challeneId;
-	}
 
-	public TrackSection(int challeneId) {
-		this.challeneId = challeneId;
->>>>>>> master
+	public TrackSection(int id, int challengeId, int curveRating, int distance) {
+		this.id = id;
+		this.challengeId = challengeId;
+		this.curveRating = curveRating;
+		this.distance = distance;
+	}
+	
+	public TrackSection(int challengeId, int curveRating, int distance) {
+		this.challengeId = challengeId;
+		this.curveRating = curveRating;
+		this.distance = distance;
 	}
 
 	public int getId() {
@@ -69,15 +51,14 @@ public class TrackSection
 		this.id = id;
 	}
 
-	public int getChalleneId() {
-		return challeneId;
+	public int getChallengeId() {
+		return challengeId;
 	}
 
-	public void setChalleneId(int challeneId) {
-		this.challeneId = challeneId;
+	public void setChallengeId(int challengeId) {
+		this.challengeId = challengeId;
 	}
 
-<<<<<<< HEAD
 	public int getCurveRating() {
 		return curveRating;
 	}
@@ -96,12 +77,8 @@ public class TrackSection
 
 	@Override
 	public String toString() {
-		return "TrackSection [id=" + id + ", challeneId=" + challeneId + ", curveRating=" + curveRating + ", distance="
-				+ distance + "]";
-=======
-	@Override
-	public String toString() {
-		return "TrackSection [id=" + id + ", challeneId=" + challeneId + "]";
->>>>>>> master
+		return "TrackSection [id=" + id + ", challengeId=" + challengeId + ", curveRating=" + curveRating
+				+ ", distance=" + distance + "]";
 	}
+	
 }
