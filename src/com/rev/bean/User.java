@@ -1,6 +1,7 @@
 package com.rev.bean;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class User {
   private String username;
   private String password;
@@ -52,6 +53,8 @@ public class User {
   this.phone = phone;
   }
 =======
+=======
+>>>>>>> master
 public class User 
 {
 	private int id;
@@ -157,5 +160,8 @@ public class User
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
 				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", urId=" + urId + "]";
 	}
+<<<<<<< HEAD
 >>>>>>> refs/heads/master
+=======
+>>>>>>> master
 }
