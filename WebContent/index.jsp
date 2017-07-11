@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.rev.bean.*,java.util.*" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +39,7 @@
   </div>
 </nav>
 
-<%if(session.getAttribute("user") == null){%>
+<c:if test="${errorMessage == null }">
 <div id = "jd" class = "jumbotron">
 	<div id = "wl" class = "well">
 		<h1 id = "welcome">Welcome to RevTurismo</h1>
@@ -49,32 +50,39 @@
 				<h2>Login</h2>
 			
 
-				<%if(session.getAttribute("issue") != null){%>
+				
 					<div class = "alert alert-danger">Invalid credentials!!</div>
-				<%}%>
 				
-				<form method = "post" action = "Login.do">
 				
+				<form:form id ="loginForm" modelAttribute= "login" action = "loginProcess" method = "POST">
+				
+					
 					<div class = "input-group">
 						<span class = "input-group-addon"> <i class = "glyphicon glyphicon-user"></i> </span>
-						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
-					</div>
+<!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
+ -->				<form:label path = "username">Username</form:label>	
+ 					<form:input path = "username" name = "username" id = "username"/>
+ 
+ 					</div>
 					<br>
 					<div class = "input-group">
 						<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
-					</div>
+<!-- 						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
+ -->					
+ 					<form:label path="password">Password</form:label>
+ 					<form:password path= "password" name ="password" id = "password"/>
+ 					</div>
 				
 					<br>
 					<div>
-						<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
-					</div>	
-				</form>
+							<form:button id="login" name="login">Login</form:button>
+<!-- 						<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
+ -->					</div>	
+				</form:form>
 			</div>
 		</div>
 	</div>
 </div>
-<%}else{%>
 	<div id = "jd" class = "jumbotron">
 		<div id = "wl" class = "well">
 			<h1 id = "welcome">Welcome to RevTurismo</h1>
@@ -87,7 +95,7 @@
 			</p>
 		</div>
 	</div>
-<%}%>
+</c:if>
 
 </body>
 </html>

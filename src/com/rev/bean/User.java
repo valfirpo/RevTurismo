@@ -1,7 +1,9 @@
 package com.rev.bean;
 
-public class User 
-{
+
+public class User {
+
+	
 	private int id;
 	private String username;
 	private String password;
@@ -105,4 +107,5 @@ public class User
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
 				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", urId=" + urId + "]";
 	}
+
 }
