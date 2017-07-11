@@ -62,8 +62,8 @@
 					<div class = "input-group">
 						<span class = "input-group-addon"> <i class = "glyphicon glyphicon-user"></i> </span>
 <!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
- -->				<form:label path = "username">Username</form:label>	
- 					<form:input path = "username" name = "username" id = "username"/>
+ -->				<form:label path="username">Username</form:label>	
+ 					<form:input path="username" name="username" id="username"/>
  
  					</div>
 					<br>

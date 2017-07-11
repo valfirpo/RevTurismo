@@ -22,12 +22,12 @@ public class LoginController {
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("index");
-    mav.addObject("index", new Login());
+    mav.addObject("login", new Login());
     return mav;
   }
   @RequestMapping(method = RequestMethod.POST)
   public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-  @ModelAttribute("index") Login login) {
+  @ModelAttribute("login") Login login) {
     ModelAndView mav = null;
     User user = userService.validateUser(login);
     if (null != user) {
