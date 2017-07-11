@@ -1,11 +1,33 @@
 package com.rev.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "RT_POSTS")
 public class Post 
 {
+	@Id
+	@Column(name = "P_ID")
+	@SequenceGenerator(name = "POSTS_P_ID_SEQ", sequenceName = "POSTS_P_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "POSTS_P_ID_SEQ")
 	private int postId;
+	
+	@Column(name = "T_ID")
 	private int threadId;
+	
+	@Column(name = "U_ID")
 	private int userId;
+	
+	@Column(name = "P_CONTENT")
 	private String content;
+	
+	@Column(name = "P_ACTIVE")
 	private int active;
 	
 	public Post(){}
