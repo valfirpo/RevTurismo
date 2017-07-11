@@ -1,10 +1,13 @@
 package com.rev.bean;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,7 +16,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "RT_USER_ROLES")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class Role 
 {
 	@Id
@@ -25,13 +28,8 @@ public class Role
 	@Column(name = "UR_ROLE")
 	private String role;
 	
-	public Role(){}
 	
-	public Role(int urId, String role) {
-		super();
-		this.urId = urId;
-		this.role = role;
-	}
+	public Role(){}
 
 	public int getUrId() {
 		return urId;
@@ -48,6 +46,8 @@ public class Role
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	
 
 	@Override
 	public String toString() {

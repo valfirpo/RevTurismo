@@ -13,7 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "RT_TRACK_SECTIONS")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class TrackSection 
 {
 	@Id
