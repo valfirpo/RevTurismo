@@ -23,5 +23,12 @@
 		<property name="password" value="V7aBAmhLg-wVpm9U" />
 	</bean>
 	
-
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 </beans>
