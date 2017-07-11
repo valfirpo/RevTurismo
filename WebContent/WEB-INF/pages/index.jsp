@@ -56,7 +56,7 @@
 					<div class = "alert alert-danger">Invalid credentials!!</div>
 				
 				
-				<form:form id ="loginForm" modelAttribute= "login" action = "login" method = "POST" commandName="login">
+				<form:form action="index" method="POST" commandName="login">
 				
 					
 					<div class = "input-group">
