@@ -3,11 +3,12 @@ package com.rev.main;
 import com.rev.bean.Role;
 import com.rev.dao.RoleDaoImp;
 
-public class Driver {
+public class Driver 
+{
 	public static void main(String [] args) 
 	{
 		RoleDaoImp dao = new RoleDaoImp();
-		Role testRole = dao.getRole(3);
+		Role testRole = dao.getRole(1);
 		System.out.println(testRole);
 		
 		System.out.println("DOne");

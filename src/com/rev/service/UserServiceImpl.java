@@ -13,11 +13,13 @@ public class UserServiceImpl implements UserService {
 	  @Autowired
 	  public UserDao userDao;
 
-	  public void register(User user) {
-	    userDao.register(user);
+	  public void register(User user) 
+	  {
+	    System.out.println(userDao.createUser(user));
 	  }
 
-	  public User validateUser(Login login) {
+	  public User validateUser(Login login) 
+	  {
 	    return userDao.validateUser(login);
 	  }
 
