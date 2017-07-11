@@ -12,7 +12,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = "RT_ROLES")
+@Table(name = "RT_USER_ROLES")
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
 public class Role 
 {
