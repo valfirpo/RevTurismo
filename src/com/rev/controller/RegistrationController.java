@@ -14,6 +14,7 @@ import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
+@RequestMapping(value="/register")
 public class RegistrationController {
 @Autowired
   public UserService userService;
