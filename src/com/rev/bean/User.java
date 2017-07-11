@@ -1,16 +1,39 @@
 package com.rev.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-public class User {
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-
+@Entity
+@Table(name = "USERS")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
+public class User 
+{
+	@Id
+	@Column(name = "U_ID")
+	@SequenceGenerator(name = "USER_ID_SEQ", sequenceName = "USER_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_ID_SEQ")
 	private int id;
+	@Column(name = "U_USERNAME")
 	private String username;
+	@Column(name = "U_PASSWORD")
 	private String password;
+	@Column(name = "U_FIRSTNAME")
 	private String firstname;
+	@Column(name = "U_LASTNAME")
 	private String lastname;
+	@Column(name = "U_EMAIL")
 	private String email;
+	@Column(name = "U_CASH")
 	private double cash;
+	@Column(name = "UR_ID")
 	private int urId;
 	
 	public User(){}
