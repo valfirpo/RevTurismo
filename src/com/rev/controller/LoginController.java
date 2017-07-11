@@ -15,11 +15,11 @@ import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
-@RequestMapping(value="/login")
+@RequestMapping(value="/index")
 public class LoginController {
   @Autowired
   UserService userService;
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @RequestMapping(value = "/index", method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("login");
     mav.addObject("login", new Login());
