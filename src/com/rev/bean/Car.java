@@ -1,13 +1,37 @@
 package com.rev.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Entity
+@Table(name = "RT_CARS")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class Car {
+	
+	@Id
+	@Column(name = "C_ID")
+	@SequenceGenerator(name = "CARS_ID_SEQ", sequenceName = "CARS_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CARS_ID_SEQ")
 	private int id;
+	@Column(name = "C_NAME")
 	private String carName;
+	@Column(name = "C_MIN_LEVEL")	
 	private String minLevel;
+	@Column(name = "C_PRICE")
 	private double price;
+	@Column(name = "C_TOP_SPEED")
 	private double topSpeed;
+	@Column(name = "C_ACCELERATION")
 	private double acceleration;
+	@Column(name = "C_HANDLING")
 	private double handling;
 	public Car(){
 		

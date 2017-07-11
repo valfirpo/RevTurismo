@@ -1,8 +1,20 @@
 package com.rev.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Entity
+@Table(name = "RT_CAR_OWNERSHIP")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class CarOwnership 
 {
+	@Column(name = "U_ID")
 	private String userId;
+	@Column(name = "C_ID")
 	private String carId;
 
 	public CarOwnership() {}

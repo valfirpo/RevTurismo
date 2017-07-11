@@ -1,11 +1,29 @@
 package com.rev.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "RT_THREADS")
 public class Thread 
 {
+	@Id
+	@Column(name = "T_ID")
+	@SequenceGenerator(name = "THREADS_ID_SEQ", sequenceName = "THREADS_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "THREADS_ID_SEQ")
 	private int id;
+	@Column(name = "T_NAME")	
 	private String name;
+	@Column(name = "CA_ID")
 	private int categoryId;
+	@Column(name = "T_LOCKED")
 	private int locked;
+	@Column(name = "T_ACTIVE")
 	private int active;
 	
 	public Thread(){}
