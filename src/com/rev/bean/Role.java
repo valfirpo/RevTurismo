@@ -28,8 +28,6 @@ public class Role
 	@Column(name = "UR_ROLE")
 	private String role;
 	
-	@OneToMany(mappedBy = "urId")
-	private List<User> usersList;
 	
 	public Role(){}
 
@@ -49,16 +47,10 @@ public class Role
 		this.role = role;
 	}
 
-	public List<User> getUsersList() {
-		return usersList;
-	}
-
-	public void setUsersList(List<User> usersList) {
-		this.usersList = usersList;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Role [urId=" + urId + ", role=" + role + ", usersList=" + usersList + "]";
+		return "Role [urId=" + urId + ", role=" + role + "]";
 	}
 }

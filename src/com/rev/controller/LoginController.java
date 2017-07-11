@@ -37,9 +37,11 @@ public class LoginController {
 		ModelAndView mav = null;
 		User user = userService.validateUser(login);
 		if (null != user) {
+			System.out.println("User not null");
 			modelMap.addAttribute("user", user);
 			return "index";
 		} else {
+			System.out.println("User is null");
 			mav = new ModelAndView("index");
 			mav.addObject("message", "Username or Password is wrong!!");
 			modelMap.addAttribute("message", "Username or Password is wrong!!");

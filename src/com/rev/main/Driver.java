@@ -14,7 +14,7 @@ public class Driver
 		RoleDaoImp dao2 = new RoleDaoImp();
 		Role testRole = dao2.getRole(1);
 		
-		User testUser = new User("paul", "12345", "paul", "wess", "pwess@this.com", 100, 1, testRole);
+		User testUser = new User("testname", "test", "paul", "wess", "test@this.com", 100, 1, testRole);
 		
 		System.out.println(dao.createUser(testUser));
 		
