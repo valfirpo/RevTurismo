@@ -1,0 +1,54 @@
+/*
+font-family: 'Titillium Web', sans-serif;
+font-family: 'Lobster', cursive;
+*/
+
+#welcome
+{
+	text-align: center;
+	font-family: 'Lobster', cursive;
+}
+
+h2
+{
+	font-family: 'Arial', sans-serif;
+}
+
+#mainnav
+{
+	background-color: #000000;
+	color: #ffffff;
+}
+
+#nv
+{
+	 font-family: 'Titillium Web', sans-serif;
+	 background-color: #ff0000;	
+	 border: solid 10px black;
+}
+
+#jd
+{
+	font-family: 'Titillium Web', sans-serif;
+	background-image: url("../img/check.png");
+	border: solid 10px black;
+}
+
+#wl
+{
+	background-color: #ffffff;
+	border: solid 10px black;
+}
+
+.icon
+{
+	border-radius: 50%;
+	border: solid 1px black;
+}
+
+#tb
+{
+	background-color: #ffffff;
+	border: solid 1px black;
+	/*border: solid 1px black;*/
+}
