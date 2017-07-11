@@ -2,6 +2,7 @@ package com.rev.bean;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class User {
   private String username;
   private String password;
@@ -57,6 +58,10 @@ public class User {
 >>>>>>> master
 public class User 
 {
+=======
+public class User {
+
+>>>>>>> 50686cb01552d14f53c59d3e94071a218976bbc8
 	private int id;
 	private String username;
 	private String password;
