@@ -6,6 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencyManagement>
+
 		<dependencies>
 			<dependency>
 				<groupId>io.spring.platform</groupId>
@@ -16,6 +17,8 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+     
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -43,7 +46,49 @@
 			<artifactId>jasypt</artifactId>
 			<version>1.9.2</version>
 		</dependency>
+
 		<!-- Spring core & mvc -->
+
+		<!-- https://mvnrepository.com/artifact/org.jasypt/jasypt-hibernate3 -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-hibernate3</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.3.11.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.ehcache</groupId>
+					<artifactId>ehcache-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
+   <!-- Spring core & mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -70,7 +115,8 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-	</dependencies>
-	
+     
+        
+    </dependencies>
 
 </project>
