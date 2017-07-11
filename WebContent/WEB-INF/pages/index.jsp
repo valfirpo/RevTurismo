@@ -32,7 +32,7 @@
 <nav id = "nv" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp" style = "color: #ffffff;">Home</a>
+      <a class="navbar-brand" href="index" style = "color: #ffffff;">Home</a>
     </div>
     
     <ul class="nav navbar-nav navbar-right">
@@ -53,10 +53,10 @@
 			
 
 				
-					<div class = "alert alert-danger">Invalid credentials!!</div>
+<!-- 					<div class = "alert alert-danger">Invalid credentials!!</div>
+ -->				
 				
-				
-				<form:form id ="loginForm" modelAttribute= "login" action = "login" method = "POST" commandName="login">
+				<form:form id ="loginForm" modelAttribute= "login" action = "login" method = "POST" >
 				
 					
 					<div class = "input-group">
