@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.rev.service;
 
 import org.springframework.stereotype.Component;
 

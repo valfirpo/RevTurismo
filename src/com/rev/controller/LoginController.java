@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.Login;
 import com.rev.bean.User;
-import com.revature.service.UserService;
+import com.rev.service.UserService;
 
 @Controller
 public class LoginController {

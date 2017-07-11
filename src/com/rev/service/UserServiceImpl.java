@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.rev.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
