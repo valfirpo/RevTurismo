@@ -20,7 +20,7 @@ public class RegistrationController {
   public UserService userService;
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("register");
+    ModelAndView mav = new ModelAndView("createAccount");
     mav.addObject("user", new User());
     return mav;
   }
