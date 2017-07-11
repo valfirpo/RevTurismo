@@ -16,7 +16,7 @@ import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
-
+@RequestMapping(value="/index")
 public class LoginController {
   @Autowired
   UserService userService;
