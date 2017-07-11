@@ -1,5 +1,6 @@
 package com.rev.bean;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,12 @@ public class AdminNotify
 	@Column(name = "AN_CONTENT")
 	private String content;
 	@Column(name = "AN_ACTIVE")
+=======
+public class AdminNotify 
+{
+	private int id;
+	private String content;
+>>>>>>> master
 	private int active;
 	
 	public AdminNotify(){}
