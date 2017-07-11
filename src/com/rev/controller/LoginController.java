@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.Login;
@@ -21,13 +23,16 @@ public class LoginController {
   UserService userService;
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
+	 // System.out.println("hello");
     ModelAndView mav = new ModelAndView("index");
     mav.addObject("login", new Login());
     return mav;
   }
-  @RequestMapping(method = RequestMethod.POST)
+  @RequestMapping(value="/index",method = RequestMethod.POST)
+  @ResponseStatus(value=HttpStatus.OK)
   public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
   @ModelAttribute("login") Login login) {
+	 System.out.println("some info");
     ModelAndView mav = null;
     User user = userService.validateUser(login);
     if (null != user) {

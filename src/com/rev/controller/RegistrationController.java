@@ -18,7 +18,7 @@ import com.rev.service.UserService;
 public class RegistrationController {
 @Autowired
   public UserService userService;
-  @RequestMapping(value = "/register", method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createAccount");
     mav.addObject("user", new User());

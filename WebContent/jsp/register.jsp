@@ -35,12 +35,8 @@
 				<td><form:input path="email" name="email" id="email" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="address">Address</form:label></td>
-				<td><form:input path="address" name="address" id="address" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="phone">Phone</form:label></td>
-				<td><form:input path="phone" name="phone" id="phone" /></td>
+				<td><form:label path="cash">Address</form:label></td>
+				<td><form:input path="cash" name="cash" id="cash" /></td>
 			</tr>
 
 			<tr>
@@ -50,7 +46,7 @@
 			<tr></tr>
 			<tr>
 				<td></td>
-				<td><a href="home.jsp">Home</a></td>
+				<td><a href="index.jsp">Home</a></td>
 			</tr>
 		</table>
 	</form:form>

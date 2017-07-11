@@ -36,7 +36,7 @@
     </div>
     
     <ul class="nav navbar-nav navbar-right">
-    		<li><a href="createAccount.jsp" style = "color: #ffffff;"><span class="glyphicon glyphicon-plus" ></span> CreateAccount</a></li>		
+    		<li><a href="createAccount" style = "color: #ffffff;"><span class="glyphicon glyphicon-plus" ></span> CreateAccount</a></li>		
     </ul>
   </div>
 </nav>
@@ -56,7 +56,7 @@
 					<div class = "alert alert-danger">Invalid credentials!!</div>
 				
 				
-				<form:form id ="loginForm" modelAttribute= "login" action = "loginProcess" method = "POST">
+				<form:form id ="loginForm" modelAttribute= "login" action = "login" method = "POST" commandName="login">
 				
 					
 					<div class = "input-group">

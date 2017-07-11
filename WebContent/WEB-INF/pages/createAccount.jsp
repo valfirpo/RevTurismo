@@ -29,11 +29,11 @@
 <nav id = "nv" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.jsp" style = "color: #ffffff;">Home</a>
+      <a class="navbar-brand" href="index" style = "color: #ffffff;">Home</a>
     </div>
     
     <ul class="nav navbar-nav navbar-right">
-    		<li><a href="createAccount.jsp" style = "color: #ffffff;"><span class="glyphicon glyphicon-plus" ></span> CreateAccount</a></li>		
+    		<li><a href="createAccount" style = "color: #ffffff;"><span class="glyphicon glyphicon-plus" ></span> CreateAccount</a></li>		
     </ul>
   </div>
 </nav>
