@@ -14,7 +14,8 @@ public class RoleDaoImp implements RoleDao
 		
 		Role r = (Role) session.get(Role.class, roleId);
 		
+		session.close();
+		
 		return r;
 	}
-
 }
