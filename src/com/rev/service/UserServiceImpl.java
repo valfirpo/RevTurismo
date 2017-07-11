@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 
 	  public void register(User user) 
 	  {
-	    userDao.register(user);
+	    System.out.println(userDao.createUser(user));
 	  }
 
 	  public User validateUser(Login login) 

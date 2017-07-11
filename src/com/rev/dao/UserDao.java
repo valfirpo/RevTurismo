@@ -6,7 +6,6 @@ import com.rev.bean.User;
 public interface UserDao 
 {
 	 public User getUserById(int roleId);
-	 public void createUser();
-	 public void register(User user);
+	 public int createUser(User user);
 	 public User validateUser(Login logIn);
 } 

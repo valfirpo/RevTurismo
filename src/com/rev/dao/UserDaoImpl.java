@@ -1,6 +1,8 @@
 package com.rev.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.rev.bean.Login;
 import com.rev.bean.User;
@@ -10,11 +12,11 @@ public class UserDaoImpl implements UserDao
 {
 
 	@Override
-	public User getUserById(int roleId) 
+	public User getUserById(int userId) 
 	{
 		Session session = HibernateUtil.getSession();
 		
-		User s = (User) session.get(User.class, roleId);
+		User s = (User) session.get(User.class, userId);
 		
 		session.close();
 		
@@ -22,15 +24,31 @@ public class UserDaoImpl implements UserDao
 	}
 
 	@Override
-	public void createUser() {
-		// TODO Auto-generated method stub
+	public int createUser(User user) 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Integer userId = null;
 		
-	}
-
-	@Override
-	public void register(User user) {
-		// TODO Auto-generated method stub
-		
+		try
+		{
+			tx = session.beginTransaction();
+			userId = (Integer) session.save(user);
+			tx.commit();
+		}
+		catch(HibernateException e)
+		{
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		return userId;
 	}
 
 	@Override
