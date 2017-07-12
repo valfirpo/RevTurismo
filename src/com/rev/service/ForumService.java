@@ -20,6 +20,7 @@ public class ForumService {
 	}
 	public List<Post> getPosts(int tId)
 	{
+		int i = 0;
 		return new ThreadDaoImpl().getThreadById(tId).getPosts();
 	}
 }
