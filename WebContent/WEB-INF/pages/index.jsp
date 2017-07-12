@@ -65,7 +65,7 @@
 									<div class="alert alert-danger">${message}</div>
 								</c:if>
 
-								<form:form id="loginForm" modelAttribute="login" action="login"
+								<form:form id="loginForm" modelAttribute="login" action="index"
 									method="POST">
 
 
