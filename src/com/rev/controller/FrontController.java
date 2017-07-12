@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rev.dao.CarDao;
 import com.rev.dao.CarDaoImpl;
+import com.rev.dao.CategoryDao;
+import com.rev.dao.CategoryDaoImpl;
 import com.rev.dao.ChallengeDao;
 import com.rev.dao.ChallengeDaoImpl;
+import com.rev.dao.ThreadDao;
+import com.rev.dao.ThreadDaoImpl;
 import com.rev.service.UserService;
 
 @Controller
@@ -37,6 +41,29 @@ public class FrontController {
 		ChallengeDao dao = new ChallengeDaoImpl();
 		request.setAttribute("challenges", dao.getChallenges());
 		return "viewChallenges";
+	}
+	@RequestMapping(value = "forum")
+	public String viewForum(HttpServletRequest request, HttpServletResponse response)
+	{
+		CategoryDao dao = new CategoryDaoImpl();
+		request.setAttribute("categories", dao.getCategories());
+		return "forum";
+	}
+	@RequestMapping(value="category")
+	public String viewCategory(HttpServletRequest request, HttpServletResponse response)
+	{
+		int categoryId = Integer.parseInt(request.getParameter("catId"));
+		CategoryDao dao = new CategoryDaoImpl();
+		request.setAttribute("threads", dao.getCategoryById(categoryId).getThreads());
+		return "categoryView";
+	}
+	@RequestMapping(value="thread")
+	public String viewThread(HttpServletRequest request, HttpServletResponse response)
+	{
+		int threadId = Integer.parseInt(request.getParameter("threadId"));
+		ThreadDao dao = new ThreadDaoImpl();
+		request.setAttribute("posts", dao.getThreadById(threadId));
+		return "threadView";
 	}
 
 }
