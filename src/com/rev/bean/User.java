@@ -1,6 +1,6 @@
 package com.rev.bean;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,10 +48,18 @@ public class User
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "RT_ROLE")
 	private Role role;
-	/*@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "RT_CAR_OWNERSHIP", joinColumns = @JoinColumn(name="U_ID"), inverseJoinColumns= @JoinColumn(name="C_ID"))
-	private Set<Car> cars;*/
+	private List<Car> cars;
 	
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
 	public User(){}
 
 	public User(int id, String username, String password, String firstname, String lastname, String email, double cash, int urId, Role role) 

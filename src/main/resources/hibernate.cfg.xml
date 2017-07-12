@@ -19,5 +19,15 @@
 		
 		<mapping class = "com.rev.bean.Role"/>
 		<mapping class = "com.rev.bean.User"/>
+		<mapping class = "com.rev.bean.Car"/>
+		
+		<!-- <mapping class = "com.rev.bean.AdminNotify"/> -->
+		<!-- <mapping class = "com.rev.bean.Category"/> -->
+		<!-- <mapping class = "com.rev.bean.Challenge"/> -->
+		<!-- <mapping class = "com.rev.bean.DirectMessage"/> -->
+		<!-- <mapping class = "com.rev.bean.Post"/> -->
+		<!-- <mapping class = "com.rev.bean.Thread"/> -->
+		<!-- <mapping class = "com.rev.bean.TrackSection"/> -->
+		
 	</session-factory>
 </hibernate-configuration>
