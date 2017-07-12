@@ -24,37 +24,83 @@
 
 <img src="resources/img/header.png" width = "100%">
 
-<nav id = "nv" class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-     <a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
+	<nav id="nv" class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
 		</div>
-		<%-- <c:if test="${user != null }"> --%>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="controlPanel">Control Panel</a></li>
-				<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
-				<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
-			</ul>
-		<%-- </c:if> --%>
-		
-		<%-- <c:if test="${user == null }">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="createAccount" style="color: #ffffff;"><span class="glyphicon glyphicon-plus"></span> CreateAccount</a></li>
-			</ul>
-		</c:if> </div>
-    
-    <ul class="nav navbar-nav navbar-right">
-    		<li><a href="Logout.do" style = "color: #ffffff;"><span class="glyphicon glyphicon-log-out" ></span>Logout</a></li>		
-    </ul> --%>
-  </div>
-</nav>
+		<c:if test="${user != null }">
 
-<div id = "jd" class = "jumbotron">
-	<div id = "wl" class = "well">
-		
+			<c:choose>
+				<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
+					<ul class="nav navbar-nav">
+						<li><a href="controlPanel" style="color: #ffffff;">Control
+								Panel</a></li>
+						<li><a href="viewSubAdmin" style="color: #ffffff;">View
+								SubAdmin</a></li>
+						<li><a href="viewUsers" style="color: #ffffff;">View
+								Users</a></li>
+						<li><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
+						<li><a href="viewChallenges" style="color: #ffffff;">View
+								Challenges</a></li>
+					</ul>
+				</c:when>
+				<c:when test="${sessionScope.currentUser.getRole().getUrId() == 2}">
+					<ul class="nav navbar-nav">
+						<li><a href="controlPanel" style="color: #ffffff;">Control
+								Panel</a></li>
+						<li><a href="viewUsers" style="color: #ffffff;">View
+								Users</a></li>
+						<li><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
+						<li><a href="viewChallenges" style="color: #ffffff;">View
+								Challenges</a></li>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="nav navbar-nav">
+						<li><a href="controlPanel" style="color: #ffffff;">Control
+								Panel</a></li>
+						<li><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
+						<li><a href="viewChallenges" style="color: #ffffff;">View
+								Challenges</a></li>
+					</ul>
+				</c:otherwise>
+			</c:choose>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="logout" style="color: #ffffff;"><span
+						class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+			</ul>
+		</c:if>
+
+		<c:if test="${user == null }">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="createAccount" style="color: #ffffff;"><span
+						class="glyphicon glyphicon-plus"></span> CreateAccount</a></li>
+			</ul>
+		</c:if>
+	</div>
+	</nav>
+
+<div id = "jd" class = "row jumbotron">
+	<div id = "wl" class = "col-lg-6 well">
+		<h1>Role: ${sessionScope.currentUser.getRole().getRole()}</h1>
+		<p>Username: ${sessionScope.currentUser.getUsername()}</p>
+		<p>First Name: ${sessionScope.currentUser.getFirstname()}</p>
+		<p>Last Name: ${sessionScope.currentUser.getLastname()}</p>
+		<p>Email: ${sessionScope.currentUser.getEmail()}</p>
+	</div>
+	<div id = "wl1" class = "col-lg-6 well" >
+		<c:choose>
+			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
+			</c:when>
+			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 2}">
+			</c:when>
+			<c:otherwise>
+				<h2>Cash Available</h2>
+				<p>${sessionScope.currentUser.getCash()}</p>
+			</c:otherwise>			
+		</c:choose>
 	</div>
 </div>
 
