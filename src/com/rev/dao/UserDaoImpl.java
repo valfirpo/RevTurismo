@@ -62,6 +62,7 @@ public class UserDaoImpl implements UserDao
 		Query query;
 		List<User> users = null;
 		String hql;
+		User user = null;
 		
 		try
 		{
@@ -71,21 +72,30 @@ public class UserDaoImpl implements UserDao
 			query.setParameter("pass", login.getPassword());
 			
 			users = query.list();
+			if(users.size() > 0)
+			{
+				user = users.get(0);
+			}
+			
 		}
 		catch(HibernateException e)
 		{
-			if(tx != null)
-			{
-				tx.rollback();
-			}
 			e.printStackTrace();
 		}
 		finally
 		{
-			session.close();
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+			if(session != null)
+			{
+				session.close();
+			}
+			
 		}
-		
-		return users.get(0);
+		users.clear();
+		return user;
 	}
 	
 	@Override
