@@ -2,12 +2,15 @@ package com.rev.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.rev.bean.Category;
 import com.rev.bean.Post;
 import com.rev.bean.Thread;
 import com.rev.dao.CategoryDaoImpl;
 import com.rev.dao.ThreadDaoImpl;
 
+@Component
 public class ForumService {
 	
 	public List<Category> getCategories()

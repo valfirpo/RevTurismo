@@ -1,21 +1,13 @@
 package com.rev.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 
-import com.rev.bean.User;
 import com.rev.dao.CarDao;
 import com.rev.dao.CarDaoImpl;
 import com.rev.dao.CategoryDao;
@@ -31,6 +23,7 @@ import com.rev.service.UserService;
 public class FrontController {
 
 	@Autowired
+	@Qualifier("userServiceImpl")
 	UserService userService;
 
 	@RequestMapping(value = "controlPanel")
@@ -68,7 +61,7 @@ public class FrontController {
 	}
 	*/
 	
-	@RequestMapping(value = "forum")
+	/*@RequestMapping(value = "forum")
 	public String viewForum(HttpServletRequest request, HttpServletResponse response)
 	{
 		CategoryDao dao = new CategoryDaoImpl();
@@ -91,5 +84,5 @@ public class FrontController {
 		request.setAttribute("posts", dao.getThreadById(threadId));
 		return "threadView";
 	}
-
+*/
 }
