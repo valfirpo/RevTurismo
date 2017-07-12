@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.Login;
@@ -33,20 +31,48 @@ public class LoginController {
     mav.addObject("login", new Login());
     return mav;
   }
+  
+  @RequestMapping(method = RequestMethod.POST)
+	public String doLogin(@Valid Login login, BindingResult bindingResult, 
+											ModelMap modelMap,
+											HttpSession session) {
+	if(bindingResult.hasErrors()){
+		return "index";
+	}
+	  User validUser = userService.validateUser(login);
+	  
+	  if(validUser != null){
+		  System.out.println(login.getUsername());
+		  modelMap.addAttribute("user",login);
+		  session.setAttribute("alsoUser", login);
+		  return "controlPanel";
+	  }else{
+		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");
+		  return "login";
+	  }
+	  
+	 // return null;
+	
+  }
+  
+  
+  
+  
+  
 
 //  @RequestMapping(value="/home",method = RequestMethod.POST)
 //  @ResponseBody
 //  public String home(){
 //	  return "home";
 //  }
-//  @RequestMapping(value="/index",method = RequestMethod.POST)
+//  @RequestMapping(value="login",method = RequestMethod.POST)
 //  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 //  @ModelAttribute("login") Login login) {
 //	 System.out.println("some info");
 //    ModelAndView mav = null;
 //    User user = userService.validateUser(login);
 //    if (null != user) {
-//    mav = new ModelAndView("home");
+//    mav = new ModelAndView("controlPanel");
 //    mav.addObject("firstname", user.getFirstname());
 //    } else {
 //    mav = new ModelAndView("index");
@@ -54,29 +80,29 @@ public class LoginController {
 //    }
 //    return mav;
 //  }
-  
-  @RequestMapping(method = RequestMethod.POST)
-	public String doLogin(@Valid Login login, BindingResult bindingResult, ModelMap modelMap, HttpSession session){
-		
-		System.out.println("This was a post request");
-		if (bindingResult.hasErrors()){
-			
-			return "index";
-			
-		}
-		User authUser = userService.validateUser(login);
-		if (authUser != null) {
-			
-			System.out.println(login.getUsername());
-			modelMap.addAttribute("user", login);
-			session.setAttribute("alsoUser", login);
-			return "index";
-			
-		}
-		else{
-			modelMap.addAttribute("errorMessage", "Username/password incorrect");
-			return "index";
-		}
-	}
+//  
+//  @RequestMapping(method = RequestMethod.POST)
+//	public String doLogin(@Valid Login login, BindingResult bindingResult, ModelMap modelMap, HttpSession session){
+//		
+//		System.out.println("This was a post request");
+//		if (bindingResult.hasErrors()){
+//			
+//			return "index";
+//			
+//		}
+//		User authUser = userService.validateUser(login);
+//		if (authUser != null) {
+//			
+//			System.out.println(login.getUsername());
+//			modelMap.addAttribute("user", login);
+//			session.setAttribute("alsoUser", login);
+//			return "index";
+//			
+//		}
+//		else{
+//			modelMap.addAttribute("errorMessage", "Username/password incorrect");
+//			return "index";
+//		}
+//	}
   
 }
