@@ -31,7 +31,7 @@ public class Challenge
 	private int reward;
 	@Column(name = "CH_MIN_LEVEL")
 	private int level;
-	@OneToMany(mappedBy = "CH_ID")
+	@OneToMany(mappedBy = "challenge")
 	private List<TrackSection> sections;
 	public Challenge(){}
 	

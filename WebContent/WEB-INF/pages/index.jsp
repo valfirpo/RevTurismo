@@ -60,7 +60,7 @@
 				<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+				<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 			</ul>
 		</c:if>
 		

@@ -19,13 +19,13 @@ public class DirectMessage
 	@SequenceGenerator(name = "DM_ID_SEQ", sequenceName = "DM_ID_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DM_ID_SEQ")
 	private int id;
-	@Column(name = "U_ID_AUTHOR")	
-	private int idAuthor;
+	/*@Column(name = "U_ID_AUTHOR")	
+	private int idAuthor;*/
 	@ManyToOne
 	@JoinColumn(name="U_ID_AUTHOR")
 	private User author;
-	@Column(name = "U_ID_RECEIVER")
-	private int idReceiver;
+	/*@Column(name = "U_ID_RECEIVER")
+	private int idReceiver;*/
 	@ManyToOne
 	@JoinColumn(name="U_ID_RECEIVER")
 	private User receiver;
@@ -36,19 +36,19 @@ public class DirectMessage
 	
 	public DirectMessage(){}
 	
-	public DirectMessage(int id, int idAuthor, int idReceiver, String content, int active) 
+	public DirectMessage(int id, User author, User receiver, String content, int active) 
 	{
 		this.id = id;
-		this.idAuthor = idAuthor;
-		this.idReceiver = idReceiver;
+		this.author = author;
+		this.receiver = receiver;
 		this.content = content;
 		this.active = active;
 	}
 	
-	public DirectMessage(int idAuthor, int idReceiver, String content, int active) 
+	public DirectMessage(User author, User receiver, String content, int active) 
 	{
-		this.idAuthor = idAuthor;
-		this.idReceiver = idReceiver;
+		this.author = author;
+		this.receiver = receiver;
 		this.content = content;
 		this.active = active;
 	}
@@ -60,23 +60,6 @@ public class DirectMessage
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getIdAuthor() {
-		return idAuthor;
-	}
-
-	public void setIdAuthor(int idAuthor) {
-		this.idAuthor = idAuthor;
-	}
-
-	public int getIdReceiver() {
-		return idReceiver;
-	}
-
-	public void setIdReceiver(int idReceiver) {
-		this.idReceiver = idReceiver;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -111,7 +94,7 @@ public class DirectMessage
 
 	@Override
 	public String toString() {
-		return "DirectMessage [id=" + id + ", idAuthor=" + idAuthor + ", idReceiver=" + idReceiver + ", content="
+		return "DirectMessage [id=" + id + ", author=" + author + ", receiver=" + receiver + ", content="
 				+ content + ", active=" + active + "]";
 	}
 }
