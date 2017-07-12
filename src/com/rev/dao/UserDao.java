@@ -8,4 +8,5 @@ public interface UserDao
 	 public User getUserById(int roleId);
 	 public int createUser(User user);
 	 public User validateUser(Login logIn);
+	 public void updateUser(User user);
 } 
