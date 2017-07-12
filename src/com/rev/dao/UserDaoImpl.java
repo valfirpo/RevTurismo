@@ -60,24 +60,17 @@ public class UserDaoImpl implements UserDao
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();;
 		Query query;
-		User user = null;
+		List<User> users = null;
 		String hql;
 		
 		try
 		{
-			hql = "FROM com.rev.bean.User";
+			hql = "FROM com.rev.bean.User WHERE username = :un AND password = :pass";
 			query = session.createQuery(hql);
+			query.setParameter("un", logIn.getUsername());
+			query.setParameter("pass", logIn.getPassword());
 			
-			List<User> allUsers = query.list();
-			
-			for(User u : allUsers)
-			{
-				if(u.getUsername().equals(logIn.getUsername()) &&
-						u.getPassword().equals(logIn.getPassword()))
-				{
-					user = u;
-				}
-			}
+			users = query.list();
 		}
 		catch(HibernateException e)
 		{
@@ -92,7 +85,6 @@ public class UserDaoImpl implements UserDao
 			session.close();
 		}
 		
-		return user;
+		return users.get(0);
 	}
-  
 }
