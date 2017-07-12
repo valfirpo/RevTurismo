@@ -1,6 +1,7 @@
 package com.rev.main;
 
 
+import com.rev.bean.Login;
 import com.rev.bean.Role;
 import com.rev.bean.User;
 import com.rev.dao.RoleDaoImp;
@@ -12,13 +13,17 @@ public class Driver
 	{
 		UserDaoImpl dao = new UserDaoImpl();
 		RoleDaoImp dao2 = new RoleDaoImp();
-		Role testRole = dao2.getRole(1);
+		Role testRole = dao2.getRole(3);
 		
-		User testUser = new User("testname", "test", "paul", "wess", "test@this.com", 100, 1, testRole);
+		//User testUser = new User("ADMIN", "PASSWORD", "BOBBERT", "BOBSON", "BOBBERT.BOBSON@REVATURE.COM", 1000000, 1);
 		
-		System.out.println(dao.createUser(testUser));
+		Login login = new Login();
+		login.setUsername("ADMIN");
+		login.setPassword("PASSWORD");
 		
+		User testUser = dao.validateUser(login);
 		
+		System.out.println(testUser);
 		
 		System.out.println("DOne");
 	}

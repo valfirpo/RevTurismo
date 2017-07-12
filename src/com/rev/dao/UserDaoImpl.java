@@ -1,6 +1,9 @@
 package com.rev.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -52,9 +55,44 @@ public class UserDaoImpl implements UserDao
 	}
 
 	@Override
-	public User validateUser(Login logIn) {
-		// TODO Auto-generated method stub
-		return null;
+	public User validateUser(Login logIn) 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();;
+		Query query;
+		User user = null;
+		String hql;
+		
+		try
+		{
+			hql = "FROM com.rev.bean.User";
+			query = session.createQuery(hql);
+			
+			List<User> allUsers = query.list();
+			
+			for(User u : allUsers)
+			{
+				if(u.getUsername().equals(logIn.getUsername()) &&
+						u.getPassword().equals(logIn.getPassword()))
+				{
+					user = u;
+				}
+			}
+		}
+		catch(HibernateException e)
+		{
+			if(tx != null)
+			{
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		
+		return user;
 	}
   
 }
