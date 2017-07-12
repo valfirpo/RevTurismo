@@ -46,7 +46,6 @@ public class LoginController {
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("user", login);
 		  session.setAttribute("currentUser", validUser);
-		  session.getAttribute("user");
 		  return "index";
 	  }else{
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");

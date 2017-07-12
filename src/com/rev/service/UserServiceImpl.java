@@ -1,5 +1,7 @@
 package com.rev.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,11 @@ public class UserServiceImpl implements UserService {
 	  public User validateUser(Login login) 
 	  {
 	    return userDao.validateUser(login);
+	  }
+	  
+	  public List<User> getAllUsers()
+	  {
+		 return userDao.getAllUsers();
 	  }
 
 	}

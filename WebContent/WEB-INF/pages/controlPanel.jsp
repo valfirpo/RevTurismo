@@ -93,8 +93,10 @@
 	<div id = "wl1" class = "col-lg-6 well" >
 		<c:choose>
 			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
+				<p>Master admin img</p>
 			</c:when>
 			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 2}">
+				<p>Sub admin img</p>
 			</c:when>
 			<c:otherwise>
 				<h2>Cash Available</h2>

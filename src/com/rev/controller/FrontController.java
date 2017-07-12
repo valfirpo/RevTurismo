@@ -1,12 +1,21 @@
 package com.rev.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 
+import com.rev.bean.User;
 import com.rev.dao.CarDao;
 import com.rev.dao.CarDaoImpl;
 import com.rev.dao.CategoryDao;
@@ -42,6 +51,23 @@ public class FrontController {
 		request.setAttribute("challenges", dao.getChallenges());
 		return "viewChallenges";
 	}
+	
+	/*
+	@RequestMapping(value = "viewUsers")
+	public String viewUsers(ModelMap modelMap , BindingResult bindingResult, HttpSession session) 
+	{
+		if(bindingResult.hasErrors()){
+			return "controlPanel";
+		}
+	
+		List<User> l = userService.getAllUsers();
+		
+		modelMap.addAttribute("allUsers",l);
+		session.setAttribute("allUsers", l);
+		return "viewUsers";
+	}
+	*/
+	
 	@RequestMapping(value = "forum")
 	public String viewForum(HttpServletRequest request, HttpServletResponse response)
 	{

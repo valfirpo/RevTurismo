@@ -119,4 +119,38 @@ public class UserDaoImpl implements UserDao
 			}
 		}
 	}
+
+	@Override
+	public List<User> getAllUsers() 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();;
+		Query query;
+		List<User> users = null;
+		String hql;
+		
+		try
+		{
+			hql = "FROM com.rev.bean.User";
+			query = session.createQuery(hql);
+			users = query.list();
+		}
+		catch(HibernateException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+			if(session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return users;
+	}
 }

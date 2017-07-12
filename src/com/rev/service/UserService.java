@@ -1,5 +1,7 @@
 package com.rev.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.rev.bean.Login;
@@ -12,5 +14,5 @@ public interface UserService {
 
 	  User validateUser(Login login);
 
-	//User auth(User user);
+	  public List<User> getAllUsers();
 	}
