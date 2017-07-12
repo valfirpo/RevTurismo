@@ -12,8 +12,6 @@
 	<mvc:annotation-driven/>
 	<mvc:resources location="/resources" mapping="/**"/>
 	
-	
-	
 	<bean id="userService" class="com.rev.service.UserServiceImpl" />
 	<bean id="userDao" class="com.rev.dao.UserDaoImpl" />
 	
