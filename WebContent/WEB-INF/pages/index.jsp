@@ -44,7 +44,7 @@
 		
 		
 			<c:choose>
-				<c:when test="${sessionScope.currentUser.getUrId() == 1}">
+				<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
 					<%System.out.println("role 1");%>
 				</c:when>
 				<c:otherwise>
