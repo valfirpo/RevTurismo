@@ -1,10 +1,15 @@
 package com.rev.bean;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,10 +26,15 @@ public class Thread
 	private String name;
 	@Column(name = "CA_ID")
 	private int categoryId;
+	@ManyToOne
+	@JoinColumn(name = "CA_ID")
+	private Category category;
 	@Column(name = "T_LOCKED")
 	private int locked;
 	@Column(name = "T_ACTIVE")
 	private int active;
+	@OneToMany(mappedBy="T_ID")
+	private List<Post> posts;
 	
 	public Thread(){}
 	
@@ -81,6 +91,22 @@ public class Thread
 
 	public void setActive(int active) {
 		this.active = active;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

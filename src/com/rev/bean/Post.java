@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,6 +22,10 @@ public class Post
 	
 	@Column(name = "T_ID")
 	private int threadId;
+	
+	@ManyToOne
+	@JoinColumn(name="T_ID")
+	private Thread thread;
 	
 	@Column(name = "U_ID")
 	private int userId;
@@ -86,6 +92,14 @@ public class Post
 
 	public void setActive(int active) {
 		this.active = active;
+	}
+
+	public Thread getThread() {
+		return thread;
+	}
+
+	public void setThread(Thread thread) {
+		this.thread = thread;
 	}
 
 	@Override
