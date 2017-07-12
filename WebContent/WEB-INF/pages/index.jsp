@@ -75,9 +75,9 @@
 										</span>
 										<!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
  -->
-										<form:label path="username">Username</form:label>
-										<form:input path="username" name="username" id="username" />
-
+										<form:label class ="form-control" path="username">Username:</form:label>
+										<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
+										
 									</div>
 									<br>
 									<div class="input-group">
@@ -86,15 +86,15 @@
 										</span>
 										<!-- 						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
  -->
-										<form:label path="password">Password</form:label>
-										<form:password path="password" name="password" id="password" />
+										<form:label class ="form-control"  path="password">Password:</form:label>
+										<form:password class="form-control" path="password" name="password" id="password" placeholder ="password"  />
 									</div>
 
 									<br>
 									<div>
-										<form:button id="login" name="login">Login</form:button>
-										<!-- 						<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
- -->
+<%-- 										<form:button id="login" name="login">Login</form:button>
+ --%>										<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
+ 
 									</div>
 								</form:form>
 							</div>
