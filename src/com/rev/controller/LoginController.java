@@ -45,7 +45,7 @@ public class LoginController {
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("alsoUser", login);
-		  return "controlPanel";
+		  return "index";
 	  }else{
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");
 		  return "index";

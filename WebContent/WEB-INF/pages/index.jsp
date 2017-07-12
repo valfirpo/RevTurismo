@@ -42,9 +42,9 @@
 		</div>
 		<c:if test="${user != null }">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="controlPanel.jsp">Control Panel</a></li>
-				<li class="active"><a href="viewCars.jsp">View Cars</a></li>
-				<li class="active"><a href="viewChallenges.jsp">View Challenges</a></li>
+				<li class="active"><a href="controlPanel">Control Panel</a></li>
+				<li class="active"><a href="viewCars">View Cars</a></li>
+				<li class="active"><a href="viewChallenges">View Challenges</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
