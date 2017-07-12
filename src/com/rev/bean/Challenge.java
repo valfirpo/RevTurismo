@@ -1,11 +1,14 @@
 package com.rev.bean;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,7 +31,8 @@ public class Challenge
 	private int reward;
 	@Column(name = "CH_MIN_LEVEL")
 	private int level;
-
+	@OneToMany(mappedBy = "CH_ID")
+	private List<TrackSection> sections;
 	public Challenge(){}
 	
 	public Challenge(int id, String name, int reward, int level) {
@@ -38,12 +42,20 @@ public class Challenge
 		this.level = level;
 	}
 	
+	
+
 	public Challenge(String name, int reward, int level) {
 		this.name = name;
 		this.reward = reward;
 		this.level = level;
 	}
+	public List<TrackSection> getSections() {
+		return sections;
+	}
 
+	public void setSections(List<TrackSection> sections) {
+		this.sections = sections;
+	}
 	public int getId() {
 		return id;
 	}

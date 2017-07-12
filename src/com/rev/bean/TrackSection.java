@@ -1,10 +1,14 @@
 package com.rev.bean;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,6 +27,10 @@ public class TrackSection
 	private int id;
 	@Column(name = "CH_ID")
 	private int challengeId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "CH_ID")
+	private Challenge challenge;
+	
 	@Column(name = "TS_CURVE_RATING")
 	private int curveRating;
 	@Column(name = "TS_DISTANCE")
@@ -42,6 +50,14 @@ public class TrackSection
 		this.curveRating = curveRating;
 		this.distance = distance;
 	}
+	public Challenge getChallenge() {
+		return challenge;
+	}
+
+	public void setChallenge(Challenge challenge) {
+		this.challenge = challenge;
+	}
+
 
 	public int getId() {
 		return id;
