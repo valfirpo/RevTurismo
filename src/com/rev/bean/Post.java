@@ -20,15 +20,14 @@ public class Post
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "POSTS_P_ID_SEQ")
 	private int postId;
 	
-	@Column(name = "T_ID")
-	private int threadId;
-	
 	@ManyToOne
 	@JoinColumn(name="T_ID")
 	private Thread thread;
+
 	
-	@Column(name = "U_ID")
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name="U_ID")
+	private User author;
 	
 	@Column(name = "P_CONTENT")
 	private String content;
@@ -38,18 +37,19 @@ public class Post
 	
 	public Post(){}
 	
-	public Post(int postId, int threadId, int userId, String content, int active) {
+	public Post(Thread thread, User author, String content, int active) {
 		super();
-		this.postId = postId;
-		this.threadId = threadId;
-		this.userId = userId;
+		this.thread = thread;
+		this.author = author;
 		this.content = content;
 		this.active = active;
 	}
-	
-	public Post(int threadId, int userId, String content, int active) {
-		this.threadId = threadId;
-		this.userId = userId;
+
+	public Post(int postId, Thread thread, User author, String content, int active) {
+		super();
+		this.postId = postId;
+		this.thread = thread;
+		this.author = author;
 		this.content = content;
 		this.active = active;
 	}
@@ -60,22 +60,6 @@ public class Post
 
 	public void setPostId(int postId) {
 		this.postId = postId;
-	}
-
-	public int getThreadId() {
-		return threadId;
-	}
-
-	public void setThreadId(int threadId) {
-		this.threadId = threadId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public String getContent() {
@@ -102,9 +86,17 @@ public class Post
 		this.thread = thread;
 	}
 
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", threadId=" + threadId + ", userId=" + userId + ", content=" + content
+		return "Post [postId=" + postId + ", thread=" + thread + ", author=" + author + ", content=" + content
 				+ ", active=" + active + "]";
 	}
 }
