@@ -42,9 +42,6 @@ public class User
 	@Column(name = "U_CASH")
 	private double cash;
 	
-	@Column(name = "UR_ID")
-	private int urId;
-	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "UR_ID")
 	private Role role;
@@ -62,8 +59,22 @@ public class User
 
 	public User(){}
 
-	public User(int id, String username, String password, String firstname, String lastname, String email, double cash, int urId, Role role) 
-	{
+	public User(String username, String password, String firstname, String lastname, String email, double cash,
+			Role role, List<Car> cars) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.cash = cash;
+		this.role = role;
+		this.cars = cars;
+	}
+
+	public User(int id, String username, String password, String firstname, String lastname, String email, double cash,
+			Role role, List<Car> cars) {
+		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -71,20 +82,8 @@ public class User
 		this.lastname = lastname;
 		this.email = email;
 		this.cash = cash;
-		this.urId = urId;
 		this.role = role;
-	}
-	
-	public User(String username, String password, String firstname, String lastname, String email, double cash, int urId, Role role) 
-	{
-		this.username = username;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
-		this.cash = cash;
-		this.urId = urId;
-		this.role = role;
+		this.cars = cars;
 	}
 
 	public int getId() {
@@ -143,14 +142,6 @@ public class User
 		this.cash = cash;
 	}
 
-	public int getUrId() {
-		return urId;
-	}
-
-	public void setUrId(int urId) {
-		this.urId = urId;
-	}
-
 	public Role getRole() {
 		return role;
 	}
@@ -162,8 +153,9 @@ public class User
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", urId=" + urId + ", role=" + role
+				+ ", lastname=" + lastname + ", email=" + email + ", cash=" + cash + ", role=" + role + ", cars=" + cars
 				+ "]";
 	}
+
 	
 }

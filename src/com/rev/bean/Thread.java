@@ -24,8 +24,6 @@ public class Thread
 	private int id;
 	@Column(name = "T_NAME")	
 	private String name;
-	@Column(name = "CA_ID")
-	private int categoryId;
 	@ManyToOne
 	@JoinColumn(name = "CA_ID")
 	private Category category;
@@ -33,24 +31,29 @@ public class Thread
 	private int locked;
 	@Column(name = "T_ACTIVE")
 	private int active;
-	@OneToMany(mappedBy="T_ID")
+	@OneToMany(mappedBy="thread")
 	private List<Post> posts;
 	
 	public Thread(){}
 	
-	public Thread(int id, String name, int categoryId, int locked, int active) {
+	
+	public Thread(String name, Category category, int locked, int active, List<Post> posts) {
+		super();
+		this.name = name;
+		this.category = category;
+		this.locked = locked;
+		this.active = active;
+		this.posts = posts;
+	}
+
+	public Thread(int id, String name, Category category, int locked, int active, List<Post> posts) {
+		super();
 		this.id = id;
 		this.name = name;
-		this.categoryId = categoryId;
+		this.category = category;
 		this.locked = locked;
 		this.active = active;
-	}
-	
-	public Thread(String name, int categoryId, int locked, int active) {
-		this.name = name;
-		this.categoryId = categoryId;
-		this.locked = locked;
-		this.active = active;
+		this.posts = posts;
 	}
 
 	public int getId() {
@@ -68,14 +71,7 @@ public class Thread
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
+	
 
 	public int getLocked() {
 		return locked;
@@ -109,9 +105,10 @@ public class Thread
 		this.posts = posts;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Thread [id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", locked=" + locked + ", active="
-				+ active + "]";
+		return "Thread [id=" + id + ", name=" + name + ", category=" + category + ", locked=" + locked + ", active="
+				+ active + ", posts=" + posts + "]";
 	}
 }

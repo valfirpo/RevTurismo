@@ -25,8 +25,6 @@ public class TrackSection
 	@SequenceGenerator(name = "TRACK_SECTIONS_TS_ID", sequenceName = "TRACK_SECTIONS_TS_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRACK_SECTIONS_TS_ID")
 	private int id;
-	@Column(name = "CH_ID")
-	private int challengeId;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "CH_ID")
 	private Challenge challenge;
@@ -38,18 +36,21 @@ public class TrackSection
 	
 	public TrackSection(){}
 
-	public TrackSection(int id, int challengeId, int curveRating, int distance) {
+	public TrackSection(Challenge challenge, int curveRating, int distance) {
+		super();
+		this.challenge = challenge;
+		this.curveRating = curveRating;
+		this.distance = distance;
+	}
+
+	public TrackSection(int id, Challenge challenge, int curveRating, int distance) {
+		super();
 		this.id = id;
-		this.challengeId = challengeId;
+		this.challenge = challenge;
 		this.curveRating = curveRating;
 		this.distance = distance;
 	}
-	
-	public TrackSection(int challengeId, int curveRating, int distance) {
-		this.challengeId = challengeId;
-		this.curveRating = curveRating;
-		this.distance = distance;
-	}
+
 	public Challenge getChallenge() {
 		return challenge;
 	}
@@ -66,15 +67,6 @@ public class TrackSection
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getChallengeId() {
-		return challengeId;
-	}
-
-	public void setChallengeId(int challengeId) {
-		this.challengeId = challengeId;
-	}
-
 	public int getCurveRating() {
 		return curveRating;
 	}
@@ -93,8 +85,10 @@ public class TrackSection
 
 	@Override
 	public String toString() {
-		return "TrackSection [id=" + id + ", challengeId=" + challengeId + ", curveRating=" + curveRating
-				+ ", distance=" + distance + "]";
+		return "TrackSection [id=" + id + ", challenge=" + challenge + ", curveRating=" + curveRating + ", distance="
+				+ distance + "]";
 	}
+
+	
 	
 }
