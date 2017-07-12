@@ -30,20 +30,20 @@ public class TrackSection
 	private Challenge challenge;
 	
 	@Column(name = "TS_CURVE_RATING")
-	private int curveRating;
+	private double curveRating;
 	@Column(name = "TS_DISTANCE")
-	private int distance;
+	private double distance;
 	
 	public TrackSection(){}
 
-	public TrackSection(Challenge challenge, int curveRating, int distance) {
+	public TrackSection(Challenge challenge, double curveRating, double distance) {
 		super();
 		this.challenge = challenge;
 		this.curveRating = curveRating;
 		this.distance = distance;
 	}
 
-	public TrackSection(int id, Challenge challenge, int curveRating, int distance) {
+	public TrackSection(int id, Challenge challenge, double curveRating, double distance) {
 		super();
 		this.id = id;
 		this.challenge = challenge;
@@ -67,19 +67,19 @@ public class TrackSection
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCurveRating() {
+	public double getCurveRating() {
 		return curveRating;
 	}
 
-	public void setCurveRating(int curveRating) {
+	public void setCurveRating(double curveRating) {
 		this.curveRating = curveRating;
 	}
 
-	public int getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public void setDistance(int distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 

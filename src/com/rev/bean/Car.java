@@ -87,6 +87,24 @@ public class Car {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public double getTopSpeed() {
+		return topSpeed;
+	}
+	public void setTopSpeed(double topSpeed) {
+		this.topSpeed = topSpeed;
+	}
+	public double getAcceleration() {
+		return acceleration;
+	}
+	public void setAcceleration(double acceleration) {
+		this.acceleration = acceleration;
+	}
+	public double getHandling() {
+		return handling;
+	}
+	public void setHandling(double handling) {
+		this.handling = handling;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

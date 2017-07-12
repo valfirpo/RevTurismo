@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.rev.bean.Challenge;
+import com.rev.bean.Thread;
 import com.rev.util.HibernateUtil;
 
 public class ThreadDaoImpl implements ThreadDao {
