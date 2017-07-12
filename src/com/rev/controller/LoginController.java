@@ -48,7 +48,7 @@ public class LoginController {
 		  return "controlPanel";
 	  }else{
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");
-		  return "login";
+		  return "index";
 	  }
 	  
 	 // return null;
