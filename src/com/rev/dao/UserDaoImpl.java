@@ -55,7 +55,7 @@ public class UserDaoImpl implements UserDao
 	}
 
 	@Override
-	public User validateUser(Login logIn) 
+	public User validateUser(Login login) 
 	{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();;
@@ -67,8 +67,8 @@ public class UserDaoImpl implements UserDao
 		{
 			hql = "FROM com.rev.bean.User WHERE username = :un AND password = :pass";
 			query = session.createQuery(hql);
-			query.setParameter("un", logIn.getUsername());
-			query.setParameter("pass", logIn.getPassword());
+			query.setParameter("un", login.getUsername());
+			query.setParameter("pass", login.getPassword());
 			
 			users = query.list();
 		}
@@ -86,5 +86,27 @@ public class UserDaoImpl implements UserDao
 		}
 		
 		return users.get(0);
+	}
+	
+	@Override
+	public void updateUser(User user)
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		try{
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.update(user);
+			tx.commit();
+		}finally{
+			if(session != null)
+			{
+				session.close();
+			}
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+		}
 	}
 }
