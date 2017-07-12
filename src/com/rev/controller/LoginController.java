@@ -34,7 +34,8 @@ public class LoginController {
   @RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@Valid Login login, BindingResult bindingResult, 
 											ModelMap modelMap,
-											HttpSession session) {
+											HttpSession session)
+											 {
 	if(bindingResult.hasErrors()){
 		return "index";
 	}
@@ -43,7 +44,8 @@ public class LoginController {
 	  if(validUser != null){
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
-		  session.setAttribute("alsoUser", login);
+		  session.setAttribute("user", login);
+		  session.getAttribute("user");
 		  return "index";
 	  }else{
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");

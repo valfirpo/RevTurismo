@@ -42,12 +42,12 @@
 		</div>
 		<c:if test="${user != null }">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="controlPanel">Control Panel</a></li>
-				<li class="active"><a href="viewCars">View Cars</a></li>
-				<li class="active"><a href="viewChallenges">View Challenges</a></li>
+				<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
+				<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
+				<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+				<li><a href="index" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 			</ul>
 		</c:if>
 		
