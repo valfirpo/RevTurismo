@@ -21,6 +21,5 @@ public class ForumService {
 	public List<Post> getPosts(int tId)
 	{
 		return new ThreadDaoImpl().getThreadById(tId).getPosts();
-		
 	}
 }
