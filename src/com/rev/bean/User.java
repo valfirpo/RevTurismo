@@ -48,9 +48,9 @@ public class User
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "RT_ROLE")
 	private Role role;
-	@ManyToMany(fetch = FetchType.EAGER)
+	/*@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "RT_CAR_OWNERSHIP", joinColumns = @JoinColumn(name="U_ID"), inverseJoinColumns= @JoinColumn(name="C_ID"))
-	private Set<Car> cars;
+	private Set<Car> cars;*/
 	
 	public User(){}
 
