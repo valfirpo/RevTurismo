@@ -1,4 +1,5 @@
 package com.rev.dao;
+import com.rev.bean.Thread;
 
 public interface ThreadDao {
 	public Thread getThreadById(int threadId);
