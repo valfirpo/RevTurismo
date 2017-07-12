@@ -41,6 +41,19 @@
 			<a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
 		</div>
 		<c:if test="${user != null }">
+		
+		
+			<c:choose>
+				<c:when test="${sessionScope.currentUser.getUrId() == 1}">
+					<%System.out.println("role 1");%>
+				</c:when>
+				<c:otherwise>
+					<%System.out.println("role not 1");%>
+				</c:otherwise>
+			</c:choose>
+			
+			
+			
 			<ul class="nav navbar-nav">
 				<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
 				<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>

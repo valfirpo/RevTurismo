@@ -45,6 +45,7 @@ public class LoginController {
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("user", login);
+		  session.setAttribute("currentUser", validUser);
 		  session.getAttribute("user");
 		  return "index";
 	  }else{
