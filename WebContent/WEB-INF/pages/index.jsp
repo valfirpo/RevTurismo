@@ -40,11 +40,22 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
 		</div>
-
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="createAccount" style="color: #ffffff;"><span
-					class="glyphicon glyphicon-plus"></span> CreateAccount</a></li>
-		</ul>
+		<c:if test="${user != null }">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="controlPanel">Control Panel</a></li>
+				<li class="active"><a href="viewCars">View Cars</a></li>
+				<li class="active"><a href="viewChallenges">View Challenges</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+			</ul>
+		</c:if>
+		
+		<c:if test="${user == null }">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="createAccount" style="color: #ffffff;"><span class="glyphicon glyphicon-plus"></span> CreateAccount</a></li>
+			</ul>
+		</c:if>
 	</div>
 	</nav>
 

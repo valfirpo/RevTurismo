@@ -26,7 +26,6 @@ public class LoginController {
   
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-	 // System.out.println("hello");
     ModelAndView mav = new ModelAndView("index");
     mav.addObject("login", new Login());
     return mav;
@@ -45,64 +44,16 @@ public class LoginController {
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("alsoUser", login);
-		  return "controlPanel";
+		  return "index";
 	  }else{
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");
-		  return "login";
+		  return "index";
 	  }
-	  
-	 // return null;
-	
+
   }
   
   
   
-  
-  
-
-//  @RequestMapping(value="/home",method = RequestMethod.POST)
-//  @ResponseBody
-//  public String home(){
-//	  return "home";
-//  }
-//  @RequestMapping(value="login",method = RequestMethod.POST)
-//  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-//  @ModelAttribute("login") Login login) {
-//	 System.out.println("some info");
-//    ModelAndView mav = null;
-//    User user = userService.validateUser(login);
-//    if (null != user) {
-//    mav = new ModelAndView("controlPanel");
-//    mav.addObject("firstname", user.getFirstname());
-//    } else {
-//    mav = new ModelAndView("index");
-//    mav.addObject("message", "Username or Password is wrong!!");
-//    }
-//    return mav;
-//  }
-//  
-//  @RequestMapping(method = RequestMethod.POST)
-//	public String doLogin(@Valid Login login, BindingResult bindingResult, ModelMap modelMap, HttpSession session){
-//		
-//		System.out.println("This was a post request");
-//		if (bindingResult.hasErrors()){
-//			
-//			return "index";
-//			
-//		}
-//		User authUser = userService.validateUser(login);
-//		if (authUser != null) {
-//			
-//			System.out.println(login.getUsername());
-//			modelMap.addAttribute("user", login);
-//			session.setAttribute("alsoUser", login);
-//			return "index";
-//			
-//		}
-//		else{
-//			modelMap.addAttribute("errorMessage", "Username/password incorrect");
-//			return "index";
-//		}
-//	}
+ 
   
 }
