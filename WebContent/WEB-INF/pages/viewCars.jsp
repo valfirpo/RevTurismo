@@ -24,22 +24,19 @@
 
 <jsp:include page = "bannerAndNav.jsp" />
 
-<div id = "jd" class = "jumbotron">
-	<div id = "wl" class = "well">
-		<table class = "table">
-			<tr><td>ID</td><td>Name</td><td>Price</td><td>Top Speed</td><td>Acceleration</td></tr>
-			<c:forEach var = "c" items = "${allCars}">
-				<tr>
-					<td>${c.getId()}</td>
-					<td>${c.getCarName()}</td>
-					<td>${c.getPrice()}</td>
-					<td>${c.getTopSpeed()}</td>
-					<td>${c.getAcceleration()}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-</div>
+<table class = "table">
+	<tr><td>ID</td><td>Name</td><td>Price</td><td>Top Speed</td><td>Acceleration</td></tr>
+	<c:forEach var = "c" items = "${allCars}">
+		<tr>
+			<td>${c.getId()}</td>
+			<td>${c.getCarName()}</td>
+			<td>${c.getPrice()}</td>
+			<td>${c.getTopSpeed()}</td>
+			<td>${c.getAcceleration()}</td>
+		</tr>
+	</c:forEach>
+</table>
+
 
 </body>
 </html>
