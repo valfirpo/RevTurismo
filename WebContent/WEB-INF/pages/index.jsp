@@ -33,125 +33,78 @@
 </head>
 <body class="container-fluid">
 
-	<img src="resources/img/header.png" width="100%">
+<jsp:include page = "bannerAndNav.jsp" />
 
-	<nav id="nv" class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
-		</div>
-		<c:if test="${user != null }">
-		
-			<c:choose>
-				<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
-					<ul class="nav navbar-nav">
-						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
-						<li ><a href="viewSubAdmin" style="color: #ffffff;">View SubAdmin</a></li>
-						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
-						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
-						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
-					</ul>
-				</c:when>
-				<c:when test="${sessionScope.currentUser.getRole().getUrId() == 2}">
-					<ul class="nav navbar-nav">
-						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
-						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
-						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
-						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
-					</ul>
-				</c:when>
-				<c:otherwise>
-					<ul class="nav navbar-nav">
-						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
-						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
-						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
-					</ul>
-				</c:otherwise>
-			</c:choose>
-		
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
-			</ul>
-		</c:if>
-		
-		<c:if test="${user == null }">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="createAccount" style="color: #ffffff;"><span class="glyphicon glyphicon-plus"></span> CreateAccount</a></li>
-			</ul>
-		</c:if>
-	</div>
-	</nav>
-
-	<c:if test="${errorMessage == null }">
-		<c:choose>
-			<c:when test="${user == null }">
-				<div id="jd" class="jumbotron">
-					<div id="wl" class="well">
-						<h1 id="welcome">Welcome to RevTurismo</h1>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div id="wl" class="well">
-								<h2>Login</h2>
+<c:if test="${errorMessage == null }">
+	<c:choose>
+		<c:when test="${user == null }">
+			<div id="jd" class="jumbotron">
+				<div id="wl" class="well">
+					<h1 id="welcome">Welcome to RevTurismo</h1>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div id="wl" class="well">
+							<h2>Login</h2>
 
 
-								<c:if test="${message != null }">
-									<div class="alert alert-danger">${message}</div>
-								</c:if>
+							<c:if test="${message != null }">
+								<div class="alert alert-danger">${message}</div>
+							</c:if>
 
-								<form:form id="loginForm" modelAttribute="login" action="index"
-									method="POST">
+							<form:form id="loginForm" modelAttribute="login" action="index"
+								method="POST">
 
 
-									<div class="input-group">
-										<span class="input-group-addon"> <i
-											class="glyphicon glyphicon-user"></i>
-										</span>
-										<!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
- -->
-										<form:label class ="form-control" path="username">Username:</form:label>
-										<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
-										
-									</div>
-									<br>
-									<div class="input-group">
-										<span class="input-group-addon"> <i
-											class="glyphicon glyphicon-lock"></i>
-										</span>
-										<!-- 						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
- -->
-										<form:label class ="form-control"  path="password">Password:</form:label>
-										<form:password class="form-control" path="password" name="password" id="password" placeholder ="password"  />
-									</div>
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-user"></i>
+									</span>
+									<!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
+-->
+									<form:label class ="form-control" path="username">Username:</form:label>
+									<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
+									
+								</div>
+								<br>
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-lock"></i>
+									</span>
+									<!-- 						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
+-->
+									<form:label class ="form-control"  path="password">Password:</form:label>
+									<form:password class="form-control" path="password" name="password" id="password" placeholder ="password"  />
+								</div>
 
-									<br>
-									<div>
+								<br>
+								<div>
 <%-- 										<form:button id="login" name="login">Login</form:button>
  --%>										<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
- 
-									</div>
-								</form:form>
-							</div>
+
+								</div>
+							</form:form>
 						</div>
 					</div>
 				</div>
-			</c:when>
-			<c:otherwise>
-				<div id="jd" class="jumbotron">
-					<div id="wl" class="well">
-						<h1 id="welcome">Welcome to RevTurismo</h1>
-					</div>
-					<div id="wl" class="well">
-						<p>You are logged in to RevTurismo as ${sessionScope.currentUser.getRole().getRole()} 
-							${sessionScope.currentUser.getUsername()}!
-							RevTurismo is a car collecting application was created by
-							RevTurismo Group. Group members: Lucas Vance, Paul Wesson,
-							Matthew Young & Valentin Firpo.</p>
-					</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div id="jd" class="jumbotron">
+				<div id="wl" class="well">
+					<h1 id="welcome">Welcome to RevTurismo</h1>
 				</div>
-			</c:otherwise>
-		</c:choose>
-	</c:if>
+				<div id="wl" class="well">
+					<p>You are logged in to RevTurismo as ${sessionScope.currentUser.getRole().getRole()} 
+						${sessionScope.currentUser.getUsername()}!
+						RevTurismo is a car collecting application was created by
+						RevTurismo Group. Group members: Lucas Vance, Paul Wesson,
+						Matthew Young & Valentin Firpo.</p>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</c:if>
 
 
 </body>
