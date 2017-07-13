@@ -15,4 +15,8 @@ public interface UserService {
 	  User validateUser(Login login);
 
 	  public List<User> getAllUsers();
+	  
+	  public List<User> getAllSubAdmin();
+	  
+	  public void updateUser(User user);
 	}

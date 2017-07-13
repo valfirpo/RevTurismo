@@ -12,4 +12,5 @@ public interface UserDao
 	 public User validateUser(Login login);
 	 public void updateUser(User user);
 	 public List<User> getAllUsers();
+	 public List<User> getAllSubAdmin();
 } 
