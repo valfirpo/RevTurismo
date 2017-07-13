@@ -6,8 +6,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.rev.bean.Login;
+import com.rev.bean.Role;
 import com.rev.bean.User;
 import com.rev.util.HibernateUtil;
 
@@ -125,15 +127,11 @@ public class UserDaoImpl implements UserDao
 	{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();;
-		Query query;
 		List<User> users = null;
-		String hql;
 		
 		try
 		{
-			hql = "FROM com.rev.bean.User";
-			query = session.createQuery(hql);
-			users = query.list();
+			users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 3)).list();
 		}
 		catch(HibernateException e)
 		{
