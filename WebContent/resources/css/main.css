@@ -29,13 +29,13 @@ h2
 
 #jd
 {
-	font-family: 'Titillium Web', sans-serif;
 	background-image: url("../img/check.png");
 	border: solid 10px black;
 }
 
 #wl
 {
+	font-family: 'Titillium Web', sans-serif;
 	background-color: #ffffff;
 	border: solid 10px black;
 }

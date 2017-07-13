@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.rev.bean.Car;
 import com.rev.bean.User;
 import com.rev.service.CarService;
+import com.rev.service.UserService;
 
 @Controller
 @RequestMapping(value = "/")
@@ -21,6 +22,9 @@ public class CarController
 {
 	@Autowired
 	CarService carService;
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = {"viewCars", "boughtCar"})
 	public String viewCars(HttpServletRequest request, HttpServletResponse response, 
@@ -41,13 +45,19 @@ public class CarController
 	{
 		String id = request.getParameter("carId");
 		User tempUser = (User) session.getAttribute("currentUser");
-		Car teampCar = carService.getCarById(Integer.parseInt(id));
+		Double tempCash;
+		Car tempCar = carService.getCarById(Integer.parseInt(id));
 		
-		tempUser.getCars().add(teampCar);
+		tempCash = tempUser.getCash();
+		tempCash -= tempCar.getPrice();
+		tempUser.setCash(tempCash);
+		tempUser.getCars().add(tempCar);
+		
+		userService.updateUser(tempUser);
 		
 		session.setAttribute("currentUser", tempUser);
-		List<Car> l = carService.getAllCars();
 		
+		List<Car> l = carService.getAllCars();
 		modelMap.addAttribute("allCars", l);
 		
 		return "viewCars";

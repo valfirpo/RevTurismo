@@ -26,6 +26,10 @@
 
 <jsp:include page = "bannerAndNav.jsp" />
 
+<div id = "wl" class = "well" >
+	<h2>${currentUser.getUsername()} current cash: $${currentUser.getCash()}</h2>
+</div>
+
 <c:if test="${currentUser.getRole().getUrId() == 3}">
 	<div class="container">
 		<div class="row">
@@ -49,11 +53,10 @@
 						<c:forEach var="c" items="${currentUser.getCars()}">
 							<tr>	
 								<td class="col-xs-1">${c.getId()}</td>
-								<td class="col-xs-4">Name</td>
+								<td class="col-xs-4">${c.getCarName()}</td>
 								<td class="col-xs-2">Price</td>
 								<td class="col-xs-2">Top Speed</td>
 								<td class="col-xs-1">Acc</td>
-								
 							</tr>
 						</c:forEach>
 						

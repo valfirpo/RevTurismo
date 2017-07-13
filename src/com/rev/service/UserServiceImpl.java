@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getAllSubAdmin();
 	}
 
+	@Override
+	public void updateUser(User user) 
+	{
+		userDao.updateUser(user);
+	}
+
 	}
