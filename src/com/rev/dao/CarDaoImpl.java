@@ -103,7 +103,7 @@ public class CarDaoImpl implements CarDao {
 	@Override
 	public List<Car> getCars() {
 		Session session = HibernateUtil.getSession();
-		List<Car> cars = session.createCriteria(Car.class).addOrder(Order.asc("id")).list();
+		List<Car> cars = session.createCriteria(Car.class).addOrder(Order.asc("price")).list();
 		return cars;
 	}
 
