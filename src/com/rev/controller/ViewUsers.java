@@ -24,18 +24,18 @@ public class ViewUsers
 	 UserService userService;
 
 	@RequestMapping(value="viewUsers")
-	public String viewUsers(HttpServletRequest request, HttpServletResponse response)
+	public String viewUsers(HttpServletRequest request, HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
 	{
 		
-//		if(bindingResult.hasErrors()){
-//			return "controlPanel";
-//		}
-//	
-//		List<User> l = userService.getAllUsers();
-//		
-//		modelMap.addAttribute("allUsers",l);
-//		session.setAttribute("allUsers", l);
-//		return "viewUsers";
+		List<User> l = userService.getAllUsers();
+		
+		System.out.println(l.size());
+		
+		modelMap.addAttribute("allUsers",l);
+		//session.setAttribute("allUsers", l);
+
 		return "viewUsers";
 	}
 }

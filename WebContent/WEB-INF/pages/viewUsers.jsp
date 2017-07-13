@@ -77,13 +77,17 @@
 	</div>
 	</nav>
 	
-		<c:if test="${sessionScope.allUsers == null}">
+		<c:if test="${allUsers == null}">
 			<p>null users</p>
 		</c:if>
 		
-		<c:if test="${sessionScope.allUsers != null}">
+		<c:if test="${allUsers != null}">
 			<p>not null users</p>
 		</c:if>
+		<c:forEach var = "u" items = "${allUsers}">
+			${u}
+			<br>
+		</c:forEach>
 		
 </body>
 </html>
