@@ -151,4 +151,34 @@ public class UserDaoImpl implements UserDao
 		
 		return users;
 	}
+
+	@Override
+	public List<User> getAllSubAdmin() 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();;
+		List<User> users = null;
+		
+		try
+		{
+			users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 2)).list();
+		}
+		catch(HibernateException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+			if(session != null)
+			{
+				session.close();
+			}
+		}
+		
+		return users;
+	}
 }
