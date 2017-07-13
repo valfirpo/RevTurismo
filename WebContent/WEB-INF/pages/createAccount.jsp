@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,31 +49,39 @@
 				<div id = "wl" class = "well">
 					<h2>Create Account</h2>
 				
-				
-					<form method = "post" action = "CreateAccount.do">
-						<label>Username:</label>
+						<form:form id="userForm" modelAttribute="user" action="createAccount"
+									method="POST">
+					<!-- <form method = "post" action = "CreateAccount.do"> -->
+						<!-- <label>Username:</label> -->
+						<form:label class ="form-control" path="username">Username:</form:label>
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-user"></i> </span>
-							<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
-						</div>
+							<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
+<!-- 							<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
+ -->						</div>
 						<br>
-						<label >Password:</label>
+						<form:label class="form-control" path="password">Password:</form:label>
+						<!-- <label >Password:</label> -->
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-							<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
+							<form:password class = "form-control" path="password" name="password" id="password" placeholder="password"/>
+							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
 						</div>
 						<br>
-						<label >Confirm Password:</label>
+						<form:label class="form-control" path="password">Confirm Password:</form:label>
+						<!-- <label >Confirm Password:</label> -->
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-							<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
+							<form:password class="form-control" path="password" name="password" id="password" placeholder="password"/>
+							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
 						</div>
 					
 						<br>
 						<div>
-							<input type = "submit" class="btn btn-default" value = "Create" aria-label="Left Align">
+						
+							<input id = "register" type = "submit" class="btn btn-default" value = "Create" aria-label="Left Align">
 						</div>	
-					</form>
+					</form:form>
 				</div>
 		</div>
 	</div>

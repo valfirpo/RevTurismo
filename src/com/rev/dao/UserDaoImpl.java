@@ -2,11 +2,16 @@ package com.rev.dao;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.rev.bean.Login;
 import com.rev.bean.Role;
@@ -15,6 +20,12 @@ import com.rev.util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao 
 {
+	
+	  @Autowired
+	  DataSource datasource;
+
+	  @Autowired
+	  JdbcTemplate jdbcTemplate;
 
 	@Override
 	public User getUserById(int userId) 
@@ -29,31 +40,29 @@ public class UserDaoImpl implements UserDao
 	}
 
 	@Override
-	public int createUser(User user) 
+	public void createUser(User user) 
 	{
 		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		Integer userId = null;
+		Transaction tx = session.beginTransaction();
 		
-		try
-		{
-			tx = session.beginTransaction();
-			userId = (Integer) session.save(user);
-			tx.commit();
-		}
-		catch(HibernateException e)
-		{
-			if(tx != null)
-			{
-				tx.rollback();
-			}
-			e.printStackTrace();
-		}
-		finally
-		{
-			session.close();
-		}
-		return userId;
+		
+		user.setCash(35000);
+		user.setRole(3);
+		
+		
+		User newUser = new User(user.getUsername(), user.getPassword(),
+		user.getCash(), user.getRole());
+		
+			
+		
+		//session.save(newUser.getRole());
+	    //session.save(user);
+		session.save(newUser);
+	    tx.commit();
+
+		session.close();
+	    
+		//return user;
 	}
 
 	@Override

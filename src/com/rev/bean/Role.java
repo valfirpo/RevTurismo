@@ -28,7 +28,10 @@ public class Role
 	@Column(name = "UR_ROLE")
 	private String role;
 	
-	
+	public Role(int urId, String role){
+		this.role = role;
+		this.urId = urId; 
+	}
 	public Role(){}
 
 	public int getUrId() {

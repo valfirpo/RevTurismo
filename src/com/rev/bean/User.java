@@ -42,9 +42,13 @@ public class User
 	@Column(name = "U_CASH")
 	private double cash;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "UR_ID")
-	private Role role;
+	@Column(name="UR_ID")
+	private int role; 
+	
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@Column(name = "UR_ID")
+//	private Role role;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "RT_CAR_OWNERSHIP", joinColumns = @JoinColumn(name="U_ID"), inverseJoinColumns= @JoinColumn(name="C_ID"))
 	private List<Car> cars;
@@ -58,9 +62,14 @@ public class User
 	}
 
 	public User(){}
+	
+	public User(String username, String password){
+		this.username=username;
+		this.password=password;
+	}
 
 	public User(String username, String password, String firstname, String lastname, String email, double cash,
-			Role role, List<Car> cars) {
+			int role, List<Car> cars) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -73,7 +82,7 @@ public class User
 	}
 
 	public User(int id, String username, String password, String firstname, String lastname, String email, double cash,
-			Role role, List<Car> cars) {
+			int role, List<Car> cars) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -84,6 +93,13 @@ public class User
 		this.cash = cash;
 		this.role = role;
 		this.cars = cars;
+	}
+
+	public User(String username, String password,  double cash, int role) {
+		this.username = username;
+		this.password = password;
+		this.cash = cash;
+		this.role = role;
 	}
 
 	public int getId() {
@@ -142,11 +158,11 @@ public class User
 		this.cash = cash;
 	}
 
-	public Role getRole() {
+	public int getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 

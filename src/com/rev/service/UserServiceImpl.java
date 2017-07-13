@@ -14,10 +14,11 @@ public class UserServiceImpl implements UserService {
 
 	  @Autowired
 	  public UserDao userDao;
-
+	  
+	  
 	  public void register(User user) 
 	  {
-	    System.out.println(userDao.createUser(user));
+	    userDao.createUser(user);
 	  }
 
 	  public User validateUser(Login login) 

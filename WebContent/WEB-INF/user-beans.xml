@@ -26,7 +26,7 @@
 	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@revturismodb.c9cdjtgc8he5.us-east-2.rds.amazonaws.com:1521" />
+		<property name="url" value="jdbc:oracle:thin:@revturismodb.c9cdjtgc8he5.us-east-2.rds.amazonaws.com:1521:orcl" />
 		<property name="username" value="revturismodba" />
 		<property name="password" value="V7aBAmhLg-wVpm9U" />
 	</bean>

@@ -26,7 +26,9 @@
 
 <div id = "jd" class = "row jumbotron">
 	<div id = "wl" class = "col-lg-6 well">
-		<h1>Role: ${sessionScope.currentUser.getRole().getRole()}</h1>
+
+	
+		<h1>Role: ${sessionScope.currentUser.getRole()}</h1>
 		<p>Username: ${sessionScope.currentUser.getUsername()}</p>
 		<p>First Name: ${sessionScope.currentUser.getFirstname()}</p>
 		<p>Last Name: ${sessionScope.currentUser.getLastname()}</p>
@@ -34,10 +36,10 @@
 	</div>
 	<div id = "wl1" class = "col-lg-6 well" >
 		<c:choose>
-			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 1}">
+			<c:when test="${sessionScope.currentUser.getRole() == 1}">
 				<p>Master admin img</p>
 			</c:when>
-			<c:when test="${sessionScope.currentUser.getRole().getUrId() == 2}">
+			<c:when test="${sessionScope.currentUser.getRole() == 2}">
 				<p>Sub admin img</p>
 			</c:when>
 			<c:otherwise>
