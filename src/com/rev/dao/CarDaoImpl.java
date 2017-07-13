@@ -5,9 +5,9 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import com.rev.bean.Car;
-import com.rev.bean.Challenge;
 import com.rev.util.HibernateUtil;
 
 public class CarDaoImpl implements CarDao {
@@ -99,10 +99,11 @@ public class CarDaoImpl implements CarDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Car> getCars() {
 		Session session = HibernateUtil.getSession();
-		List<Car> cars = session.createCriteria(Car.class).list();
+		List<Car> cars = session.createCriteria(Car.class).addOrder(Order.asc("id")).list();
 		return cars;
 	}
 
