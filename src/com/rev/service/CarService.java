@@ -11,4 +11,5 @@ import com.rev.bean.Car;
 public interface CarService 
 {
 	public List<Car> getAllCars();
+	public Car getCarById(int id);
 }
