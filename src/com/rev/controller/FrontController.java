@@ -44,22 +44,7 @@ public class FrontController {
 		request.setAttribute("challenges", dao.getChallenges());
 		return "viewChallenges";
 	}
-	
-	/*
-	@RequestMapping(value = "viewUsers")
-	public String viewUsers(ModelMap modelMap , BindingResult bindingResult, HttpSession session) 
-	{
-		if(bindingResult.hasErrors()){
-			return "controlPanel";
-		}
-	
-		List<User> l = userService.getAllUsers();
-		
-		modelMap.addAttribute("allUsers",l);
-		session.setAttribute("allUsers", l);
-		return "viewUsers";
-	}
-	*/
+
 	
 	/*@RequestMapping(value = "forum")
 	public String viewForum(HttpServletRequest request, HttpServletResponse response)

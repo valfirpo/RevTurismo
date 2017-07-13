@@ -77,17 +77,20 @@
 	</div>
 	</nav>
 	
-		<c:if test="${allUsers == null}">
-			<p>null users</p>
-		</c:if>
-		
-		<c:if test="${allUsers != null}">
-			<p>not null users</p>
-		</c:if>
+	<table class = "table">
+		<tr><th>ID</th><th>Username</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Cash</th></tr>
 		<c:forEach var = "u" items = "${allUsers}">
-			${u}
-			<br>
+			<tr>
+				<td>${u.getId()}</td>
+				<td>${u.getUsername()}</td>
+				<td>${u.getFirstname()}</td>
+				<td>${u.getLastname()}</td>
+				<td>${u.getEmail()}</td>
+				<td>${u.getCash()}</td>
+			</tr>
 		</c:forEach>
+	</table>
+		
 		
 </body>
 </html>

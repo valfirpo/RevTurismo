@@ -34,8 +34,7 @@ public class ViewUsers
 		System.out.println(l.size());
 		
 		modelMap.addAttribute("allUsers",l);
-		//session.setAttribute("allUsers", l);
-
+		
 		return "viewUsers";
 	}
 }
