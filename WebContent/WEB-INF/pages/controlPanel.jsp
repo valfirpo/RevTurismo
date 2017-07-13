@@ -27,8 +27,19 @@
 <div id = "jd" class = "row jumbotron">
 	<div id = "wl" class = "col-lg-6 well">
 
-	
-		<h1>Role: ${sessionScope.currentUser.getRole()}</h1>
+
+<c:choose>
+	<c:when test= "${sessionScope.currentUser.getRole() == 1}" >
+		<c:out value = "${sessionScope.currentUser.setUserRole('ADMIN')}" ></c:out>
+	</c:when>
+	<c:when test= "${sessionScope.currentUser.getRole() == 2}" >
+		<c:out value = "${sessionScope.currentUser.setUserRole('SUBADMIN')}" ></c:out>
+	</c:when>
+	<c:otherwise>
+		<c:out value = "${sessionScope.currentUser.setUserRole('USER')}" ></c:out>
+	</c:otherwise>
+</c:choose>	
+		<h1>Role: ${sessionScope.currentUser.getUserRole()}</h1>
 		<p>Username: ${sessionScope.currentUser.getUsername()}</p>
 		<p>First Name: ${sessionScope.currentUser.getFirstname()}</p>
 		<p>Last Name: ${sessionScope.currentUser.getLastname()}</p>

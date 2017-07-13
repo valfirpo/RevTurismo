@@ -95,7 +95,7 @@
 					<h1 id="welcome">Welcome to RevTurismo</h1>
 				</div>
 				<div id="wl" class="well">
-					<p>You are logged in to RevTurismo as ${sessionScope.currentUser.getRole()}, 
+					<p>You are logged in to RevTurismo as a ${sessionScope.currentUser.getUserRole()}, 
 						${sessionScope.currentUser.getUsername()}!
 						RevTurismo is a car collecting application was created by
 						RevTurismo Group. Group members: Lucas Vance, Paul Wesson,

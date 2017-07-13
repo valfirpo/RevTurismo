@@ -30,7 +30,7 @@
 	<h2>${currentUser.getUsername()} current cash: $${currentUser.getCash()}</h2>
 </div>
 
-<c:if test="${currentUser.getRole().getUrId() == 3}">
+<c:if test="${currentUser.getRole() == 3}">
 	<div class="container">
 		<div class="row">
 			<div class="panel panel-default">
@@ -93,7 +93,7 @@
 								<td class="col-xs-2">Top Speed</td>
 								<td class="col-xs-1">Acc</td>
 								<c:choose>
-									<c:when test="${sessionScope.currentUser.getRole().getUrId() == 3}">
+									<c:when test="${sessionScope.currentUser.getRole() == 3}">
 										<td class="col-xs-2"><button onclick = "buy(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
 									</c:when>
 									<c:otherwise>
