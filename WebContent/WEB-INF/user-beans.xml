@@ -16,7 +16,7 @@
 	<bean id="userDao" class="com.rev.dao.UserDaoImpl" />
 	
 	<bean id="carService" class="com.rev.service.CarServiceImpl" />
-	<bean id="carDao" class="com.rev.dao.CarDaoImpl" />
+	<bean id="carDao" class="com.rev.dao.CarDaoImpl" /> 
 	
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

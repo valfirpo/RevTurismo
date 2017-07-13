@@ -18,7 +18,7 @@ import com.rev.service.UserService;
 
 @Controller
 @RequestMapping(value="/")
-public class ViewUsers 
+public class UserController 
 {
 	@Autowired
 	 UserService userService;
@@ -34,5 +34,17 @@ public class ViewUsers
 		modelMap.addAttribute("allUsers",l);
 		
 		return "viewUsers";
+	}
+	
+	@RequestMapping(value="viewSubAdmin")
+	public String viewSubAdmin(HttpServletRequest request, HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
+	{
+		List<User> l = userService.getAllSubAdmin();
+		
+		modelMap.addAttribute("allSubAdmin", l);
+		
+		return "viewSubAdmin";
 	}
 }

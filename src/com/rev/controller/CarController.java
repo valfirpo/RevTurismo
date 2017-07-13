@@ -20,7 +20,6 @@ import com.rev.service.CarService;
 public class CarController 
 {
 	@Autowired
-	//@Qualifier("carServiceImpl")
 	CarService carService;
 	
 	@RequestMapping(value = "viewCars")

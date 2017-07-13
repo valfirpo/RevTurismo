@@ -30,4 +30,10 @@ public class UserServiceImpl implements UserService {
 		 return userDao.getAllUsers();
 	  }
 
+	@Override
+	public List<User> getAllSubAdmin() 
+	{
+		return userDao.getAllSubAdmin();
+	}
+
 	}
