@@ -31,13 +31,14 @@ public class FrontController {
 		return "controlPanel";
 	}
 
+	/*
 	@RequestMapping(value = "viewCars")
 	public String viewCars(HttpServletRequest request, HttpServletResponse response) {
 		CarDao dao = new CarDaoImpl();
 		request.setAttribute("cars", dao.getCars());
 		return "viewCars";
 	}
-
+	 */
 	@RequestMapping(value = "viewChallenges")
 	public String viewChallenges(HttpServletRequest request, HttpServletResponse response) {
 		ChallengeDao dao = new ChallengeDaoImpl();
