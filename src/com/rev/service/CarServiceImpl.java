@@ -18,4 +18,10 @@ public class CarServiceImpl implements CarService
 		return carDao.getCars();
 	}
 
+	@Override
+	public Car getCarById(int id) 
+	{	
+		return carDao.getCarById(id);
+	}
+
 }

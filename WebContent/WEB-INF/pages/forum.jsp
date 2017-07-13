@@ -21,24 +21,9 @@
 
 </head>
 <body>
-	<nav id = "nv" class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-     <a class="navbar-brand" href="index" style="color: #ffffff;">Home</a>
-		</div>
-		<%-- <c:if test="${user != null }"> --%>
-			<ul class="nav navbar-nav">
-				<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
-				<li class="active"  ><a href="viewCars">View Cars</a></li>
-				<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
-			</ul>
-  </div>
-</nav>
-<div id="forumBody" class="jumbotron">
-	<div class="well">
+	<jsp:include page = "bannerAndNav.jsp" />
+<div id="jd" class="jumbotron">
+	<div id="wl" class="well">
 		<!-- For loop -->
 		<c:forEach var="cat" items="${categories }">
 			<div id="catId" class="cat-container">

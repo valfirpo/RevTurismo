@@ -35,6 +35,9 @@ public class Post
 	@Column(name = "P_ACTIVE")
 	private int active;
 	
+	//non hibernate field
+	private int tid;
+	
 	public Post(){}
 	
 	public Post(Thread thread, User author, String content, int active) {
@@ -92,6 +95,14 @@ public class Post
 
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+	public int getTid() {
+		return tid;
+	}
+
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 
 	@Override
