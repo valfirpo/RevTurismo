@@ -31,10 +31,6 @@ public class FrontController {
 		return "controlPanel";
 	}
 	
-	@RequestMapping(value = "updateAccount")
-	public String updateAccount(HttpServletRequest request, HttpServletResponse response) {
-		return "updateAccount";
-	}
 /*
 	@RequestMapping(value = "viewChallenges")
 	public String viewChallenges(HttpServletRequest request, HttpServletResponse response) {

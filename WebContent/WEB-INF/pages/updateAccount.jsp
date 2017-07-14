@@ -17,43 +17,61 @@
 
 <div id = "jd" class = "jumbotron">
 	<div id = "wl" class = "well">
-		<h3>Update you information</h3> 
+		<h3>Update your information</h3> 
 	
-		<form method = "post" action="Update.do">
-			<label>Username:</label>
+		<form:form id="updateUser" modelAttribute="user" action="updateAccount" method="POST">
+			
+				<div class = "input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-user"></i>
+					</span>
+					<form:label class="form-control" path="">Username:</form:label>
+					<form:input class="form-control" path="username" name="username" id="username" placeholder="username"/>
+				</div>
+				<br>
+
+
+				<div class = "input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-lock"></i>
+					</span>
+					<form:label class="form-control" path="password">Password:</form:label>
+					<form:input class="form-control" path="password" name="password" id="password" placeholder="password"/>
+				</div>
+				<br>			
+			
+
 			<div class = "input-group">
-				<span class = "input-group-addon"> <i class = "glyphicon glyphicon-user"></i> </span>
-				<input type = "text" name = "user" class = "form-control" value = "" required>
+				<span class="input-group-addon"> <i
+					class="glyphicon glyphicon-user"></i>
+				</span>
+				<form:label class="form-control" path="">Firstname:</form:label>
+				<form:input class="form-control" path="firstname" name="firstname" id="firstname" placeholder="firstname"/>
 			</div>
 			<br>
-			<label>Password:</label>
+
 			<div class = "input-group">
-				<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-				<input type = "password" name = "pass" class = "form-control" value = "" required>
+				<span class="input-group-addon"> <i
+					class="glyphicon glyphicon-user"></i>
+				</span>
+				<form:label class="form-control" path="">Lastname:</form:label>
+				<form:input class="form-control" path="lastname" name="lastname" id="lastname" placeholder="lastname"/>
 			</div>
 			<br>
-			<label>First Name:</label>
+
 			<div class = "input-group">
-				<span class = "input-group-addon"> <i class = "glyphicon glyphicon-info-sign"></i> </span>
-				<input type = "text" name = "fname" class = "form-control" value = "" required>
+				<span class="input-group-addon"> <i
+					class="glyphicon glyphicon-user"></i>
+				</span>
+				<form:label class="form-control" path="">Email:</form:label>
+				<form:input class="form-control" path="email" name="email" id="email" placeholder="email"/>
 			</div>
 			<br>
-			<label>Last Name:</label>
-			<div class = "input-group">
-				<span class = "input-group-addon"> <i class = "glyphicon glyphicon-info-sign"></i> </span>
-				<input type = "text" name = "lname" class = "form-control" value = "" required>
-			</div>
-			<br>
-			<label>Email:</label>
-			<div class = "input-group">
-				<span class = "input-group-addon"> <i class = "glyphicon glyphicon-envelope"></i> </span>
-				<input type = "email" name = "email" class = "form-control" value = "" required>
-			</div>
-			<br>
+			 
 			<div>
 				<input type = "submit" value = "Update">
 			</div>
-		</form>
+		</form:form>
 	</div>
 </div>
 
