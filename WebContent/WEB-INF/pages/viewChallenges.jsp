@@ -53,7 +53,7 @@
 								onclick="enterChallenge(${c.getId()}, ${c.getReward() / 2},${currentUser.getCash()})">Enter</button></td>
 					</c:when>
 					<c:otherwise>
-						<td class="col-xs-2"><a href="editCategory?catId=${c.getId() }"><button>Edit</button></a></td>
+						<td class="col-xs-2"><a href="editChallenge?chId=${c.getId() }"><button>Edit</button></a></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>

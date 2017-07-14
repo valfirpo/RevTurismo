@@ -11,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "RT_CHALLENGES")
@@ -26,16 +28,21 @@ public class Challenge
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CHALLENGES_CH_ID_SEQ")
 	private int id;
 	@Column(name = "CH_NAME")
+	@NotNull
 	private String name;
 	@Column(name = "CH_REWARD")
+	@NotNull
 	private int reward;
 	@Column(name = "CH_MIN_LEVEL")
+	@NotNull
 	private int level;
 	@OneToMany(mappedBy = "challenge")
 	private List<TrackSection> sections;
 	@Column(name= "C_ENTRYFEE")
+	@NotNull
 	private int entryFee;
 	@Column(name="C_TIME")
+	@NotNull
 	private double time;
 	
 	public Challenge(){}

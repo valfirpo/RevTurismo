@@ -65,15 +65,18 @@
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
 							<form:password class = "form-control" path="password" name="password" id="password" placeholder="password"/>
+							
 							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
 						</div>
 						<br>
-						<form:label class="form-control" path="password">Confirm Password:</form:label>
+						<form:label class="form-control" path="confirmPassword">Confirm Password:</form:label>
 						<!-- <label >Confirm Password:</label> -->
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-							<form:password class="form-control" path="password" name="password" id="password" placeholder="password"/>
+							<form:password class="form-control" path="confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="password"/>
 							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
+							
+							
 						</div>
 					
 						<br>
@@ -85,6 +88,6 @@
 				</div>
 		</div>
 	</div>
-
+	</div>
 </body>
 </html>

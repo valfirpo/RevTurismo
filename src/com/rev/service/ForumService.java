@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.rev.bean.Category;
@@ -16,6 +17,7 @@ import com.rev.dao.ThreadDaoImpl;
 
 @Component
 public class ForumService {
+	private Logger logger = Logger.getLogger(ForumService.class);
 	
 	public List<Category> getCategories()
 	{
@@ -28,6 +30,7 @@ public class ForumService {
 	public Thread getThread(int tId)
 	{
 		Thread t = new ThreadDaoImpl().getThreadById(tId);
+		logger.info("Thread retrieved with " + t.getPosts().size() + " posts");
 		
 		return t;
 	}
@@ -40,6 +43,7 @@ public class ForumService {
 		post.setTime(new Date());
 		
 		thread.getPosts().add(post);
+		logger.info("Adding Post");
 		new ThreadDaoImpl().updateThread(thread);
 	}
 	public void addThread(String tname, int catId, String content, User author ){

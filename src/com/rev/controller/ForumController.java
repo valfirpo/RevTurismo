@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -30,34 +31,40 @@ public class ForumController {
 	@Qualifier("forumService")
 	ForumService service;
 	
+	private Logger logger = Logger.getLogger(ForumController.class);
 	@RequestMapping(value = "/forum")
 	public String viewForum(HttpServletRequest request, HttpServletResponse response)
 	{
+		
 		List<Category> categories = service.getCategories();
 		System.out.println(categories);
 		request.setAttribute("categories", service.getCategories());
+		logger.info("user accesses /forum");
 		return "forum";
 	}
 	@RequestMapping(value="/category")
 	public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response)
 	{
+		
 		String catId = request.getParameter("catId");
+		logger.info("User acceses /category?" + catId);
 		System.out.println(catId);
 		ModelAndView mav = new ModelAndView("categoryView");
 		mav.addObject("newThread", new NewThread());
 		if(catId != null)
 		{
+			
 			int categoryId = Integer.parseInt(catId);
 			System.out.println(catId);
 			
 			Category cat = service.getCategory(categoryId);
-			//System.out.println(cat);
 			Set<Thread> threads = cat.getThreads();
 			
 			request.setAttribute("threads", threads);
 			request.setAttribute("category", cat);
 		}else
 		{
+			logger.warn("catId parameter is null");
 			request.setAttribute("message", "Error: Category not selected");
 			System.out.println(catId);
 		}
@@ -68,6 +75,7 @@ public class ForumController {
 	public ModelAndView viewThread(HttpServletRequest request, HttpServletResponse response)
 	{
 		String tid = request.getParameter("threadId");
+		logger.info("user accesses /thread?" + tid);
 		ModelAndView mav = new ModelAndView("threadView");
 		mav.addObject("post", new Post());
 		if(tid != null)
@@ -79,6 +87,7 @@ public class ForumController {
 			request.setAttribute("thread", thread);
 		}else
 		{
+			logger.warn("threadId is null");
 			request.setAttribute("message", "Error: Thread not selected");
 		}
 		
@@ -88,6 +97,7 @@ public class ForumController {
 	public String doCreatePost(@Valid Post post, BindingResult bindingResult,
 			ModelMap modelMap, HttpSession session)
 	{
+		logger.debug("create Post");
 		service.addPost(post, (User) session.getAttribute("currentUser"));
 		System.out.println("What is going on?");
 		return "redirect:thread?threadId=" + post.getTid();
@@ -97,12 +107,16 @@ public class ForumController {
 			BindingResult bindingResult, ModelMap modelMap, HttpSession session)
 	{
 		if(!bindingResult.hasErrors()){
+			logger.info("user creating thread");
 			User author = (User)session.getAttribute("currentUser");
 			String threadName = nThread.getTname();
 			int catId = nThread.getCatId();
 			String content = nThread.getContent();
 			service.addThread(threadName, catId, content, author);
 			return "redirect:category?catId=" + catId;
+		}else
+		{
+			logger.warn(bindingResult.getAllErrors());
 		}
 		
 		return "forum";

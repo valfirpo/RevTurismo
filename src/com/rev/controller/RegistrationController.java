@@ -39,6 +39,8 @@ public class RegistrationController {
   
   session.setAttribute("currentUser", user);
   session.setAttribute("user", user);
+  session.setAttribute("password", user.getPassword());
+  session.setAttribute("confirmPassword", user.getConfirmPassword());
   
   return new ModelAndView("index", "username", user.getUsername());
   }
