@@ -52,6 +52,7 @@
 						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
 						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
 						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
+						<li ><a href="updateAccount" style="color: #ffffff;">Update Account</a></li>
 					</ul>
 				</c:when>
 				<c:when test="${sessionScope.currentUser.getRole() == 2}">
@@ -61,6 +62,7 @@
 						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
 						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
 						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
+						<li ><a href="updateAccount" style="color: #ffffff;">Update Account</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
@@ -69,6 +71,7 @@
 						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
 						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
 						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
+						<li ><a href="updateAccount" style="color: #ffffff;">Update Account</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

@@ -30,45 +30,15 @@ public class FrontController {
 	public String controlPaneln(HttpServletRequest request, HttpServletResponse response) {
 		return "controlPanel";
 	}
-
-	/*
-	@RequestMapping(value = "viewCars")
-	public String viewCars(HttpServletRequest request, HttpServletResponse response) {
-		CarDao dao = new CarDaoImpl();
-		request.setAttribute("cars", dao.getCars());
-		return "viewCars";
+	
+	@RequestMapping(value = "updateAccount")
+	public String updateAccount(HttpServletRequest request, HttpServletResponse response) {
+		return "updateAccount";
 	}
-	 */
+
 	@RequestMapping(value = "viewChallenges")
 	public String viewChallenges(HttpServletRequest request, HttpServletResponse response) {
-		ChallengeDao dao = new ChallengeDaoImpl();
-		request.setAttribute("challenges", dao.getChallenges());
+		
 		return "viewChallenges";
 	}
-
-	
-	/*@RequestMapping(value = "forum")
-	public String viewForum(HttpServletRequest request, HttpServletResponse response)
-	{
-		CategoryDao dao = new CategoryDaoImpl();
-		request.setAttribute("categories", dao.getCategories());
-		return "forum";
-	}
-	@RequestMapping(value="category")
-	public String viewCategory(HttpServletRequest request, HttpServletResponse response)
-	{
-		int categoryId = Integer.parseInt(request.getParameter("catId"));
-		CategoryDao dao = new CategoryDaoImpl();
-		request.setAttribute("threads", dao.getCategoryById(categoryId).getThreads());
-		return "categoryView";
-	}
-	@RequestMapping(value="thread")
-	public String viewThread(HttpServletRequest request, HttpServletResponse response)
-	{
-		int threadId = Integer.parseInt(request.getParameter("threadId"));
-		ThreadDao dao = new ThreadDaoImpl();
-		request.setAttribute("posts", dao.getThreadById(threadId));
-		return "threadView";
-	}
-*/
 }
