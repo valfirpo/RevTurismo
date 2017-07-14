@@ -32,4 +32,16 @@ public class ChallengeController
 				
 		return "viewChallenges";
 	}
+	
+	@RequestMapping(value = "startChallenge")
+	public String enterChallenge(HttpServletRequest request, HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
+	{
+		List<Challenge> l = challengeService.getAllChallenges();
+		
+		modelMap.addAttribute("allChallenges", l);
+		
+		return "viewChallenges";
+	}
 }

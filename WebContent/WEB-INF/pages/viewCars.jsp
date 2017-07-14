@@ -28,7 +28,7 @@
 	
 	<c:if test="${currentUser.getRole() == 3}">
 		<div id="wl" class="well">
-			<h2>${currentUser.getUsername()}current cash:
+			<h2>${currentUser.getUsername()} current cash:
 				$${currentUser.getCash()}</h2>
 		</div>
 	</c:if>

@@ -18,6 +18,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src = "resources/js/main.js"></script>
+
 <title>Control Panel</title>
 </head>
 <body class = "container-fluid">
@@ -25,27 +27,30 @@
 <jsp:include page = "bannerAndNav.jsp" />
 
 	<div id = "wl" class = "well">
-		<h2>Available Challenges</h2>
+		<h2>${currentUser.getUsername()} current cash:
+				$${currentUser.getCash()}</h2>
 	</div>
-
+	<h4>Available Challenges</h4>
 	<table class = "table">
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
 			<th>Level</th>
+			<th>Entry Fee</th>
 			<th>Reward</th>
 			<th><!-- Button --></th>
 		</tr>
 		<c:forEach var="c" items="${allChallenges}">
-			<tr>
+			<tr id = "c${c.getId()}">
 				<td>${c.getId()}</td>
 				<td>${c.getName()}</td>
 				<td>${c.getLevel()}</td>
-				<td>${c.getReward()}</td>
+				<td>$ ${c.getReward() / 2}</td>
+				<td>$ ${c.getReward()}</td>
 				<c:choose>
 					<c:when test="${sessionScope.currentUser.getRole() == 3}">
 						<td class="col-xs-2"><button
-								onclick="EnterChallenge(${c.getId()})">Enter</button></td>
+								onclick="enterChallenge(${c.getId()}, ${c.getReward()})">Enter</button></td>
 					</c:when>
 					<c:otherwise>
 						<td class="col-xs-2"><button>Edit</button></td>
