@@ -43,6 +43,7 @@ public class ForumService {
 		post.setTime(new Date());
 		
 		thread.getPosts().add(post);
+		logger.info("Adding Post");
 		new ThreadDaoImpl().updateThread(thread);
 	}
 	public void addThread(String tname, int catId, String content, User author ){
