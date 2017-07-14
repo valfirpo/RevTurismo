@@ -140,7 +140,9 @@ public class UserDaoImpl implements UserDao
 		
 		try
 		{
-			users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 3)).list();
+			//users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 3)).list();
+			users = session.createCriteria(User.class).add(Restrictions.eq("role", 3)).list();
+
 		}
 		catch(HibernateException e)
 		{
@@ -157,7 +159,8 @@ public class UserDaoImpl implements UserDao
 				session.close();
 			}
 		}
-		
+		System.out.println("in Dao");
+
 		return users;
 	}
 
@@ -170,7 +173,9 @@ public class UserDaoImpl implements UserDao
 		
 		try
 		{
-			users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 2)).list();
+			//users = session.createCriteria(User.class).add(Restrictions.eq("role.urId", 2)).list();
+			users = session.createCriteria(User.class).add(Restrictions.eq("role", 2)).list();
+
 		}
 		catch(HibernateException e)
 		{
@@ -188,6 +193,7 @@ public class UserDaoImpl implements UserDao
 			}
 		}
 		
+		System.out.println("in Dao");
 		return users;
 	}
 }

@@ -28,12 +28,14 @@ public class UserServiceImpl implements UserService {
 	  
 	  public List<User> getAllUsers()
 	  {
+		  System.out.println("in service");
 		 return userDao.getAllUsers();
 	  }
 
 	@Override
 	public List<User> getAllSubAdmin() 
 	{
+		System.out.println("in service");
 		return userDao.getAllSubAdmin();
 	}
 

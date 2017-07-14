@@ -18,7 +18,9 @@
 	<bean id="carService" class="com.rev.service.CarServiceImpl" />
 	<bean id="carDao" class="com.rev.dao.CarDaoImpl" /> 
 	
-
+	<bean id="challengeService" class="com.rev.service.ChallengeServiceImpl" />
+	<bean id="challengeDao" class="com.rev.dao.ChallengeDaoImpl" /> 
+	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />
 	</bean>

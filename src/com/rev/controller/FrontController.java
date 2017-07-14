@@ -35,10 +35,10 @@ public class FrontController {
 	public String updateAccount(HttpServletRequest request, HttpServletResponse response) {
 		return "updateAccount";
 	}
-
+/*
 	@RequestMapping(value = "viewChallenges")
 	public String viewChallenges(HttpServletRequest request, HttpServletResponse response) {
 		
 		return "viewChallenges";
-	}
+	}*/
 }

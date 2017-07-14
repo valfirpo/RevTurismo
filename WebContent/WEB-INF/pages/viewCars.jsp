@@ -24,91 +24,81 @@
 </head>
 <body>
 
-<jsp:include page = "bannerAndNav.jsp" />
-
-<div id = "wl" class = "well" >
-	<h2>${currentUser.getUsername()} current cash: $${currentUser.getCash()}</h2>
-</div>
-
-<c:if test="${currentUser.getRole() == 3}">
-	<div class="container">
-		<div class="row">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Cars Owned</h4>
-				</div>
-				<table class="table table-fixed">
-					<thead>
-						<tr>
-							<th class="col-xs-1">#</th>
-							<th class="col-xs-4">Name</th>
-							<th class="col-xs-2">Price</th>
-							<th class="col-xs-2">Top Speed</th>
-							<th class="col-xs-1">Acc</th>
-							
-						</tr>
-					</thead>
-					<tbody>
-						
-						<c:forEach var="c" items="${currentUser.getCars()}">
-							<tr>	
-								<td class="col-xs-1">${c.getId()}</td>
-								<td class="col-xs-4">${c.getCarName()}</td>
-								<td class="col-xs-2">Price</td>
-								<td class="col-xs-2">Top Speed</td>
-								<td class="col-xs-1">Acc</td>
-							</tr>
-						</c:forEach>
-						
-					</tbody>
-				</table>
-			</div>
+	<jsp:include page="bannerAndNav.jsp" />
+	
+	<c:if test="${currentUser.getRole() == 3}">
+		<div id="wl" class="well">
+			<h2>${currentUser.getUsername()}current cash:
+				$${currentUser.getCash()}</h2>
 		</div>
-	</div>
-</c:if>	
-	<div class="container">
-		<div class="row">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Available Cars</h4>
-				</div>
-				<table class="table table-fixed">
-					<thead>
-						<tr>
-							<th class="col-xs-1">#</th>
-							<th class="col-xs-4">Name</th>
-							<th class="col-xs-2">Price</th>
-							<th class="col-xs-2">Top Speed</th>
-							<th class="col-xs-1">Acc</th>
-							<th class="col-xs-2">.</th>
-						</tr>
-					</thead>
-					<tbody>
+	</c:if>
+	<c:if test="${currentUser.getRole() == 3}">
 
-						<c:forEach var="c" items="${allCars}">
-							<tr>
-								<td class="col-xs-1">${c.getId()}</td>
-								<td class="col-xs-4">${c.getCarName()}</td>
-								<td class="col-xs-2">${c.getPrice()}</td>
-								<td class="col-xs-2">Top Speed</td>
-								<td class="col-xs-1">Acc</td>
-								<c:choose>
-									<c:when test="${sessionScope.currentUser.getRole() == 3}">
-										<td class="col-xs-2"><button onclick = "buy(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
-									</c:when>
-									<c:otherwise>
-										<td class="col-xs-2"><button>Edit</button></td>
-									</c:otherwise>
-								</c:choose>
-								
-							</tr>
-						</c:forEach>
+		<h4>Available Cars</h4>
+		<table class = "table">
+			<thead>
+				<tr>
+					<th class="col-xs-1">#</th>
+					<th class="col-xs-4">Name</th>
+					<th class="col-xs-2">Price</th>
+					<th class="col-xs-2">Top Speed</th>
+					<th class="col-xs-1">Acc</th>
+					<th class="col-xs-2"><!-- Button --></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="c" items="${currentUser.getCars()}">
+					<tr>
+						<td class="col-xs-1">${c.getId()}</td>
+						<td class="col-xs-4">${c.getCarName()}</td>
+						<td class="col-xs-2">$ ${c.getPrice()}</td>
+						<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
+						<td class="col-xs-1">${c.getAcceleration()}</td>
+						<td class="col-xs-2"><button
+									onclick="sell(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Sell</button></td>
+					</tr>
+				</c:forEach>
 
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+			</tbody>
+		</table>
+	</c:if>
+
+	<h4>Available Cars</h4>
+	<table class = "table">
+		<thead>
+			<tr>
+				<th class="col-xs-1">#</th>
+				<th class="col-xs-4">Name</th>
+				<th class="col-xs-2">Price</th>
+				<th class="col-xs-2">Top Speed</th>
+				<th class="col-xs-1">Acc</th>
+				<th class="col-xs-2"><!-- Button --></th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="c" items="${allCars}">
+				<tr>
+					<td class="col-xs-1">${c.getId()}</td>
+					<td class="col-xs-4">${c.getCarName()}</td>
+					<td class="col-xs-2">$ ${c.getPrice()}</td>
+					<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
+					<td class="col-xs-1">${c.getAcceleration()}</td>
+					<c:choose>
+						<c:when test="${sessionScope.currentUser.getRole() == 3}">
+							<td class="col-xs-2"><button
+									onclick="buy(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
+						</c:when>
+						<c:otherwise>
+							<td class="col-xs-2"><button>Edit</button></td>
+						</c:otherwise>
+					</c:choose>
+				</tr>
+			</c:forEach>
+
+		</tbody>
+	</table>
+
+
 
 </body>
 </html>
