@@ -43,7 +43,7 @@
 			<form:form id="createPostForm" modelAttribute="post" action="createPost" method="POST">
 				<div class="content-container">
 					<form:textarea class="form-control" path="content" name="content" id="content-box"/>
-					<form:hidden path="tid" value="${thread.getId() }" />
+					<form:hidden path="tid"  value="${thread.getId() }" />
 					<input type = "submit" class="btn btn-default" value = "Save Post" aria-label="Left Align" />
 					
 				</div>
