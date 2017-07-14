@@ -22,6 +22,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>RevTurismo ${thread.getName()}</title>
+<script src="resources/js/forum.js"></script>
 </head>
 <body>
 <jsp:include page = "bannerAndNav.jsp" />
@@ -32,13 +33,18 @@
 		</div>
 		<c:forEach var="post" items="${posts }">
 			<div id="postId" class="p-contianer">
-				<span class="author-info">${post.getAuthor().getUsername() }</span>
-				<span class="date">${post.getTime()}</span>
-				<span class="post-content">${post.getContent()}</span>
+				<div class="left">
+					<span class="author-info">${post.getAuthor().getUsername() }</span>
+				</div>
+				<div class="right">
+					<span class="date">${post.getTime()}</span>
+					<span class="post-content">${post.getContent()}</span>
+				</div>
+				
 			</div>
 		</c:forEach>
 		<div class="t-foot">
-			<button id="addPost" class="f-btn">Create Post</button>
+			<button id="addPost" class="f-btn">Create</button>
 		</div>
 		<div id="newPost" class="hide">
 			<form:form id="createPostForm" modelAttribute="post" action="createPost" method="POST">
