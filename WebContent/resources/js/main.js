@@ -1,10 +1,19 @@
 $(document).ready(function(){});
 
-function buy(id, price, cash)
+function sellCar(id)
+{
+	console.log(id);
+	if (confirm("Are you sure you want to SELL this Car?") == true) 
+	{
+	    window.open("sellCar?carId="+id,"_self");
+	}
+}
+
+function buyCar(id, price, cash)
 {
 	if(cash >= price)
 	{
-		if (confirm("Are you sure you want to buy this Car?") == true) 
+		if (confirm("Are you sure you want to BUY this Car?") == true) 
 		{
 		    window.open("buyCar?carId="+id,"_self");
 		}
@@ -15,3 +24,4 @@ function buy(id, price, cash)
 	}
 	 
 }
+

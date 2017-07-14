@@ -167,7 +167,8 @@ public class User
 	}
 
 	public void setCash(double cash) {
-		this.cash = cash;
+		double roundedCash = Math.round(cash*100)/100;
+		this.cash = roundedCash;
 	}
 
 	public int getRole() {
