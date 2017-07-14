@@ -31,8 +31,35 @@
 	
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
-		<div id="challenge-edit">
-		
+		<div id="challenge-edit" class="container">
+			<form:form id="editChallenge" modelAttribute="Challenge"
+				action="editChallenge" method="POST">
+				<div class="input-group">
+					<form:label class="form-control" path="name">${challenge.getName()}</form:label>
+					<form:input class="form-control" path="name" />
+				</div>
+				<div class="input-group">
+					<form:label class="form-control" path="reward">${challenge.getReward()}</form:label>
+					<form:input class="form-control" path="reward" />
+				</div>
+				<div class="input-group">
+					<form:label class="form-control" path="level">${challenge.getLevel() }</form:label>
+					<form:input class="form-control" path="level" />
+				</div>
+				<div class="input-group">
+					<form:label class="form-controL" path="entryFee">${challenge.getEntryFee() }</form:label>
+					<form:input class="form-control" path="entryFee" />
+				</div>
+				<div class="input-group">
+					<form:label class="form-control" path="time">${challenge.getTime() }</form:label>
+					<form:input class="form-control" path="time" />
+				</div>
+				
+				
+				
+				
+				
+			</form:form> 
 		</div>
 	</div>
 </div>

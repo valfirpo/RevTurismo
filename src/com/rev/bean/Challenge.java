@@ -33,6 +33,11 @@ public class Challenge
 	private int level;
 	@OneToMany(mappedBy = "challenge")
 	private List<TrackSection> sections;
+	@Column(name= "C_ENTRYFEE")
+	private int entryFee;
+	@Column(name="C_TIME")
+	private double time;
+	
 	public Challenge(){}
 	
 	public Challenge(int id, String name, int reward, int level) {
@@ -86,6 +91,22 @@ public class Challenge
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public int getEntryFee() {
+		return entryFee;
+	}
+
+	public void setEntryFee(int entryFee) {
+		this.entryFee = entryFee;
+	}
+
+	public double getTime() {
+		return time;
+	}
+
+	public void setTime(double time) {
+		this.time = time;
 	}
 
 	@Override
