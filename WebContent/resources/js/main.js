@@ -15,12 +15,12 @@ function enterChallenge(id, fee, cash)
 	}
 }
 
-function startChallenge(id, reward)
+function startChallenge(challengeId, carId)
 {
-	/*if (confirm("Are you sure you want to ENTER this challenge?") == true) 
+	if (confirm("Are you sure you want to START this challenge?") == true) 
 	{
-	    window.open("startChallenge?challengeId="+id,"_self");
-	}*/
+	    window.open("startChallenge?challengeId="+challengeId + "&carId="+carId,"_self");
+	}
 }
 
 function sellCar(id)
