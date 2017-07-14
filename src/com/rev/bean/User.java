@@ -53,12 +53,47 @@ public class User
 	@JoinTable(name = "RT_CAR_OWNERSHIP", joinColumns = @JoinColumn(name="U_ID"), inverseJoinColumns= @JoinColumn(name="C_ID"))
 	private List<Car> cars;
 	
-	
-	
 	public String userRole;
 	
-	public String getUserRole() {
+	public String getUserRole() 
+	{
+		if(role == 1)
+		{
+			userRole = "ADMIN";
+		}
+		if(role == 2)
+		{
+			userRole = "SUBADMIN";
+		}
+		if(role == 3)
+		{
+			userRole = "USER";
+		}
 		return userRole;
+	}
+	
+	public int getLevel()
+	{
+		int level = 1;
+		
+		if(role == 4)
+		{
+			level = 2;
+		}
+		if(role == 5)
+		{
+			level = 3;
+		}
+		if(role == 6)
+		{
+			level = 4;
+		}
+		if(role == 7)
+		{
+			level = 5;
+		}
+		
+		return level;
 	}
 
 	public void setUserRole(String userRole) {

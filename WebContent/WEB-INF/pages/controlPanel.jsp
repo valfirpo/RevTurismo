@@ -28,19 +28,10 @@
 	<div id = "wl" class = "col-lg-6 well">
 
 
-<c:choose>
-	<c:when test= "${sessionScope.currentUser.getRole() == 1}" >
-		<c:out value = "${sessionScope.currentUser.setUserRole('ADMIN')}" ></c:out>
-	</c:when>
-	<c:when test= "${sessionScope.currentUser.getRole() == 2}" >
-		<c:out value = "${sessionScope.currentUser.setUserRole('SUBADMIN')}" ></c:out>
-	</c:when>
-	<c:otherwise>
-		<c:out value = "${sessionScope.currentUser.setUserRole('USER')}" ></c:out>
-	</c:otherwise>
-</c:choose>	
+
 		<h1>Role: ${sessionScope.currentUser.getUserRole()}</h1>
 		<p>Username: ${sessionScope.currentUser.getUsername()}</p>
+		<p>Level: ${sessionScope.currentUser.getLevel()}</p>
 		<p>First Name: ${sessionScope.currentUser.getFirstname()}</p>
 		<p>Last Name: ${sessionScope.currentUser.getLastname()}</p>
 		<p>Email: ${sessionScope.currentUser.getEmail()}</p>
