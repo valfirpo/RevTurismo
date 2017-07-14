@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.rev.bean.*,java.util.*" %>
+<%@ page import="com.rev.bean.*,java.util.*"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +21,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>RevTurismo {Category Name}</title>
+<title>RevTurismo ${category.getName()}</title>
 </head>
 <body>
 <jsp:include page = "bannerAndNav.jsp" />
@@ -30,7 +33,21 @@
 			</div>
 		</c:forEach>
 		<div class="t-foot">
-			<button id="addThread" class="f-btn">Create Post</button>
+			<button id="addThread" class="f-btn">Create Thread</button>
+		</div>
+		<div id="newPost" class="hide">
+			<form:form id="createThread" modelAttribute="newThread" action="createThread" method="POST">
+				<div id="nameGroup" class="form-container">
+					<form:input  path="tname" placeholder="Thread Name"  />
+				</div>
+				<form:hidden path="catId" value="${category.getId() }" />
+				<div class="form-container">
+					<form:textarea path="content" ></form:textarea>
+				</div>
+				<div class="form-container button-container">
+					<input type="submit" value="Create Thread"/>
+				</div>
+			</form:form>
 		</div>
 	</div>
 </div>

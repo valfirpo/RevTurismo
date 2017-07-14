@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.rev.bean.Category;
-import com.rev.bean.Challenge;
 import com.rev.util.HibernateUtil;
 
 public class CategoryDaoImpl implements CategoryDao {
@@ -19,6 +18,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		try{
 			session = HibernateUtil.getSession();
 			category = (Category) session.get(Category.class, categoryId);
+			
 		}finally{
 			if(session != null)
 			{
@@ -103,7 +103,21 @@ public class CategoryDaoImpl implements CategoryDao {
 	public List<Category> getCategories() {
 		Session session = HibernateUtil.getSession();
 		List<Category> categories = session.createCriteria(Category.class).list();
+		removeDuplicates(categories);
+		System.out.println(categories);
+		session.close();
 		return categories;
 	}
-
+	
+	private void removeDuplicates(List<Category> categories)
+	{
+		for(int i = 0; i < categories.size(); i++)
+		{
+			int a;
+			if(( a = categories.indexOf(categories.get(i))) != i)
+			{
+				categories.remove(a);
+			}
+		}
+	}
 }

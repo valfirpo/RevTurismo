@@ -1,7 +1,10 @@
 package com.rev.bean;
 
+import javax.persistence.CascadeType;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,27 +13,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "RT_POSTS")
 public class Post 
 {
+	@Column(name = "P_CONTENT")
+	private String content;
 	@Id
 	@Column(name = "P_ID")
 	@SequenceGenerator(name = "POSTS_P_ID_SEQ", sequenceName = "POSTS_P_ID_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "POSTS_P_ID_SEQ")
 	private int postId;
 	
-	@ManyToOne
-	@JoinColumn(name="T_ID")
-	private Thread thread;
-
-	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="U_ID")
 	private User author;
 	
-	@Column(name = "P_CONTENT")
-	private String content;
+	
 	
 	@Column(name = "P_ACTIVE")
 	private int active;
@@ -40,18 +41,16 @@ public class Post
 	
 	public Post(){}
 	
-	public Post(Thread thread, User author, String content, int active) {
+	public Post( User author, String content, int active) {
 		super();
-		this.thread = thread;
 		this.author = author;
 		this.content = content;
 		this.active = active;
 	}
 
-	public Post(int postId, Thread thread, User author, String content, int active) {
+	public Post(int postId, User author, String content, int active) {
 		super();
 		this.postId = postId;
-		this.thread = thread;
 		this.author = author;
 		this.content = content;
 		this.active = active;
@@ -81,14 +80,6 @@ public class Post
 		this.active = active;
 	}
 
-	public Thread getThread() {
-		return thread;
-	}
-
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
-
 	public User getAuthor() {
 		return author;
 	}
@@ -107,7 +98,47 @@ public class Post
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", thread=" + thread + ", author=" + author + ", content=" + content
+		return "Post [postId=" + postId +  ", author=" + author + ", content=" + content
 				+ ", active=" + active + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + active;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + postId;
+		result = prime * result + tid;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Post other = (Post) obj;
+		if (active != other.active)
+			return false;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (postId != other.postId)
+			return false;
+		if (tid != other.tid)
+			return false;
+		return true;
 	}
 }

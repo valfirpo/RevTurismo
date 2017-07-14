@@ -27,7 +27,7 @@
 		<!-- For loop -->
 		<c:forEach var="cat" items="${categories }">
 			<div id="catId" class="cat-container">
-				<span class="catName">${cat.getName() }</span>
+				<span class="catName"><a href="category?catId=${cat.getId()}">${cat.getName() }</a></span>
 			</div>
 		</c:forEach>
 	</div>

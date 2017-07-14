@@ -1,6 +1,7 @@
 package com.rev.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,44 +18,53 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.Category;
+import com.rev.bean.NewThread;
 import com.rev.bean.Post;
+import com.rev.bean.Thread;
 import com.rev.bean.User;
 import com.rev.service.ForumService;
-import com.rev.bean.Thread;
 
 @Controller
-@RequestMapping(value = "/")
 public class ForumController {
 	@Autowired
 	@Qualifier("forumService")
 	ForumService service;
 	
-	@RequestMapping(value = "forum")
+	@RequestMapping(value = "/forum")
 	public String viewForum(HttpServletRequest request, HttpServletResponse response)
 	{
+		List<Category> categories = service.getCategories();
+		System.out.println(categories);
 		request.setAttribute("categories", service.getCategories());
 		return "forum";
 	}
-	@RequestMapping(value="category")
-	public String viewCategory(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value="/category")
+	public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response)
 	{
 		String catId = request.getParameter("catId");
+		System.out.println(catId);
+		ModelAndView mav = new ModelAndView("categoryView");
+		mav.addObject("newThread", new NewThread());
 		if(catId != null)
 		{
 			int categoryId = Integer.parseInt(catId);
+			System.out.println(catId);
+			
 			Category cat = service.getCategory(categoryId);
-			List<Thread> threads = cat.getThreads();
+			//System.out.println(cat);
+			Set<Thread> threads = cat.getThreads();
 			
 			request.setAttribute("threads", threads);
 			request.setAttribute("category", cat);
 		}else
 		{
 			request.setAttribute("message", "Error: Category not selected");
+			System.out.println(catId);
 		}
 		
-		return "categoryView";
+		return mav;
 	}
-	@RequestMapping(value="thread")
+	@RequestMapping(value="/thread")
 	public ModelAndView viewThread(HttpServletRequest request, HttpServletResponse response)
 	{
 		String tid = request.getParameter("threadId");
@@ -64,7 +74,7 @@ public class ForumController {
 		{
 			int threadId = Integer.parseInt(request.getParameter("threadId"));
 			Thread thread = service.getThread(threadId);
-			List<Post> posts = thread.getPosts();
+			Set<Post> posts = thread.getPosts();
 			request.setAttribute("posts", posts);
 			request.setAttribute("thread", thread);
 		}else
@@ -74,13 +84,28 @@ public class ForumController {
 		
 		return mav;
 	}
-	@RequestMapping(value="createPost", method = RequestMethod.POST)
+	@RequestMapping(value="/createPost", method = RequestMethod.POST)
 	public String doCreatePost(@Valid Post post, BindingResult bindingResult,
 			ModelMap modelMap, HttpSession session)
 	{
 		service.addPost(post, (User) session.getAttribute("currentUser"));
 		
 		return null;
+	}
+	@RequestMapping(value="/createThread", method = RequestMethod.POST)
+	public String doCreateThread(@Valid NewThread nThread,
+			BindingResult bindingResult, ModelMap modelMap, HttpSession session)
+	{
+		if(!bindingResult.hasErrors()){
+			User author = (User)session.getAttribute("currentUser");
+			String threadName = nThread.getTname();
+			int catId = nThread.getCatId();
+			String content = nThread.getContent();
+			service.addThread(threadName, catId, content, author);
+			return "category?catId=" + catId;
+		}
+		
+		return "forum";
 	}
 	
 }
