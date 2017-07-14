@@ -35,12 +35,26 @@ public class RegistrationController {
   public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
   @ModelAttribute("user") User user,
    HttpSession session) {
-  userService.register(user);
   
-  session.setAttribute("currentUser", user);
-  session.setAttribute("user", user);
   
-  return new ModelAndView("index", "username", user.getUsername());
+  if(user.getPassword() != user.getConfirmPassword()){
+	  
+	  
+	  
+	  session.invalidate();
+	  return new ModelAndView("index");
+  }else{
+	  userService.register(user);
+	  
+	  session.setAttribute("currentUser", user);
+	  session.setAttribute("user", user);
+	  session.setAttribute("password", user.getPassword());
+	  session.setAttribute("confirmPassword", user.getConfirmPassword());
+	  return new ModelAndView("index", "username", user.getUsername());
+  	}
+  //return new ModelAndView("index", "username", user.getUsername());
+  
+  
   }
   
  
