@@ -29,7 +29,7 @@
 	<div id="wl" class="well">
 		<c:forEach var="thread" items="${threads }">
 			<div id="threadId" class="t-container">
-				<span class="tName">${thread.getName() }</span>
+				<span class="tName"><a href="thread?threadId=${thread.getId()}">${thread.getName() }</a></span>
 			</div>
 		</c:forEach>
 		<div class="t-foot">

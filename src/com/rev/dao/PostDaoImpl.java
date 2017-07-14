@@ -60,7 +60,7 @@ public class PostDaoImpl implements PostDao {
 		try{
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(post);
+			session.saveOrUpdate(post);
 			tx.commit();
 		}finally{
 			if(session != null)

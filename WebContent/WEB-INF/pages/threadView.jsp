@@ -33,6 +33,7 @@
 		<c:forEach var="post" items="${posts }">
 			<div id="postId" class="p-contianer">
 				<span class="author-info">${post.getAuthor().getUsername() }</span>
+				<span class="date">${post.getTime()}</span>
 				<span class="post-content">${post.getContent()}</span>
 			</div>
 		</c:forEach>

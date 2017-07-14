@@ -21,7 +21,7 @@ public class SimulationService {
 		}
 		return runningTime;
 	}
-	public double simulateSection(double radius, double distance, Car car){
+	private double simulateSection(double radius, double distance, Car car){
 		double latAcc = car.getHandling();
 		double topSpeed = car.getTopSpeed();
 		double maxV = Math.sqrt(latAcc * radius);
