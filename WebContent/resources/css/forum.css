@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+.tname span{
+	padding-left: 10px;
+}
+.tname{
+	background-color: black;
+	color: white;
+	font-weight:600;
+	font-size:16pt;
+}
