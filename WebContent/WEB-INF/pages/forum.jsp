@@ -18,7 +18,8 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="resources/js/forum.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/forum.css" />
 </head>
 <body>
 	<jsp:include page = "bannerAndNav.jsp" />

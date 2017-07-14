@@ -22,6 +22,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>RevTurismo ${category.getName()}</title>
+<script src="resources/js/forum.js"></script>
 </head>
 <body>
 <jsp:include page = "bannerAndNav.jsp" />
@@ -29,11 +30,11 @@
 	<div id="wl" class="well">
 		<c:forEach var="thread" items="${threads }">
 			<div id="threadId" class="t-container">
-				<span class="tName">${thread.getName() }</span>
+				<span class="tName"><a href="thread?threadId=${thread.getId()}">${thread.getName() }</a></span>
 			</div>
 		</c:forEach>
 		<div class="t-foot">
-			<button id="addThread" class="f-btn">Create Thread</button>
+			<button id="addThread" class="f-btn">Create</button>
 		</div>
 		<div id="newPost" class="hide">
 			<form:form id="createThread" modelAttribute="newThread" action="createThread" method="POST">
@@ -45,7 +46,7 @@
 					<form:textarea path="content" ></form:textarea>
 				</div>
 				<div class="form-container button-container">
-					<input type="submit" value="Create Thread"/>
+					<input type="submit" value="Save Thread"/>
 				</div>
 			</form:form>
 		</div>
