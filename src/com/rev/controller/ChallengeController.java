@@ -53,7 +53,7 @@ public class ChallengeController
 		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(id));
 		
 		tempCash = tempUser.getCash();
-		tempCash -= (tempChall.getReward() / 2);
+		tempCash -= (tempChall.getEntryFee());
 		tempUser.setCash(tempCash);
 	
 		session.setAttribute("currentUser", tempUser);
