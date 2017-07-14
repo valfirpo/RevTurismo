@@ -1,6 +1,7 @@
 package com.rev.dao;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -62,7 +63,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		try{
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(category);
+			session.saveOrUpdate(category);
 			tx.commit();
 		}finally{
 			if(session != null)
@@ -103,21 +104,15 @@ public class CategoryDaoImpl implements CategoryDao {
 	public List<Category> getCategories() {
 		Session session = HibernateUtil.getSession();
 		List<Category> categories = session.createCriteria(Category.class).list();
-		removeDuplicates(categories);
+		categories = removeDuplicates(categories);
 		System.out.println(categories);
 		session.close();
 		return categories;
 	}
 	
-	private void removeDuplicates(List<Category> categories)
+	private List<Category> removeDuplicates(List<Category> categories)
 	{
-		for(int i = 0; i < categories.size(); i++)
-		{
-			int a;
-			if(( a = categories.indexOf(categories.get(i))) != i)
-			{
-				categories.remove(a);
-			}
-		}
+		return categories.stream().distinct().collect(Collectors.toList());
+		
 	}
 }

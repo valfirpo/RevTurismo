@@ -1,7 +1,8 @@
 package com.rev.bean;
 
-import javax.persistence.CascadeType;
-import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,11 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-
 @Entity
 @Table(name = "RT_POSTS")
-public class Post 
+public class Post implements Comparable
 {
 	@Column(name = "P_CONTENT")
 	private String content;
@@ -27,9 +26,12 @@ public class Post
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "POSTS_P_ID_SEQ")
 	private int postId;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="U_ID")
 	private User author;
+	
+	@Column(name="P_TIMESTAMP")
+	private Date time;
 	
 	
 	
@@ -96,6 +98,14 @@ public class Post
 		this.tid = tid;
 	}
 
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId +  ", author=" + author + ", content=" + content
@@ -140,5 +150,12 @@ public class Post
 		if (tid != other.tid)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		Post other = (Post) arg0;
+		return time.compareTo(other.time);
 	}
 }

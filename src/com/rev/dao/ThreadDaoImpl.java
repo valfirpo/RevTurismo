@@ -59,7 +59,7 @@ public class ThreadDaoImpl implements ThreadDao {
 		try{
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(thread);
+			session.saveOrUpdate(thread);
 			tx.commit();
 		}finally{
 			if(session != null)

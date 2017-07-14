@@ -1,6 +1,6 @@
 package com.rev.bean;
 
-import java.util.Set;
+import java.util.SortedSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Sort;
+import org.hibernate.annotations.SortType;
 
 @Entity
 @Table(name = "RT_THREADS")
@@ -33,12 +35,13 @@ public class Thread
 	private int active;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="T_ID")
-	private Set<Post> posts;
+	@Sort(type = SortType.NATURAL)
+	private SortedSet<Post> posts;
 	
 	public Thread(){}
 	
 	
-	public Thread(String name, int locked, int active, Set<Post> posts) {
+	public Thread(String name, int locked, int active, SortedSet<Post> posts) {
 		super();
 		this.name = name;
 		this.locked = locked;
@@ -46,7 +49,7 @@ public class Thread
 		this.posts = posts;
 	}
 
-	public Thread(int id, String name, int locked, int active, Set<Post> posts) {
+	public Thread(int id, String name, int locked, int active, SortedSet<Post> posts) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -88,11 +91,11 @@ public class Thread
 		this.active = active;
 	}
 
-	public Set<Post> getPosts() {
+	public SortedSet<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(Set<Post> posts) {
+	public void setPosts(SortedSet<Post> posts) {
 		this.posts = posts;
 	}
 

@@ -1,7 +1,8 @@
 package com.rev.service;
 
-import java.util.HashSet;
+import java.util.Date;
 import java.util.List;
+import java.util.TreeSet;
 
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,6 @@ import com.rev.bean.Thread;
 import com.rev.bean.User;
 import com.rev.dao.CategoryDao;
 import com.rev.dao.CategoryDaoImpl;
-import com.rev.dao.PostDaoImpl;
 import com.rev.dao.ThreadDaoImpl;
 
 @Component
@@ -27,7 +27,9 @@ public class ForumService {
 	}
 	public Thread getThread(int tId)
 	{
-		return new ThreadDaoImpl().getThreadById(tId);
+		Thread t = new ThreadDaoImpl().getThreadById(tId);
+		
+		return t;
 	}
 	public void addPost(Post post, User author)
 	{
@@ -35,8 +37,9 @@ public class ForumService {
 		Thread thread = getThread(tid);
 		post.setAuthor(author);
 		post.setActive(1);
+		post.setTime(new Date());
+		
 		thread.getPosts().add(post);
-		String s;
 		new ThreadDaoImpl().updateThread(thread);
 	}
 	public void addThread(String tname, int catId, String content, User author ){
@@ -47,14 +50,15 @@ public class ForumService {
 		thread.setActive(1);
 		thread.setLocked(0);
 		thread.setName(tname);
-		thread.setPosts(new HashSet<Post>());
+		thread.setPosts(new TreeSet<Post>());
 		Post post = new Post();
 		post.setActive(1);
 		post.setAuthor(author);
 		post.setContent(content);
-		new PostDaoImpl().createPost(post);
+		post.setTime(new Date());
+		//new PostDaoImpl().createPost(post);
 		thread.getPosts().add(post);
-		new ThreadDaoImpl().createThread(thread);
+		//new ThreadDaoImpl().createThread(thread);
 		
 		cat.getThreads().add(thread);
 		dao.updateCategory(cat);

@@ -89,8 +89,8 @@ public class ForumController {
 			ModelMap modelMap, HttpSession session)
 	{
 		service.addPost(post, (User) session.getAttribute("currentUser"));
-		
-		return null;
+		System.out.println("What is going on?");
+		return "redirect:thread?threadId=" + post.getTid();
 	}
 	@RequestMapping(value="/createThread", method = RequestMethod.POST)
 	public String doCreateThread(@Valid NewThread nThread,
@@ -102,7 +102,7 @@ public class ForumController {
 			int catId = nThread.getCatId();
 			String content = nThread.getContent();
 			service.addThread(threadName, catId, content, author);
-			return "category?catId=" + catId;
+			return "redirect:category?catId=" + catId;
 		}
 		
 		return "forum";
