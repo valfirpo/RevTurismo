@@ -62,5 +62,31 @@ public class CarController
 		
 		return "viewCars";
 	}
+	
+	@RequestMapping(value = "sellCar")
+	public String sellCar(HttpServletRequest request, HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
+	{
+		String id = request.getParameter("carId");
+		User tempUser = (User) session.getAttribute("currentUser");
+		Double tempCash;
+		Car tempCar = carService.getCarById(Integer.parseInt(id));
+		
+		tempCash = tempUser.getCash();
+		tempCash += (tempCar.getPrice() * 0.75);
+		tempUser.setCash(tempCash);
+		//tempUser.getCars().add(tempCar);
+		tempUser.getCars().remove(tempCar);
+		
+		userService.updateUser(tempUser);
+		
+		session.setAttribute("currentUser", tempUser);
+		
+		List<Car> l = carService.getAllCars();
+		modelMap.addAttribute("allCars", l);
+		
+		return "viewCars";
+	}
 
 }

@@ -28,7 +28,7 @@
 	
 	<c:if test="${currentUser.getRole() == 3}">
 		<div id="wl" class="well">
-			<h2>${currentUser.getUsername()}current cash:
+			<h2>${currentUser.getUsername()} current cash:
 				$${currentUser.getCash()}</h2>
 		</div>
 	</c:if>
@@ -54,8 +54,7 @@
 						<td class="col-xs-2">$ ${c.getPrice()}</td>
 						<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
 						<td class="col-xs-1">${c.getAcceleration()}</td>
-						<td class="col-xs-2"><button
-									onclick="sell(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Sell</button></td>
+						<td class="col-xs-2"><button onclick = "sellCar(${c.getId()})">Sell</button></td>
 					</tr>
 				</c:forEach>
 
@@ -86,7 +85,7 @@
 					<c:choose>
 						<c:when test="${sessionScope.currentUser.getRole() == 3}">
 							<td class="col-xs-2"><button
-									onclick="buy(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
+									onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
 						</c:when>
 						<c:otherwise>
 							<td class="col-xs-2"><button>Edit</button></td>
