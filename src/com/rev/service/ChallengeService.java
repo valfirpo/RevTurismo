@@ -8,5 +8,6 @@ public interface ChallengeService
 {
 	public Challenge getChallengesById(int id);
 	public List<Challenge> getAllChallenges();
+	void updateChallenge(Challenge challenge);
 
 }
