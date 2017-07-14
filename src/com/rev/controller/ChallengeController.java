@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rev.bean.Challenge;
+import com.rev.bean.User;
 import com.rev.service.ChallengeService;
 
 @Controller
@@ -33,15 +34,26 @@ public class ChallengeController
 		return "viewChallenges";
 	}
 	
-	@RequestMapping(value = "startChallenge")
+	@RequestMapping(value = "enterChallenge")
 	public String enterChallenge(HttpServletRequest request, HttpServletResponse response, 
 			ModelMap modelMap,
 			HttpSession session)
 	{
-		List<Challenge> l = challengeService.getAllChallenges();
+		String id = request.getParameter("challengeId");
+		User tempUser = (User) session.getAttribute("currentUser");
+		Double tempCash;
+		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(id));
 		
-		modelMap.addAttribute("allChallenges", l);
+		//tempCash = tempUser.getCash();
+		//tempCash -= (tempChall.getReward() / 2);
+		//tempUser.setCash(tempCash);
+	
+		session.setAttribute("currentUser", tempUser);
+	    modelMap.addAttribute("currentChallenge", tempChall);
 		
-		return "viewChallenges";
+		System.out.println(tempChall.toString());
+		System.out.println(tempUser.toString());
+		
+		return "selectCar";
 	}
 }

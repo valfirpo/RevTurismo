@@ -1,16 +1,26 @@
 $(document).ready(function(){});
 
-function enterChallenge(id)
+function enterChallenge(id, fee, cash)
 {
-	console.log("in enter challenge");
+	if(cash > fee)
+	{
+		if (confirm("Are you sure you want to ENTER this challenge?") == true) 
+		{
+		    window.open("enterChallenge?challengeId="+id,"_self");
+		}
+	}
+	else
+	{
+		alert("Not enough cash!");
+	}
 }
 
 function startChallenge(id, reward)
 {
-	if (confirm("Are you sure you want to ENTER this challenge?") == true) 
+	/*if (confirm("Are you sure you want to ENTER this challenge?") == true) 
 	{
 	    window.open("startChallenge?challengeId="+id,"_self");
-	}
+	}*/
 }
 
 function sellCar(id)

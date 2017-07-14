@@ -27,11 +27,11 @@
 <jsp:include page = "bannerAndNav.jsp" />
 
 	<div id = "wl" class = "well">
-		<h2>${currentUser.getUsername()} current cash:
+		<h2 id = "welcome2">${currentUser.getUsername()} current cash:
 				$${currentUser.getCash()}</h2>
 	</div>
 	<h4>Available Challenges</h4>
-	<table class = "table">
+	<table id = "chall" class = "table">
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
@@ -41,7 +41,7 @@
 			<th><!-- Button --></th>
 		</tr>
 		<c:forEach var="c" items="${allChallenges}">
-			<tr id = "c${c.getId()}">
+			<tr id = "${c.getId()}">
 				<td>${c.getId()}</td>
 				<td>${c.getName()}</td>
 				<td>${c.getLevel()}</td>
@@ -50,7 +50,7 @@
 				<c:choose>
 					<c:when test="${sessionScope.currentUser.getRole() == 3}">
 						<td class="col-xs-2"><button
-								onclick="enterChallenge(${c.getId()}, ${c.getReward()})">Enter</button></td>
+								onclick="enterChallenge(${c.getId()}, ${c.getReward() / 2},${currentUser.getCash()})">Enter</button></td>
 					</c:when>
 					<c:otherwise>
 						<td class="col-xs-2"><a href="editCategory?catId=${c.getId() }"><button>Edit</button></a></td>
