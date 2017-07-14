@@ -76,7 +76,6 @@ public class CarController
 		tempCash = tempUser.getCash();
 		tempCash += (tempCar.getPrice() * 0.75);
 		tempUser.setCash(tempCash);
-		//tempUser.getCars().add(tempCar);
 		tempUser.getCars().remove(tempCar);
 		
 		userService.updateUser(tempUser);

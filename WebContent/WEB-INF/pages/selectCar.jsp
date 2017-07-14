@@ -26,18 +26,44 @@
 <body class="container-fluid">
 	<img src="resources/img/header.png" width="100%">
 	<nav id="nv" class="navbar navbar-inverse">
-	<div class="container-fluid">	
+	<div class="container-fluid">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+			<li><a href="logout" style="color: #ffffff;"><span
+					class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 		</ul>
 	</div>
 	</nav>
-	
-	<div id = "wl" class = "well">
-		<h2 id = "welcome2">${currentUser.getUsername()} you entered challenge ${currentChallenge.getName()}</h2>
+
+	<div id="wl" class="well">
+		<h2 id="welcome2">${currentUser.getUsername()}you entered
+			challenge ${currentChallenge.getName()}</h2>
 	</div>
 	<h4>Select Car</h4>
-	<table class= "table">
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="col-xs-1">#</th>
+				<th class="col-xs-4">Name</th>
+				<th class="col-xs-2">Price</th>
+				<th class="col-xs-2">Top Speed</th>
+				<th class="col-xs-1">Acc</th>
+				<th class="col-xs-2">
+					<!-- Button -->
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="c" items="${currentUser.getCars()}">
+				<tr>
+					<td class="col-xs-1">${c.getId()}</td>
+					<td class="col-xs-4">${c.getCarName()}</td>
+					<td class="col-xs-2">$ ${c.getPrice()}</td>
+					<td class="col-xs-2">${c.getTopSpeed()}MPH</td>
+					<td class="col-xs-1">${c.getAcceleration()}</td>
+					<td class="col-xs-2"><button onclick="startChallenge(${currentChallenge.getId()}, ${c.getId()})">Start</button></td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 </body>
 </html>
