@@ -61,8 +61,6 @@ public class UserController
 		if(bindingResult.hasErrors()){
 			return "updateAccount";
 		}
-
-		
 		return "updateAccount";
 	}
 	
@@ -85,5 +83,20 @@ public class UserController
 		session.setAttribute("user", currentUser);
 		}
 		return "redirect:controlPanel";
+	}
+	
+	@RequestMapping(value="/createSubAdminAccount")
+	public String createSubAdminAccount(@ModelAttribute("user") User user,
+			BindingResult bindingResult,
+			HttpServletRequest request,
+			HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
+	{
+		if(bindingResult.hasErrors())
+		{
+			return "createSubAdminAccount";
+		}
+		return "createSubAdminAccount";
 	}
 }

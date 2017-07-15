@@ -48,6 +48,7 @@
 						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
 						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
 						<li ><a href="viewChallenges" style="color: #ffffff;">View Challenges</a></li>
+						<li ><a href="createSubAdminAccount" style="color: #ffffff;">Create SubAdmin Account</a></li>
 						<li ><a href="updateAccount" style="color: #ffffff;">Update Account</a></li>
 					</ul>
 				</c:when>
