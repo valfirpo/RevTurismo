@@ -136,6 +136,5 @@ public class ChallengeController
 		}
 		
 		return "redirect:viewChallenges";
-		
 	}
 }

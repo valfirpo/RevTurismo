@@ -26,7 +26,7 @@
 						class="glyphicon glyphicon-user"></i>
 					</span>
 					<form:label class="form-control" path="">Username:</form:label>
-					<form:input class="form-control" path="username" name="username" id="username" placeholder="username"/>
+					<form:input class="form-control" path="username" name="username" id="username" value="${currentUser.getUsername()}" required="required"/>
 				</div>
 				<br>
 
@@ -36,7 +36,7 @@
 						class="glyphicon glyphicon-lock"></i>
 					</span>
 					<form:label class="form-control" path="password">Password:</form:label>
-					<form:input class="form-control" path="password" name="password" id="password" placeholder="password"/>
+					<form:input class="form-control" path="password" name="password" id="password" value="${currentUser.getPassword()}" required="required"/>
 				</div>
 				<br>			
 			
@@ -46,7 +46,7 @@
 					class="glyphicon glyphicon-user"></i>
 				</span>
 				<form:label class="form-control" path="">Firstname:</form:label>
-				<form:input class="form-control" path="firstname" name="firstname" id="firstname" placeholder="firstname"/>
+				<form:input class="form-control" path="firstname" name="firstname" id="firstname" value="${currentUser.getFirstname()}" required="required"/>
 			</div>
 			<br>
 
@@ -55,7 +55,7 @@
 					class="glyphicon glyphicon-user"></i>
 				</span>
 				<form:label class="form-control" path="">Lastname:</form:label>
-				<form:input class="form-control" path="lastname" name="lastname" id="lastname" placeholder="lastname"/>
+				<form:input class="form-control" path="lastname" name="lastname" id="lastname" value="${currentUser.getLastname()}" required="required"/>
 			</div>
 			<br>
 
@@ -64,7 +64,7 @@
 					class="glyphicon glyphicon-user"></i>
 				</span>
 				<form:label class="form-control" path="">Email:</form:label>
-				<form:input class="form-control" path="email" name="email" id="email" placeholder="email"/>
+				<form:input class="form-control" path="email" name="email" id="email" value="${currentUser.getEmail()}" required="required"/>
 			</div>
 			<br>
 			 

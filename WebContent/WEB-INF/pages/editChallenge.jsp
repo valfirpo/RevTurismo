@@ -32,33 +32,61 @@
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
 		<div id="challenge-edit" class="container">
+			
 			<form:form id="editChallenge" modelAttribute="challenge"
 				action="updateChallenge" method="POST">
 				<form:hidden path="id" value="${challenge.getId() }"/>
+				
 				<div class="input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-flag"></i>
+					</span>
 					<form:label class="form-control" path="name">Name</form:label>
 					<form:input class="form-control" path="name" />
 				</div>
+				<br>
+				
 				<div class="input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-star"></i>
+					</span>
+					<form:label class="form-control" path="level">Min Level</form:label>
+					<form:input class="form-control" path="level" />
+				</div>
+				<br>
+				
+				<div class="input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-usd"></i>
+					</span>
 					<form:label class="form-control" path="reward">Reward</form:label>
 					<form:input class="form-control" path="reward" />
 				</div>
+				<br>
+				
 				<div class="input-group">
-					<form:label class="form-control" path="level">Level</form:label>
-					<form:input class="form-control" path="level" />
-				</div>
-				<div class="input-group">
-					<form:label class="form-controL" path="entryFee">Entry Fee</form:label>
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-usd"></i>
+					</span>
+					<form:label class="form-control" path="entryFee">Entry Fee</form:label>
 					<form:input class="form-control" path="entryFee" />
 				</div>
+				<br>
+				
 				<div class="input-group">
+					<span class="input-group-addon"> <i
+						class="glyphicon glyphicon-time"></i>
+					</span>
 					<form:label class="form-control" path="time">Time</form:label>
 					<form:input class="form-control" path="time" />
 				</div>
+				<br>
+				
 				<div class="input-group">
 					<input type="submit" class="btn btn-default" value="Edit Challenge" />
 				</div>
 			</form:form> 
+			
 		</div>
 	</div>
 </div>
