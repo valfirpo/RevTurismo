@@ -24,9 +24,10 @@ public class SimulationService {
 	private double simulateSection(double radius, double distance, Car car){
 		double latAcc = car.getHandling();
 		double topSpeed = car.getTopSpeed();
-		double maxV = Math.sqrt(latAcc * radius);
-		if(maxV < topSpeed)
-		{
+		Double maxV = 0.0;
+		if(radius != 0)
+		{	
+			maxV = Math.sqrt(latAcc* radius);
 			topSpeed = maxV;
 		}
 		double currentDistance = 0.0;
@@ -43,12 +44,14 @@ public class SimulationService {
 			double time1 = (-currentSpeed + Math.sqrt(Math.pow(currentSpeed, 2) - 2*acc*(-stepSize)));
 			double time2 = (-currentSpeed - Math.sqrt(Math.pow(currentSpeed, 2) - 2*acc*(-stepSize)));
 			//Figure out which time to use.
+			double time = 0.0;
 			if(currentSpeed < maxV)
 			{
-				
+				time = Math.min(time1, time2);
+			}else
+			{
+				time = Math.max(time1, time2);
 			}
-			Math.max(time1, time2);
-			double time = 0.0;
 			currentSpeed += acc * time;
 			runningTime += time;
 			
