@@ -25,11 +25,14 @@
 <body class = "container-fluid">
 
 <jsp:include page = "bannerAndNav.jsp" />
-
-	<div id = "wl" class = "well">
-		<h2 id = "welcome2">${currentUser.getUsername()} current cash:
-				$${currentUser.getCash()}</h2>
-	</div>
+	
+	<c:if test="${currentUser.getRole()} >= 3">
+		<div id = "wl" class = "well">
+			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
+					$${currentUser.getCash()}</h2>
+		</div>
+	</c:if>
+	
 	<h4>Available Challenges</h4>
 	<table id = "chall" class = "table">
 		<tr>
@@ -53,7 +56,7 @@
 								onclick="enterChallenge(${c.getId()}, ${c.getEntryFee()},${currentUser.getCash()})">Enter</button></td>
 					</c:when>
 					<c:otherwise>
-						<td class="col-xs-2"><a href="editChallenge?chId=${c.getId() }"><button>Edit</button></a></td>
+						<td class="col-xs-2"><a href="editChallenge?chId=${c.getId()}"><button>Edit</button></a></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>

@@ -76,18 +76,10 @@ public class ChallengeController
 		String challId = request.getParameter("challengeId");
 		String carId = request.getParameter("carId");
 		
-		System.out.println("chall: " + challId);
-
-		System.out.println("car: " + carId);
-		
 		User tempUser = (User) session.getAttribute("currentUser");
 		Double tempCash;
 		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(challId));
 		Car tempCar = carService.getCarById(Integer.parseInt(carId));
-		
-		System.out.println(tempCar.toString());
-
-		System.out.println(tempChall.toString());
 		
 		tempCash = tempUser.getCash();
 		tempCash += tempChall.getReward();
@@ -97,12 +89,13 @@ public class ChallengeController
 		
 		return "viewChallenges";
 	}
+	
 	@RequestMapping(value = "/editChallenge")
 	public ModelAndView editChallenge(HttpServletRequest request, HttpServletResponse response)
 	{
 		logger.info("/editChallenge");
 		String chId = request.getParameter("chId");
-		ModelAndView mav = new ModelAndView("EditChallenge");
+		ModelAndView mav = new ModelAndView("editChallenge");
 		
 		if(chId !=  null)
 		{
@@ -117,6 +110,7 @@ public class ChallengeController
 		}
 		return mav;
 	}
+	
 	@RequestMapping(value = "/updateChallenge", method= RequestMethod.POST)
 	public String doUpdateChallenge(@Valid Challenge challenge,
 			BindingResult bindingResult, ModelMap modelMap,

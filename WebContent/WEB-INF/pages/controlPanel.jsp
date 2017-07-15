@@ -31,7 +31,9 @@
 
 		<h1>Role: ${sessionScope.currentUser.getUserRole()}</h1>
 		<p>Username: ${sessionScope.currentUser.getUsername()}</p>
-		<p>Level: ${sessionScope.currentUser.getLevel()}</p>
+		<c:if test="${currentUser.getRole()} >= 3">
+			<p>Level: ${sessionScope.currentUser.getLevel()}</p>
+		</c:if>
 		<p>First Name: ${sessionScope.currentUser.getFirstname()}</p>
 		<p>Last Name: ${sessionScope.currentUser.getLastname()}</p>
 		<p>Email: ${sessionScope.currentUser.getEmail()}</p>
