@@ -85,7 +85,12 @@ public class UserDaoImpl implements UserDao
 			users = query.list();
 			if(users.size() > 0)
 			{
-				user = users.get(0);
+				if(!(login.getUsername().equals(null) && login.getPassword().equals(null))){
+					user = users.get(0);
+					System.out.println("Correct username and password");
+				}else{
+					System.out.println("Incorrect username and password");
+				}
 			}
 			
 		}

@@ -35,9 +35,9 @@
 
 <jsp:include page = "bannerAndNav.jsp" />
 
-<c:if test="${errorMessage == null }">
+<c:if test="${sessionScope.currentUser == null }">
 	<c:choose>
-		<c:when test="${user == null }">
+		<c:when test="${session.getAttribute('user') == null }">
 			<div id="jd" class="jumbotron">
 				<div id="wl" class="well">
 					<h1 id="welcome">Welcome to RevTurismo</h1>
@@ -48,8 +48,8 @@
 							<h2>Login</h2>
 
 
-							<c:if test="${message != null }">
-								<div class="alert alert-danger">${message}</div>
+							<c:if test="${sessionScope.errorMessage != null }">
+								<div class="alert alert-danger">INVALID CREDENTIALS</div>
 							</c:if>
 
 							<form:form id="loginForm" modelAttribute="login" action="index"

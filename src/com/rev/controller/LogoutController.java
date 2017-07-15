@@ -1,11 +1,14 @@
 package com.rev.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -26,18 +29,30 @@ public class LogoutController {
 	  UserService userService;
 
 	 @RequestMapping(value="logout")
-		public ModelAndView doLogout(@Valid Login login, BindingResult bindingResult, 
-												ModelMap modelMap,
-												HttpSession session)
+		public void doLogout(HttpServletRequest request,HttpServletResponse response)
 												 {
 //		if(bindingResult.hasErrors()){
 //			session.invalidate();
 //			return "index";
 //		}else{
 //			session.removeAttribute("user");
-			session.removeAttribute("currentUser");
-			session.invalidate();
-			return new ModelAndView("index");
+//			session.removeAttribute("currentUser");
+//			session.removeAttribute("user");
+//			session.isNew();
+//			session.invalidate();
+//	
+//			return new ModelAndView("redirect:index");
+		 
+		 request.getSession().invalidate();
+		 try {
+			response.sendRedirect(request.getContextPath() + "/index");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 
+		 
 		}
 		
 //		 User validUser = userService.validateUser(login);
