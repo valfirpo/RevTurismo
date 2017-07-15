@@ -56,7 +56,7 @@ public class CarDaoImpl implements CarDao {
 	}
 
 	@Override
-	public void udpateCar(Car car) {
+	public void updateCar(Car car) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		try{

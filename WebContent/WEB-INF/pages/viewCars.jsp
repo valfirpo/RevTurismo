@@ -88,7 +88,7 @@
 									onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
 						</c:when>
 						<c:otherwise>
-							<td class="col-xs-2"><button>Edit</button></td>
+							<td class="col-xs-2"><a href="editCar?cId=${c.getId()}"><button class="btn btn-default">Edit</button></a></td>
 						</c:otherwise>
 					</c:choose>
 				</tr>

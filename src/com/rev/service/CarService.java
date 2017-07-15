@@ -12,4 +12,5 @@ public interface CarService
 {
 	public List<Car> getAllCars();
 	public Car getCarById(int id);
+	public void updateCar(Car car);
 }

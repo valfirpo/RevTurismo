@@ -69,7 +69,7 @@
 			<br>
 			 
 			<div>
-				<input type = "submit" value = "Update">
+				<input type = "submit" class="btn btn-default" value = "Update">
 			</div>
 		</form:form>
 	</div>
