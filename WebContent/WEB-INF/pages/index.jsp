@@ -49,7 +49,7 @@
 
 
 							<c:if test="${sessionScope.errorMessage != null }">
-								<div class="alert alert-danger">INVALID CREDENTIALS</div>
+								<div class="alert alert-danger">INVALID USERNAME OR PASSWORD</div>
 							</c:if>
 
 							<form:form id="loginForm" modelAttribute="login" action="index"
@@ -81,8 +81,18 @@
 								<div>
 <%-- 										<form:button id="login" name="login">Login</form:button>
  --%>										<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
-
+								
+								<c:if test="${sessionScope.errorMessage != null }">
+									
+                                    <div class="form-group">
+                                       <a href="#forgot" data-toggle="modal"> Forgot Password? </a>
+                                    
+                                    </div>
+								</c:if>
+								
+								
 								</div>
+								
 								
 							</form:form>
 							
@@ -90,6 +100,82 @@
 					</div>
 				</div>
 			</div>
+	<c:if test="${sessionScope.errorMessage != null  }">
+	<form:form id="forgotForm" modelAttribute="user" action="forgotPass"
+								method="POST"> 		
+	<div class="modal fade" id="forgot">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss='modal' aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+               <h4 class="modal-title" style="font-size: 32px; padding: 12px;"> Recover Your Password </h4>
+            </div>
+
+            <div class="modal-body">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                           <div class="input-group">
+                              <div class="input-group-addon iga2">
+                                 <span class="glyphicon glyphicon-user"></span>
+                              </div>
+                              <input id="username" type="text" class="form-control" placeholder="Enter Your Username" name="username">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                           <div class="input-group">
+                              <div class="input-group-addon iga2">
+                                 <span class="glyphicon glyphicon-lock"></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="Enter Your New Password" name="newpwd">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                           <div class="input-group">
+                              <div class="input-group-addon iga2">
+                                 <span class="glyphicon glyphicon-lock"></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="Confirm Your New Password" name="confirmNewpwd">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+               </div>
+            </div>
+
+            <div class="modal-footer">
+               <div class="form-group">
+                  <button type="submit" class="btn btn-lg btn-info"> Save <span class="glyphicon glyphicon-saved"></span></button>
+
+                  <button type="button" data-dismiss="modal" class="btn btn-lg btn-default"> Cancel <span class="glyphicon glyphicon-remove"></span></button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</form:form>			
+</c:if>	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		</c:when>
 		</c:choose>

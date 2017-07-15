@@ -58,6 +58,10 @@ public class LoginController {
 		  //session.removeAttribute("errorMessage");
 		return new ModelAndView("redirect:index");
 	}
+//	  if(errorMessage != null) {
+//		  modelMap.addAttribute("user",login);
+//		  session.setAttribute("user", login);
+//	  }
 	 
 	 
 		  System.out.println(login.getUsername());
