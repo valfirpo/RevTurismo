@@ -12,6 +12,9 @@ public class Login {
 	private String username;
 	@NotEmpty(message="Password can not be empty")
 	private String password;
+	@NotEmpty(message="Password can not be empty")
+	private String confirmPassword;
+	
 
 	public String getUsername() {
 		return username;
@@ -27,5 +30,13 @@ public class Login {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 }

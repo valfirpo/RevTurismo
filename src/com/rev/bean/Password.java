@@ -19,12 +19,13 @@ public class Password implements Validator{
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword",
 //				"required.confirmPassword", "Required.");
 
-//		if(!(login.getPassword().equals(login.getPassword()))){
+//		if(!(login.getPassword().equals(login.getConfirmPassword()))){
 //			errors.rejectValue("password", "required.password","Required");
 //			}
-//		if(!(login.getUsername().equals(login.getUsername()))){
+//		if(!(login.getConfirmPassword().equals(login.getPassword()))){
 //			errors.rejectValue("password", "required.username","Required");
 //			}
+		
 
 		if(!(user.getPassword().equals(user.getConfirmPassword()))){
 			errors.rejectValue("password", "notmatch.password");

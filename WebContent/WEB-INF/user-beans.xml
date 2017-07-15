@@ -36,6 +36,7 @@
 	
 	<bean id="challengeService" class="com.rev.service.ChallengeServiceImpl" />
 	<bean id="challengeDao" class="com.rev.dao.ChallengeDaoImpl" /> 
+	<bean id="simulationService" class="com.rev.service.SimulationService" />
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />

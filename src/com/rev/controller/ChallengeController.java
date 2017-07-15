@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.rev.bean.AdminNotify;
 import com.rev.bean.Car;
 import com.rev.bean.Challenge;
 import com.rev.bean.User;
 import com.rev.service.CarService;
 import com.rev.service.ChallengeService;
+import com.rev.service.SimulationService;
 
 @Controller
 public class ChallengeController 
@@ -31,6 +31,9 @@ public class ChallengeController
 	
 	@Autowired
 	CarService carService;
+	
+	@Autowired
+	SimulationService simService;
 	
 	private Logger logger = Logger.getLogger(ChallengeController.class);
 	@RequestMapping(value = "/viewChallenges")
@@ -81,9 +84,21 @@ public class ChallengeController
 		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(challId));
 		Car tempCar = carService.getCarById(Integer.parseInt(carId));
 		
+
 		tempCash = tempUser.getCash();
 		tempCash += tempChall.getReward();
 		tempUser.setCash(tempCash);
+
+		System.out.println(tempCar.toString());
+
+		System.out.println(tempChall.toString());
+		Double time = simService.simulateRace(tempChall, tempCar);
+		if(time <= tempChall.getTime())
+		{
+			tempCash = tempUser.getCash();
+			tempCash += tempChall.getReward();
+			tempUser.setCash(tempCash);
+		}
 		
 		session.setAttribute("currentUser", tempUser);
 		
