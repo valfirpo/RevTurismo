@@ -30,7 +30,7 @@ public class ForumService {
 	public Thread getThread(int tId)
 	{
 		Thread t = new ThreadDaoImpl().getThreadById(tId);
-		logger.trace("Thread retrieved with " + t.getPosts().size() + " posts");
+		logger.info("Thread retrieved with " + t.getPosts().size() + " posts");
 		
 		return t;
 	}
@@ -43,6 +43,7 @@ public class ForumService {
 		post.setTime(new Date());
 		
 		thread.getPosts().add(post);
+		logger.info("Adding Post");
 		new ThreadDaoImpl().updateThread(thread);
 	}
 	public void addThread(String tname, int catId, String content, User author ){

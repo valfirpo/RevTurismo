@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.rev.bean.AdminNotify;
 import com.rev.bean.Car;
 import com.rev.bean.Challenge;
 import com.rev.bean.User;
@@ -30,11 +32,13 @@ public class ChallengeController
 	@Autowired
 	CarService carService;
 	
+	private Logger logger = Logger.getLogger(ChallengeController.class);
 	@RequestMapping(value = "/viewChallenges")
 	public String buyCar(HttpServletRequest request, HttpServletResponse response, 
 			ModelMap modelMap,
 			HttpSession session)
 	{
+		logger.info("/viewChallenges");
 		List<Challenge> l = challengeService.getAllChallenges();
 		
 		modelMap.addAttribute("allChallenges", l);
@@ -47,13 +51,14 @@ public class ChallengeController
 			ModelMap modelMap,
 			HttpSession session)
 	{
+		logger.info("/enterChallenge");
 		String id = request.getParameter("challengeId");
 		User tempUser = (User) session.getAttribute("currentUser");
 		Double tempCash;
 		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(id));
 		
 		tempCash = tempUser.getCash();
-		tempCash -= (tempChall.getReward() / 2);
+		tempCash -= (tempChall.getEntryFee());
 		tempUser.setCash(tempCash);
 	
 		session.setAttribute("currentUser", tempUser);
@@ -67,6 +72,7 @@ public class ChallengeController
 			ModelMap modelMap,
 			HttpSession session)
 	{	
+		logger.info("/startChallenge");
 		String challId = request.getParameter("challengeId");
 		String carId = request.getParameter("carId");
 		
@@ -94,6 +100,7 @@ public class ChallengeController
 	@RequestMapping(value = "/editChallenge")
 	public ModelAndView editChallenge(HttpServletRequest request, HttpServletResponse response)
 	{
+		logger.info("/editChallenge");
 		String chId = request.getParameter("chId");
 		ModelAndView mav = new ModelAndView("EditChallenge");
 		
@@ -114,6 +121,7 @@ public class ChallengeController
 	public String doUpdateChallenge(@Valid Challenge challenge,
 			BindingResult bindingResult, ModelMap modelMap,
 			HttpSession session){
+		logger.info("challenge");
 		Challenge uChallenge = challengeService.getChallengesById(challenge.getId());
 		if(uChallenge != null)
 		{
@@ -123,6 +131,7 @@ public class ChallengeController
 			uChallenge.setReward(challenge.getReward());
 			uChallenge.setTime(challenge.getTime());
 			challengeService.updateChallenge(uChallenge);
+			logger.info("Creating Admin Notify");
 			
 		}
 		

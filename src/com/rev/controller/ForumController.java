@@ -39,7 +39,7 @@ public class ForumController {
 		List<Category> categories = service.getCategories();
 		System.out.println(categories);
 		request.setAttribute("categories", service.getCategories());
-		logger.trace("user accesses /forum");
+		logger.info("user accesses /forum");
 		return "forum";
 	}
 	@RequestMapping(value="/category")
@@ -47,7 +47,7 @@ public class ForumController {
 	{
 		
 		String catId = request.getParameter("catId");
-		logger.trace("User acceses /category?" + catId);
+		logger.info("User acceses /category?" + catId);
 		System.out.println(catId);
 		ModelAndView mav = new ModelAndView("categoryView");
 		mav.addObject("newThread", new NewThread());
@@ -75,7 +75,7 @@ public class ForumController {
 	public ModelAndView viewThread(HttpServletRequest request, HttpServletResponse response)
 	{
 		String tid = request.getParameter("threadId");
-		logger.trace("user accesses /thread?" + tid);
+		logger.info("user accesses /thread?" + tid);
 		ModelAndView mav = new ModelAndView("threadView");
 		mav.addObject("post", new Post());
 		if(tid != null)
@@ -107,7 +107,7 @@ public class ForumController {
 			BindingResult bindingResult, ModelMap modelMap, HttpSession session)
 	{
 		if(!bindingResult.hasErrors()){
-			logger.debug("user creating thread");
+			logger.info("user creating thread");
 			User author = (User)session.getAttribute("currentUser");
 			String threadName = nThread.getTname();
 			int catId = nThread.getCatId();

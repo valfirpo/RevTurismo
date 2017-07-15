@@ -40,12 +40,8 @@
 		</div>
 		
 		<c:if test="${user != null }">
-			
-		
 			<c:choose>
-			
 				<c:when test="${sessionScope.currentUser.getRole() == 1 }">
-						<c:out value = "${sessionScope.currentUser.setUserRole('ADMIN')}" ></c:out>
 					<ul class="nav navbar-nav">
 						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
 						<li ><a href="viewSubAdmin" style="color: #ffffff;">View SubAdmin</a></li>
@@ -56,7 +52,6 @@
 					</ul>
 				</c:when>
 				<c:when test="${sessionScope.currentUser.getRole() == 2}">
-				<c:out value = "${sessionScope.currentUser.setUserRole('SUBADMIN')}" ></c:out>
 					<ul class="nav navbar-nav">
 						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
 						<li ><a href="viewUsers" style="color: #ffffff;">View Users</a></li>
@@ -66,7 +61,6 @@
 					</ul>
 				</c:when>
 				<c:otherwise>
-				<c:out value = "${sessionScope.currentUser.setUserRole('USER')}" ></c:out>
 					<ul class="nav navbar-nav">
 						<li ><a href="controlPanel" style="color: #ffffff;">Control Panel</a></li>
 						<li ><a href="viewCars" style="color: #ffffff;">View Cars</a></li>
