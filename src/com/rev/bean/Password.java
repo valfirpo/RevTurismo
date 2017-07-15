@@ -8,7 +8,7 @@ public class Password implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user = (User)target;
-		Login login = (Login)target;		
+		//Login login = (Login)target;		
 	
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username",
 //				"required.username", "Required");
@@ -19,12 +19,12 @@ public class Password implements Validator{
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword",
 //				"required.confirmPassword", "Required.");
 
-		if(!(login.getPassword().equals(login.getConfirmPassword()))){
-			errors.rejectValue("password", "required.password","Required");
-			}
-		if(!(login.getConfirmPassword().equals(login.getPassword()))){
-			errors.rejectValue("password", "required.username","Required");
-			}
+//		if(!(login.getPassword().equals(login.getConfirmPassword()))){
+//			errors.rejectValue("password", "required.password","Required");
+//			}
+//		if(!(login.getConfirmPassword().equals(login.getPassword()))){
+//			errors.rejectValue("password", "required.username","Required");
+//			}
 		
 
 		if(!(user.getPassword().equals(user.getConfirmPassword()))){
