@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 import com.rev.bean.Login;
+import com.rev.bean.Password;
 import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
 @RequestMapping(value="/createAccount")
-public class RegistrationController {
+public class RegistrationController  {
 	
 @Autowired
   public UserService userService;
@@ -31,21 +32,40 @@ public class RegistrationController {
     return mav;
   }
   
+  @Autowired
+  public Password passwordValidator;
+  
   @RequestMapping(method = RequestMethod.POST)
-  public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-  @ModelAttribute("user") User user,
-   HttpSession session) {
-  userService.register(user);
-  
-  session.setAttribute("currentUser", user);
-  session.setAttribute("user", user);
-  session.setAttribute("password", user.getPassword());
-  session.setAttribute("confirmPassword", user.getConfirmPassword());
-  
-  return new ModelAndView("index", "username", user.getUsername());
+  public ModelAndView onSubmit(@ModelAttribute("user") User user,HttpSession session,
+		  				BindingResult bindingResult){
+	  //Object password = user.getPassword();
+	  //String confirmPassword = user.getConfirmPassword();
+	  
+	  passwordValidator.validate(user, bindingResult);
+	  if(bindingResult.hasErrors()){
+		  return new ModelAndView("createAccount");
+	  }
+	  
+	  userService.register(user);
+	  session.setAttribute("currentUser", user);
+	  session.setAttribute("user", user);
+	  session.setAttribute("password", user.getPassword());
+	  session.setAttribute("confirmPassword", user.getConfirmPassword());
+	  return new ModelAndView("redirect:index");
   }
-  
- 
-
+//  public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response,
+//  @ModelAttribute("user") User user,Object command,
+//   HttpSession session) {
+//  userService.register(user);
+//  
+//  user = (User) command;
+//  session.setAttribute("currentUser", user);
+//  session.setAttribute("user", user);
+//  session.setAttribute("password", user.getPassword());
+//  session.setAttribute("confirmPassword", user.getConfirmPassword());
+//
+//  return new ModelAndView("index", "user", user);
+//  
+//  }
   
 }

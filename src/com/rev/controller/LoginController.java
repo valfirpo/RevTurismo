@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rev.bean.Login;
+import com.rev.bean.Password;
 import com.rev.bean.User;
 import com.rev.service.UserService;
 
@@ -31,11 +32,17 @@ public class LoginController {
     return mav;
   }
   
+  
+//  @Autowired
+//  public Password passwordValidator;
+  
   @RequestMapping(method = RequestMethod.POST)
 	public String doLogin(@Valid Login login, BindingResult bindingResult, 
 											ModelMap modelMap,
-											HttpSession session)
-											 {
+											HttpSession session){
+	  
+  
+	//passwordValidator.validate(login, bindingResult);										 {
 	if(bindingResult.hasErrors()){
 		return "index";
 	}
@@ -51,7 +58,8 @@ public class LoginController {
 		  modelMap.addAttribute("errorMessage","Username or Password is incorrect");
 		  return "index";
 	  }
-
+	}
   }
+
   
-}
+

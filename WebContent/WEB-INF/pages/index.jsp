@@ -63,7 +63,7 @@
 									<!-- 						<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
 -->
 									<form:label class ="form-control" path="username">Username:</form:label>
-									<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
+									<form:input class="form-control" path="username" name="username" id="username" placeholder ="username" required="required"  />
 									
 								</div>
 								<br>
@@ -74,7 +74,7 @@
 									<!-- 						<input type = "password" name = "pass" class = "form-control" placeholder = "password" required>
 -->
 									<form:label class ="form-control"  path="password">Password:</form:label>
-									<form:password class="form-control" path="password" name="password" id="password" placeholder ="password"  />
+									<form:password class="form-control" path="password" name="password" id="password" placeholder ="password" required="required"  />
 								</div>
 
 								<br>
@@ -83,13 +83,20 @@
  --%>										<input type = "submit" class="btn btn-default" value = "Login" aria-label="Left Align">
 
 								</div>
+								
 							</form:form>
+							
 						</div>
 					</div>
 				</div>
 			</div>
+			
 		</c:when>
-		<c:otherwise>
+		</c:choose>
+		</c:if>
+
+		
+		<c:if  test = "${sessionScope.currentUser != null}">
 			<div id="jd" class="jumbotron">
 				<div id="wl" class="well">
 					<h1 id="welcome">Welcome to RevTurismo</h1>
@@ -102,9 +109,9 @@
 						Matthew Young & Valentin Firpo.</p>
 				</div>
 			</div>
-		</c:otherwise>
-	</c:choose>
-</c:if>
+			</c:if>
+		
+	
 
 
 </body>

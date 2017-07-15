@@ -21,6 +21,19 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<style>
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
 
 <title>Create Account</title>
 </head>
@@ -51,12 +64,13 @@
 				
 						<form:form id="userForm" modelAttribute="user" action="createAccount"
 									method="POST">
+							
 					<!-- <form method = "post" action = "CreateAccount.do"> -->
 						<!-- <label>Username:</label> -->
 						<form:label class ="form-control" path="username">Username:</form:label>
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-user"></i> </span>
-							<form:input class="form-control" path="username" name="username" id="username" placeholder ="username"  />
+							<form:input class="form-control" path="username" name="username" id="username" placeholder ="username" required="required" />
 <!-- 							<input type = "text" name = "user" class = "form-control" placeholder = "username" required>
  -->						</div>
 						<br>
@@ -64,21 +78,25 @@
 						<!-- <label >Password:</label> -->
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-							<form:password class = "form-control" path="password" name="password" id="password" placeholder="password"/>
+							<form:password class = "form-control" path="password" name="password" id="password" placeholder="password" required="required"/>
 							
 							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
 						</div>
+						<br>
+						<div><form:errors path = "password" cssClass="error"/></div>
 						<br>
 						<form:label class="form-control" path="confirmPassword">Confirm Password:</form:label>
 						<!-- <label >Confirm Password:</label> -->
 						<div class = "input-group">
 							<span class = "input-group-addon"> <i class = "glyphicon glyphicon-lock"></i> </span>
-							<form:password class="form-control" path="confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="password"/>
+							<form:password class="form-control" path="confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="password" required="required"/>
+							
 							<!-- <input type = "password" name = "pass" class = "form-control" placeholder = "password" required> -->
 							
 							
 						</div>
-					
+						<br>
+					<div><form:errors path = "confirmPassword" cssClass="error"/></div>
 						<br>
 						<div>
 						

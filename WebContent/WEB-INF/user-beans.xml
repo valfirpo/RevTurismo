@@ -12,6 +12,22 @@
 	<mvc:annotation-driven/>
 	<mvc:resources location="/resources" mapping="/**"/>
 	
+	<bean 
+	class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+	
+ 	
+		
+	
+		
+		<bean id = "messageSource"
+			class="org.springframework.context.support.ResourceBundleMessageSource">
+			<property name="basename" value="message"/>
+		</bean>
+			
+		
+		
+	<bean id = "passwordValidator" class="com.rev.bean.Password"/>
+	
 	<bean id="userService" class="com.rev.service.UserServiceImpl" />
 	<bean id="userDao" class="com.rev.dao.UserDaoImpl" />
 	

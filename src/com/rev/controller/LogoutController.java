@@ -26,16 +26,18 @@ public class LogoutController {
 	  UserService userService;
 
 	 @RequestMapping(value="logout")
-		public String doLogout(@Valid Login login, BindingResult bindingResult, 
+		public ModelAndView doLogout(@Valid Login login, BindingResult bindingResult, 
 												ModelMap modelMap,
 												HttpSession session)
 												 {
-		if(bindingResult.hasErrors()){
+//		if(bindingResult.hasErrors()){
+//			session.invalidate();
+//			return "index";
+//		}else{
+//			session.removeAttribute("user");
+			session.removeAttribute("currentUser");
 			session.invalidate();
-			return "index";
-		}else{
-			session.invalidate();
-			return "index";
+			return new ModelAndView("index");
 		}
 		
 //		 User validUser = userService.validateUser(login);
@@ -48,5 +50,5 @@ public class LogoutController {
 //			  return "index";
 //		 }
 		
-	}		 					   
+			 					   
 }
