@@ -22,6 +22,7 @@ import com.rev.bean.User;
 import com.rev.service.CarService;
 import com.rev.service.ChallengeService;
 import com.rev.service.SimulationService;
+import com.rev.service.UserService;
 
 @Controller
 public class ChallengeController 
@@ -34,6 +35,9 @@ public class ChallengeController
 	
 	@Autowired
 	SimulationService simService;
+	
+	@Autowired
+	UserService userService;
 	
 	private Logger logger = Logger.getLogger(ChallengeController.class);
 	@RequestMapping(value = "/viewChallenges")
@@ -84,25 +88,25 @@ public class ChallengeController
 		Challenge tempChall = challengeService.getChallengesById(Integer.parseInt(challId));
 		Car tempCar = carService.getCarById(Integer.parseInt(carId));
 		
+		logger.info(tempCar.toString());
 
-		tempCash = tempUser.getCash();
-		tempCash += tempChall.getReward();
-		tempUser.setCash(tempCash);
-
-		System.out.println(tempCar.toString());
-
-		System.out.println(tempChall.toString());
+		logger.info(tempChall.toString());
 		Double time = simService.simulateRace(tempChall, tempCar);
 		if(time <= tempChall.getTime())
 		{
 			tempCash = tempUser.getCash();
 			tempCash += tempChall.getReward();
 			tempUser.setCash(tempCash);
+			modelMap.addAttribute("message", "Challenge Completed Succesfully");
 		}
-		
+		else
+		{
+			modelMap.addAttribute("message", "Challenge Not Completed Succesfully");
+		}
+		userService.updateUser(tempUser);
 		session.setAttribute("currentUser", tempUser);
 		
-		return "viewChallenges";
+		return "challengeResult";
 	}
 	
 	@RequestMapping(value = "/editChallenge")
