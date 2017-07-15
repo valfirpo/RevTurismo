@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindingResult;
 
 import com.rev.bean.Login;
 import com.rev.bean.User;
@@ -43,6 +44,12 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(User user) 
 	{
 		userDao.updateUser(user);
+	}
+
+	@Override
+	public User validateUser(Login login, BindingResult bindingResult) {
+		// TODO Auto-generated method stub
+		return userDao.validateUser(login);
 	}
 
 	}

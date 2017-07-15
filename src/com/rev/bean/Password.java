@@ -34,6 +34,8 @@ public class Password implements Validator{
 		errors.rejectValue("confirmPassword", "notmatch.confirmPassword");
 		}
 		
+		
+		
 //		if(!(user.getUsername().equals(null))){
 //			errors.rejectValue("username", "nouserName.password");
 //		}

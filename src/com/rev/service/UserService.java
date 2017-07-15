@@ -3,6 +3,7 @@ package com.rev.service;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BindingResult;
 
 import com.rev.bean.Login;
 import com.rev.bean.User;
@@ -19,4 +20,6 @@ public interface UserService {
 	  public List<User> getAllSubAdmin();
 	  
 	  public void updateUser(User user);
+
+	User validateUser(Login login, BindingResult bindingResult);
 	}
