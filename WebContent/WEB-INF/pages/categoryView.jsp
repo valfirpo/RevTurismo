@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<link rel="Stylesheet" type="text/css" href="resources/css/forum.css"/>
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -29,7 +31,7 @@
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
 		<c:forEach var="thread" items="${threads }">
-			<div id="threadId" class="t-container">
+			<div id="threadId${thread.getId()}" class="t-container">
 				<span class="tName"><a href="thread?threadId=${thread.getId()}">${thread.getName() }</a></span>
 			</div>
 		</c:forEach>

@@ -14,11 +14,13 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<link rel="Stylesheet" type="text/css" href="resources/css/forum.css"/>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>RevTurismo ${thread.getName()}</title>
@@ -32,7 +34,7 @@
 			<span>${thread.getName() }</span>
 		</div>
 		<c:forEach var="post" items="${posts }">
-			<div id="postId" class="p-contianer">
+			<div id="postId${post.getPostId()}" class="p-container">
 				<div class="left">
 					<span class="author-info">${post.getAuthor().getUsername() }</span>
 				</div>

@@ -8,3 +8,51 @@
 	font-weight:600;
 	font-size:16pt;
 }
+.p-container{
+	display:table;
+	border:2px solid black;
+	min-width: 50%;
+}
+.left{
+	display:table-cell;
+	padding: 5px;
+	background-color: gray;
+	color: white;
+	width: 35%;
+	border-left:1px solid black;
+}
+.right{
+	display:table-cell;
+	width:100%;
+	margin:0;
+	background-color: #333333;
+}
+.date{
+	display:block;
+	border-bottom: 1px solid black;
+	background-color: #333333;
+	width: 100%;
+	color: #AAAAAA;
+}
+.post-content{
+	display: block;
+	background-color: white;
+	padding: 6px;
+}
+
+.t-container, .cat-container{
+	display:block;
+	width: 100%;
+	background:black;
+	padding: 5px;
+	border: 1px solid white;
+}
+.tName, .catName{
+	padding-left: 5px;
+}
+.tName  a,.catName a{
+	color: white;
+}
+.tName a:focus, .tName a:hover, .tName a:active, .catName a:focus, .catName a:hover, .catName a:active{
+	color:white;
+}
