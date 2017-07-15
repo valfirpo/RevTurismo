@@ -114,7 +114,7 @@ public class ChallengeController
 	{
 		logger.info("/editChallenge");
 		String chId = request.getParameter("chId");
-		ModelAndView mav = new ModelAndView("editChallenge");
+		ModelAndView mav = new ModelAndView("/editChallenge");
 		
 		if(chId !=  null)
 		{
