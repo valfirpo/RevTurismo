@@ -67,7 +67,6 @@ public class LoginController {
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("user", login);
-		  System.out.println("are you here??");
 		  session.setAttribute("currentUser", validUser);
 		 
 	 
