@@ -47,9 +47,7 @@
 				<div id="wl" class="well">
 					<h2>Create SubAdmin Account</h2>
 
-					<form:form id="userForm" modelAttribute="user"
-						action="createSubUserAccount" method="POST">
-
+					<form:form id="userForm" modelAttribute="user" action="createSubAdminAccount" method="POST">
 
 						<form:label class="form-control" path="username">Username:</form:label>
 						<div class="input-group">

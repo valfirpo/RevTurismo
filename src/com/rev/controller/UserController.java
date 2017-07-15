@@ -15,7 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.rev.bean.Password;
 import com.rev.bean.User;
 import com.rev.service.UserService;
 
@@ -24,6 +26,9 @@ public class UserController
 {
 	@Autowired
 	 UserService userService;
+	
+	@Autowired
+	public Password passwordValidator;
 
 	@RequestMapping(value="/viewUsers")
 	public String viewUsers(HttpServletRequest request, HttpServletResponse response, 
@@ -98,5 +103,28 @@ public class UserController
 			return "createSubAdminAccount";
 		}
 		return "createSubAdminAccount";
+	}
+	
+	@RequestMapping(value="/createSubAdminAccount" , method = RequestMethod.POST)
+	public ModelAndView registerSubAdminAccount(@ModelAttribute("user") User user,
+			BindingResult bindingResult,
+			HttpServletRequest request,
+			HttpServletResponse response, 
+			ModelMap modelMap,
+			HttpSession session)
+	{
+		passwordValidator.validate(user, bindingResult);
+		if(bindingResult.hasErrors())
+		{
+			System.out.println("binding result error");
+			return new ModelAndView("createAccount");
+		}
+		
+		System.out.println(user.toString());
+		user.setRole(2);
+		user.setUserRole("SUBADMIN");
+		userService.register(user);
+		
+		return new ModelAndView("redirect:createSubAdminAccount");
 	}
 }
