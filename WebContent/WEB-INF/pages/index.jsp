@@ -122,7 +122,7 @@
                               <div class="input-group-addon iga2">
                                  <span class="glyphicon glyphicon-user"></span>
                               </div>
-                              <input value="${currentUser.getUsername()}"  id="username" type="text" class="form-control" placeholder="Enter Your Username" name="username">
+                              <input value="${currentUser.getUsername()}"  id="username" type="text" class="form-control" placeholder="Enter Your Username" name="username" required="required">
                            </div>
                         </div>
                      </div>
@@ -135,7 +135,7 @@
                               <div class="input-group-addon iga2">
                                  <span class="glyphicon glyphicon-lock"></span>
                               </div>
-                              <input value="${currentUser.getPassword()}" id="password" type="password" class="form-control" placeholder="Enter Your New Password" name="password">
+                              <input value="${currentUser.getPassword()}" id="password" type="password" class="form-control" placeholder="Enter Your New Password" name="password" required="required">
                            </div>
                         </div>
                      </div>
@@ -147,7 +147,7 @@
                               <div class="input-group-addon iga2">
                                  <span class="glyphicon glyphicon-lock"></span>
                               </div>
-                              <input value= "${currentUser.getConfirmPassword()}" id = "confirmPassword" type="password" class="form-control" placeholder="Confirm Your New Password" name="confirmPassword">
+                              <input value= "${currentUser.getConfirmPassword()}" id = "confirmPassword" type="password" class="form-control" placeholder="Confirm Your New Password" name="confirmPassword" required="required">
                               
                            </div>
                         </div>

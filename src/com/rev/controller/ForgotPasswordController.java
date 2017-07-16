@@ -76,7 +76,8 @@ public class ForgotPasswordController {
 		 
 		  System.out.println("About to check user");
 		  
-		  if(!(user.getPassword().equals(user.getConfirmPassword()))){
+		  if(!(user.getPassword().equals(user.getConfirmPassword()) || 
+				  user.getUsername().equals(null))){
 
 			  System.out.println("password: " + user.getPassword().toString());
 			  System.out.println("confirmPassword: " + user.getConfirmPassword().toString());
