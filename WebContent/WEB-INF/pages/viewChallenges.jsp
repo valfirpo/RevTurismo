@@ -29,7 +29,7 @@
 	<c:if test="${currentUser.getRole()} >= 3">
 		<div id = "wl" class = "well">
 			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
-					$${currentUser.getCash()}</h2>
+					$ ${currentUser.getCash()}</h2>
 		</div>
 	</c:if>
 	
@@ -44,22 +44,24 @@
 			<th><!-- Button --></th>
 		</tr>
 		<c:forEach var="c" items="${allChallenges}">
-			<tr id = "${c.getId()}">
-				<td>${c.getId()}</td>
-				<td>${c.getName()}</td>
-				<td>${c.getLevel()}</td>
-				<td>$ ${c.getEntryFee()}</td>
-				<td>$ ${c.getReward()}</td>
-				<c:choose>
-					<c:when test="${sessionScope.currentUser.getRole() == 3}">
-						<td class="col-xs-2"><button
-								onclick="enterChallenge(${c.getId()}, ${c.getEntryFee()},${currentUser.getCash()})">Enter</button></td>
-					</c:when>
-					<c:otherwise>
-						<td class="col-xs-2"><a href="editChallenge?chId=${c.getId()}"><button class="btn btn-default">Edit</button></a></td>
-					</c:otherwise>
-				</c:choose>
-			</tr>
+			<c:if test="${currentUser.getLevel() >= c.getLevel()}">
+				<tr id = "${c.getId()}">
+					<td>${c.getId()}</td>
+					<td>${c.getName()}</td>
+					<td>${c.getLevel()}</td>
+					<td>$ ${c.getEntryFee()}</td>
+					<td>$ ${c.getReward()}</td>
+					<c:choose>
+						<c:when test="${sessionScope.currentUser.getRole() == 3}">
+							<td class="col-xs-2"><button
+									onclick="enterChallenge(${c.getId()}, ${c.getEntryFee()},${currentUser.getCash()})">Enter</button></td>
+						</c:when>
+						<c:otherwise>
+							<td class="col-xs-2"><a href="editChallenge?chId=${c.getId()}"><button class="btn btn-default">Edit</button></a></td>
+						</c:otherwise>
+					</c:choose>
+				</tr>
+			</c:if>
 		</c:forEach>
 	</table>
 

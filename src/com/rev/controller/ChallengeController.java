@@ -97,11 +97,11 @@ public class ChallengeController
 			tempCash = tempUser.getCash();
 			tempCash += tempChall.getReward();
 			tempUser.setCash(tempCash);
-			modelMap.addAttribute("message", "Challenge " + challId +" Completed Succesfully");
+			modelMap.addAttribute("message", "Challenge " + tempChall.getName() +" Completed Succesfully");
 		}
 		else
 		{
-			modelMap.addAttribute("message", "Challenge " + challId +" Not Completed Succesfully");
+			modelMap.addAttribute("message", "Challenge " + tempChall.getName() +" Not Completed Succesfully");
 		}
 		
 		modelMap.addAttribute("finishTime", time);
