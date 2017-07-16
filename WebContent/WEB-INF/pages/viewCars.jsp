@@ -76,22 +76,24 @@
 		</thead>
 		<tbody>
 			<c:forEach var="c" items="${allCars}">
-				<tr>
-					<td class="col-xs-1">${c.getId()}</td>
-					<td class="col-xs-4">${c.getCarName()}</td>
-					<td class="col-xs-2">$ ${c.getPrice()}</td>
-					<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
-					<td class="col-xs-1">${c.getAcceleration()}</td>
-					<c:choose>
-						<c:when test="${sessionScope.currentUser.getRole() == 3}">
-							<td class="col-xs-2"><button
-									onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
-						</c:when>
-						<c:otherwise>
-							<td class="col-xs-2"><a href="editCar?cId=${c.getId()}"><button class="btn btn-default">Edit</button></a></td>
-						</c:otherwise>
-					</c:choose>
-				</tr>
+				<c:if test="${currentUser.getLevel() >= c.getMinLevel()}">
+					<tr>
+						<td class="col-xs-1">${c.getId()}</td>
+						<td class="col-xs-4">${c.getCarName()}</td>
+						<td class="col-xs-2">$ ${c.getPrice()}</td>
+						<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
+						<td class="col-xs-1">${c.getAcceleration()}</td>
+						<c:choose>
+							<c:when test="${sessionScope.currentUser.getRole() == 3}">
+								<td class="col-xs-2"><button
+										onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
+							</c:when>
+							<c:otherwise>
+								<td class="col-xs-2"><a href="editCar?cId=${c.getId()}"><button class="btn btn-default">Edit</button></a></td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+				</c:if>
 			</c:forEach>
 
 		</tbody>
