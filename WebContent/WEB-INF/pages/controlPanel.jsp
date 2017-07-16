@@ -48,7 +48,7 @@
 			</c:when>
 			<c:otherwise>
 				<h2>Cash Available</h2>
-				<p>${sessionScope.currentUser.getCash()}</p>
+				<p>$ ${sessionScope.currentUser.getCash()}</p>
 			</c:otherwise>			
 		</c:choose>
 	</div>

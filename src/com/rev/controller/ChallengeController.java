@@ -103,6 +103,10 @@ public class ChallengeController
 		{
 			modelMap.addAttribute("message", "Challenge Not Completed Succesfully");
 		}
+		
+		modelMap.addAttribute("finishTime", time);
+		modelMap.addAttribute("raceTime", tempChall.getTime());
+		
 		userService.updateUser(tempUser);
 		session.setAttribute("currentUser", tempUser);
 		
