@@ -97,6 +97,24 @@ public class ChallengeController
 			tempCash = tempUser.getCash();
 			tempCash += tempChall.getReward();
 			tempUser.setCash(tempCash);
+			
+			if(tempUser.getCash() > 100000)
+			{
+				tempUser.setRole(4);
+			}
+			if(tempUser.getCash() > 150000)
+			{
+				tempUser.setRole(5);
+			}
+			if(tempUser.getCash() > 200000)
+			{
+				tempUser.setRole(6);
+			}
+			if(tempUser.getCash() > 300000)
+			{
+				tempUser.setRole(7);
+			}
+			
 			modelMap.addAttribute("message", "Challenge " + tempChall.getName() +" Completed Succesfully");
 		}
 		else
