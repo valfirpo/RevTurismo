@@ -2,6 +2,8 @@ package com.rev.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.rev.bean.Car;
 import com.rev.bean.Challenge;
 import com.rev.bean.TrackSection;
@@ -9,6 +11,7 @@ import com.rev.bean.TrackSection;
 public class SimulationService {
 	private double currentSpeed;
 	private final double STEP_SIZE = 0.1;
+	private Logger logger = Logger.getLogger(SimulationService.class);
 	public double simulateRace(Challenge track, Car car)
 	{
 		List<TrackSection> sections = track.getSections();
@@ -34,6 +37,10 @@ public class SimulationService {
 		double runningTime = 0.0;
 		boolean done = false;
 		double stepSize = STEP_SIZE;
+		logger.info("StepSize: " + stepSize);
+		logger.info("Top Speed: " + topSpeed);
+		
+		
 		do{
 			if(stepSize + currentDistance > distance)
 			{
@@ -45,15 +52,20 @@ public class SimulationService {
 			double time2 = (-currentSpeed - Math.sqrt(Math.pow(currentSpeed, 2) - 2*acc*(-stepSize)));
 			//Figure out which time to use.
 			double time = 0.0;
-			if(currentSpeed < maxV)
-			{
-				time = Math.min(time1, time2);
-			}else
+			if(currentSpeed < topSpeed)
 			{
 				time = Math.max(time1, time2);
+			}else
+			{
+				time = Math.min(time1, time2);
 			}
 			currentSpeed += acc * time;
 			runningTime += time;
+			currentDistance += currentSpeed * time;
+			logger.info("Acceleration: " + acc);
+			logger.info("Current Speed: " + currentSpeed);
+			logger.info("Current Time: " + runningTime);
+			logger.info("Current Distance: " + currentDistance);
 			
 			
 		}while(!done);
