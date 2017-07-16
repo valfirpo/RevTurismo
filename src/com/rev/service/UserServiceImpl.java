@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
 	  {
 	    userDao.createUser(user);
 	  }
+	  
+	  public void registerAdmin(User user) 
+	  {
+	    userDao.createAdmin(user);
+	  }
 
 	  public User validateUser(Login login) 
 	  {
