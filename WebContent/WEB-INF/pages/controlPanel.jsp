@@ -41,10 +41,10 @@
 	<div id = "wl1" class = "col-lg-6 well" >
 		<c:choose>
 			<c:when test="${sessionScope.currentUser.getRole() == 1}">
-				<p>Master admin img</p>
+				<img src="resources/img/admin.png" width="40%">
 			</c:when>
 			<c:when test="${sessionScope.currentUser.getRole() == 2}">
-				<p>Sub admin img</p>
+				<img src="resources/img/subadmin.png" width="49%">
 			</c:when>
 			<c:otherwise>
 				<h2>Cash Available</h2>

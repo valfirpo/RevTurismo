@@ -39,7 +39,9 @@
 			<br>
 			<p>Your time: ${finishTime}</p>
 			<br>
-			
+			<p>Cash: $ ${sessionScope.currentUser.getCash()}</p>
+			<br>
+			<p>Level: ${sessionScope.currentUser.getLevel()}</p>
 		</div>
 	</div>
 </div>
