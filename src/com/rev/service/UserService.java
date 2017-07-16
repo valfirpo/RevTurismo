@@ -12,6 +12,8 @@ import com.rev.bean.User;
 public interface UserService {
 
 	  void register(User user);
+	  
+	  public void registerAdmin(User user);
 
 	  User validateUser(Login login);
 

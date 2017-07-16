@@ -102,6 +102,7 @@ public class UserController
 		{
 			return "createSubAdminAccount";
 		}
+		//session.setAttribute("subAdminCreated", new Integer(1));
 		return "createSubAdminAccount";
 	}
 	
@@ -119,11 +120,8 @@ public class UserController
 			System.out.println("binding result error");
 			return new ModelAndView("createAccount");
 		}
-		
-		System.out.println(user.toString());
-		user.setRole(2);
-		user.setUserRole("SUBADMIN");
-		userService.register(user);
+		userService.registerAdmin(user);
+		session.setAttribute("subAdminCreated", user);
 		
 		return new ModelAndView("redirect:createSubAdminAccount");
 	}

@@ -65,6 +65,32 @@ public class UserDaoImpl implements UserDao
 		
 		//return user;
 	}
+	
+	@Override
+	public void createAdmin(User user) 
+	{
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		
+		user.setCash(0);
+		user.setRole(2);
+		
+		
+		User newUser = new User(user.getUsername(), user.getPassword(),
+		user.getCash(), user.getRole());
+		
+			
+		
+		//session.save(newUser.getRole());
+	    //session.save(user);
+		session.save(newUser);
+	    tx.commit();
+
+		session.close();
+		
+		//return user;
+	}
 
 	@Override
 	public User validateUser(Login login) 
