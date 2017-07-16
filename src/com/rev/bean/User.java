@@ -53,6 +53,17 @@ public class User
 	@JoinTable(name = "RT_CAR_OWNERSHIP", joinColumns = @JoinColumn(name="U_ID"), inverseJoinColumns= @JoinColumn(name="C_ID"))
 	private List<Car> cars;
 	
+	
+	public String newPassword;
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
 	public String confirmPassword;
 	
 	public String getConfirmPassword() {

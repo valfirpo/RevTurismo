@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
 		System.out.println("in service");
 		return userDao.getAllSubAdmin();
 	}
+	
 
 	@Override
 	public void updateUser(User user) 
@@ -51,5 +52,17 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.validateUser(login);
 	}
+
+	@Override
+	public void updatePassword(User user) {
+		// TODO Auto-generated method stub
+		 userDao.updatePassword(user);
+	}
+
+	@Override
+	public void checkUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.checkUser(user);
+		}
 
 	}

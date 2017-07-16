@@ -36,6 +36,7 @@
 <jsp:include page = "bannerAndNav.jsp" />
 
 <c:if test="${sessionScope.currentUser.getRole() == null }">
+	
 	<c:choose>
 		<c:when test="${session.getAttribute('user') == null }">
 			<div id="jd" class="jumbotron">
@@ -45,8 +46,12 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div id="wl" class="well">
-							<h2>Login</h2>
-
+						
+					<h2>Login</h2>
+					
+							<c:if test="${sessionScope.errorMessage == null }">
+								<div class="alert alert-success">PASSWORD HAS BEEN RESET</div>
+							</c:if>
 
 							<c:if test="${sessionScope.errorMessage != null }">
 								<div class="alert alert-danger">INVALID USERNAME OR PASSWORD</div>

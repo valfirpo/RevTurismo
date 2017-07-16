@@ -20,6 +20,12 @@ public interface UserService {
 	  public List<User> getAllSubAdmin();
 	  
 	  public void updateUser(User user);
+	  
+	  
 
 	User validateUser(Login login, BindingResult bindingResult);
+
+	public void updatePassword(User user);
+
+	public void checkUser(User user);
 	}

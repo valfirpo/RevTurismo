@@ -20,15 +20,15 @@ import com.rev.bean.User;
 import com.rev.service.UserService;
 
 @Controller
-@RequestMapping(value="/index")
-public class LoginController {
+@RequestMapping(value="/passwordReset")
+public class PasswordResetController {
   @Autowired
   UserService userService;
   
   
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("index");
+    ModelAndView mav = new ModelAndView("passwordReset");
     mav.addObject("login", new Login());
     return mav;
   }

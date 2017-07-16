@@ -13,4 +13,6 @@ public interface UserDao
 	 public void updateUser(User user);
 	 public List<User> getAllUsers();
 	 public List<User> getAllSubAdmin();
+	 public void updatePassword(User currentUser);
+	 public User checkUser(User user);
 } 

@@ -39,59 +39,72 @@
 
 	<jsp:include page="bannerAndNav.jsp" />
 
-
 	<!-- CREATE SUBADMIN ACCOUNT FORM -->
 	<div id="jd" class="jumbotron">
 		<div class="row">
 			<div class="col-lg-6">
 				<div id="wl" class="well">
-					<h2>Create SubAdmin Account</h2>
+					<c:choose>
+						<c:when test="${subAdminCreated == null}">
+							<h2>Create SubAdmin Account</h2>
+							<form:form id="userForm" modelAttribute="user"
+								action="createSubAdminAccount" method="POST">
 
-					<form:form id="userForm" modelAttribute="user" action="createSubAdminAccount" method="POST">
+								<form:label class="form-control" path="username">Username:</form:label>
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-user"></i>
+									</span>
+									<form:input class="form-control" path="username"
+										name="username" id="username" placeholder="username"
+										required="required" />
+								</div>
+								<br>
 
-						<form:label class="form-control" path="username">Username:</form:label>
-						<div class="input-group">
-							<span class="input-group-addon"> <i
-								class="glyphicon glyphicon-user"></i>
-							</span>
-							<form:input class="form-control" path="username" name="username"
-								id="username" placeholder="username" required="required" />
-						</div>
-						<br>
-						
-						<form:label class="form-control" path="password">Password:</form:label>
-						<div class="input-group">
-							<span class="input-group-addon"> <i
-								class="glyphicon glyphicon-lock"></i>
-							</span>
-							<form:password class="form-control" path="password"
-								name="password" id="password" placeholder="password"
-								required="required" />
-						</div>
-						<div>
-							<form:errors path="password" cssClass="error" />
-						</div>
-						<br>
-						
-						<form:label class="form-control" path="confirmPassword">Confirm Password:</form:label>
-						<div class="input-group">
-							<span class="input-group-addon"> <i
-								class="glyphicon glyphicon-lock"></i>
-							</span>
-							<form:password class="form-control" path="confirmPassword"
-								name="confirmPassword" id="confirmPassword"
-								placeholder="password" required="required" />
-						</div>
-						<div>
-							<form:errors path="confirmPassword" cssClass="error" />
-						</div>
-						<br>
-						
-						<div>
-							<input id="register" type="submit" class="btn btn-default"
-								value="Create" aria-label="Left Align">
-						</div>
-					</form:form>
+								<form:label class="form-control" path="password">Password:</form:label>
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-lock"></i>
+									</span>
+									<form:password class="form-control" path="password"
+										name="password" id="password" placeholder="password"
+										required="required" />
+								</div>
+								<div>
+									<form:errors path="password" cssClass="error" />
+								</div>
+								<br>
+
+								<form:label class="form-control" path="confirmPassword">Confirm Password:</form:label>
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-lock"></i>
+									</span>
+									<form:password class="form-control" path="confirmPassword"
+										name="confirmPassword" id="confirmPassword"
+										placeholder="password" required="required" />
+								</div>
+								<div>
+									<form:errors path="confirmPassword" cssClass="error" />
+								</div>
+								<br>
+
+								<div>
+									<input id="register" type="submit" class="btn btn-default"
+										value="Create" aria-label="Left Align">
+								</div>
+							</form:form>
+						</c:when>
+						<c:otherwise>
+							<h2>SubAdmin ${subAdminCreated.getUsername()} account successfully created!</h2>
+							<samp>Email Username & password</samp>
+							<br>
+							
+							<a href = 'mailto:my@email?body="${subAdminCreated.getUsername()} ${subAdminCreated.getPassword()}"&subject="SubAdmin credentials"'>
+							<button id = "button">SEND</button></a>
+
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

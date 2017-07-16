@@ -2,6 +2,7 @@ package com.rev.dao;
 
 import java.util.List;
 
+
 import javax.sql.DataSource;
 
 import org.hibernate.HibernateException;
@@ -200,5 +201,92 @@ public class UserDaoImpl implements UserDao
 		
 		System.out.println("in Dao");
 		return users;
+	}
+
+	@Override
+	public void updatePassword(User user) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Query query;
+		String hql;
+		user.setNewPassword(user.getNewPassword());
+		System.out.println("new password hql: " + user.getNewPassword());
+		
+		try{
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			
+			hql = "UPDATE com.rev.bean.User SET password = :pass";
+			query = session.createQuery(hql);
+			query.setParameter("pass", user.getNewPassword());
+			query.executeUpdate();
+
+			tx.commit();
+		}finally{
+			if(session != null)
+			{
+				session.close();
+			}
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+		}
+	}
+
+	@Override
+	public User checkUser(User user) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();;
+		Query query;
+		List<User> users = null;
+		String hql;
+		Login login = new Login();
+		login.setUsername(user.getUsername());
+		System.out.println("login user:" + login.getUsername());
+		//user.setUsername(user.getUsername());
+		
+		try
+		{
+			hql = "FROM com.rev.bean.User WHERE username = :un ";
+			query = session.createQuery(hql);
+			
+			query.setParameter("un", user.getUsername());
+			
+			users = query.list();
+			if(users.size() > 0)
+			{
+				user = users.get(0);
+				if(user.getUsername().equals(login.getUsername()) && 
+						(!(user.getUsername().equals(null)))){
+					user = users.get(0);
+					System.out.println("Correct username" + user.getUsername());
+					return user;
+				}
+			}else {
+				System.out.println("No User Found");
+				return null;
+			}
+			
+		}
+		catch(HibernateException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(tx != null && !tx.wasCommitted())
+			{
+				tx.rollback();
+			}
+			if(session != null)
+			{
+				session.close();
+			}
+			
+		}
+		System.out.println("nothing checked!" + user.getUsername());
+		users.clear();
+		return null;
 	}
 }
