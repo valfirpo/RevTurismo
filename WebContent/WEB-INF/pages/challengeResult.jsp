@@ -33,7 +33,15 @@
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
 		<div class="msg-container">
-			<span id="msg">${message}</span>
+			<h2><span id="msg">${message}</span></h2>
+			<br>
+			<p>Time to beat: ${raceTime}</p>
+			<br>
+			<p>Your time: ${finishTime}</p>
+			<br>
+			<p>Cash: $ ${sessionScope.currentUser.getCash()}</p>
+			<br>
+			<p>Level: ${sessionScope.currentUser.getLevel()}</p>
 		</div>
 	</div>
 </div>

@@ -97,6 +97,18 @@ public class User
 	{
 		int level = 1;
 		
+		if(role == 1)
+		{
+			level = 10;
+		}
+		if(role == 2)
+		{
+			level = 10;
+		}
+		if(role == 3)
+		{
+			level = 1;
+		}
 		if(role == 4)
 		{
 			level = 2;
