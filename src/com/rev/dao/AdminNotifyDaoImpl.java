@@ -29,13 +29,29 @@ public class AdminNotifyDaoImpl implements AdminNotifyDao {
 	}
 
 	@Override
-	public int createAdminNotify(AdminNotify note) {
+	public String createAdminNotify(AdminNotify admin) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
-		Integer noteId = null;
+		String note = null;
+		admin.setContent(admin.getContent());
+		admin.setActive(1);
+		note = admin.getContent();
+		
 		try{
+			if(note == null){
+				System.out.println("NO VALUE ADDED");
+				return null;
+			}
+			if(note == ""){
+				System.out.println("NO VALUE ADDED");
+				return null;
+			}
+			if(note == "null"){
+				System.out.println("NO VALUE ADDED");
+				return null;
+			}
 			tx = session.beginTransaction();
-			noteId = (Integer) session.save(note);
+			session.save(admin);
 			tx.commit();
 		}catch(HibernateException e)
 		{
@@ -52,7 +68,9 @@ public class AdminNotifyDaoImpl implements AdminNotifyDao {
 			}
 			
 		}
-		return noteId;
+		System.out.println("String from admin: " + admin.getContent());
+		System.out.println("String note from admin: " + note);
+		return note ;
 	}
 
 	@Override

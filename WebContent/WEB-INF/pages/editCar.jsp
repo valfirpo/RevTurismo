@@ -24,7 +24,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit Challenges</title>
+<title>Edit Car</title>
 </head>
 <body>
 <jsp:include page = "bannerAndNav.jsp" />
@@ -32,7 +32,10 @@
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
 		<div id="challenge-edit" class="container">
-			
+			<c:if test="${sessionScope.currentUser.getRole() != null }">
+				
+				<c:if test ="${sessionScope.currentUser.getRole() != 3 }">
+				
 			<form:form id="editCar" modelAttribute="car"
 				action="updateCar" method="POST">
 				<form:hidden path="id" value="${car.getId() }"/>
@@ -97,6 +100,8 @@
 					<input  type="submit" class="btn btn-default" value="Edit Car" />
 				</div>
 			</form:form> 
+			</c:if>
+			</c:if>
 			
 		</div>
 	</div>

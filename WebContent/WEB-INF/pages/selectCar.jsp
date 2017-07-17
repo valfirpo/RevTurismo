@@ -24,6 +24,9 @@
 <title>Select Car</title>
 </head>
 <body class="container-fluid">
+
+<c:if test="${sessionScope.currentUser.getRole() != null }">
+
 	<img src="resources/img/header.png" width="100%">
 	<nav id="nv" class="navbar navbar-inverse">
 	<div class="container-fluid">
@@ -65,5 +68,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</c:if>
 </body>
 </html>

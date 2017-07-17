@@ -28,7 +28,9 @@
 </head>
 <body>
 <jsp:include page = "bannerAndNav.jsp" />
-	
+	<c:if test="${sessionScope.currentUser.getRole() != null }">
+				
+				<c:if test ="${sessionScope.currentUser.getRole() != 3 }">
 <div id="jd" class="jumbotron">
 	<div id="wl" class="well">
 		<div id="challenge-edit" class="container">
@@ -90,6 +92,7 @@
 		</div>
 	</div>
 </div>
-
+</c:if>
+</c:if>
 </body>
 </html>

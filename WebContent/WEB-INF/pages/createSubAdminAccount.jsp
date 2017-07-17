@@ -38,6 +38,10 @@
 <body class="container-fluid">
 
 	<jsp:include page="bannerAndNav.jsp" />
+	<c:if test="${sessionScope.currentUser.getRole() != null }">
+				
+				<c:if test ="${sessionScope.currentUser.getRole() != 3 }">
+				<c:if test = "${sessionScope.currentUser.getRole() != 2 }">
 
 	<!-- CREATE SUBADMIN ACCOUNT FORM -->
 	<div id="jd" class="jumbotron">
@@ -109,6 +113,8 @@
 			</div>
 		</div>
 	</div>
-
+</c:if>
+</c:if>
+</c:if>
 </body>
 </html>

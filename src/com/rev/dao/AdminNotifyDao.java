@@ -6,7 +6,7 @@ import com.rev.bean.AdminNotify;
 
 public interface AdminNotifyDao {
 	public AdminNotify getAdminNotifyById(int id);
-	public int createAdminNotify(AdminNotify note);
+	public String createAdminNotify(AdminNotify note);
 	public void udpateAdminNotify(AdminNotify note);
 	public void deleteAdminNotify(AdminNotify note);
 	public List<AdminNotify> getAdminNotifies();
