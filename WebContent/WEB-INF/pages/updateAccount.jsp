@@ -16,8 +16,14 @@
 <jsp:include page = "bannerAndNav.jsp" />
 
 <div id = "jd" class = "jumbotron">
+
 	<div id = "wl" class = "well">
+	<c:if test="${sessionScope.currentUser.getRole() != null }">
 		<h3>Update your information</h3> 
+		
+		
+				
+				
 	
 		<form:form id="updateUser" modelAttribute="user" action="updateAccount" method="POST">
 			
@@ -72,6 +78,7 @@
 				<input type = "submit" class="btn btn-default" value = "Update">
 			</div>
 		</form:form>
+		</c:if>
 	</div>
 </div>
 

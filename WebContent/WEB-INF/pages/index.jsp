@@ -31,7 +31,7 @@
 
 <title>Home Page</title>
 </head>
-<body class="container-fluid">
+<body onload="document.createAdminNotifications.submit()" class="container-fluid">
 
 <jsp:include page = "bannerAndNav.jsp" />
 
@@ -186,20 +186,52 @@
 
 		
 		<c:if  test = "${sessionScope.currentUser.getRole() != null}">
-			<div id="jd" class="jumbotron">
-				<div id="wl" class="well">
+		
+			<div id="jd" class="row jumbotron">
+				<div id = "wl" class = "col-lg-6 well">
 					<h1 id="welcome">Welcome to RevTurismo</h1>
-				</div>
-				<div id="wl" class="well">
+				
 					<p>You are logged in to RevTurismo as a ${sessionScope.currentUser.getUserRole()}, 
 						${sessionScope.currentUser.getUsername()}!
 						RevTurismo is a car collecting application was created by
 						RevTurismo Group. Group members: Lucas Vance, Paul Wesson,
 						Matthew Young & Valentin Firpo.</p>
 				</div>
-			</div>
-			</c:if>
 		
+				<div id = "wl" class = "col-lg-6 well">
+					<h1 id="welcome">Notifications!</h1>
+					
+				
+					<c:if test ="${not empty notes }">
+						<ul>
+							<c:forEach var = "listValue" items = "${notes}" >
+								<li>${listValue.getContent()}</li>
+							</c:forEach>
+						</ul>
+					</c:if>
+					
+					<br>
+					<form action="createAdminNotifications">
+					<c:choose>
+				 		<c:when test="${sessionScope.currentUser.getRole() == 1}">
+							<button  type="submit" class="btn btn-lg btn-danger" >Create Notification <span class = "glyphicon glyphicon-bullhorn" ></span></button>
+						</c:when>
+						
+						<c:when test="${sessionScope.currentUser.getRole() == 2}">
+							<button  type="submit" class="btn btn-lg btn-danger" >Create Notification <span class = "glyphicon glyphicon-bullhorn" ></span></button>
+						</c:when>
+						
+						<c:otherwise>
+							<button  type="submit" class="btn btn-lg btn-danger" >View Notifications <span class = "glyphicon glyphicon-bullhorn" ></span></button>
+						</c:otherwise>
+					</c:choose>
+					</form>
+				</div>
+			</div>
+			
+		</c:if>
+			
+				
 	
 
 

@@ -48,7 +48,7 @@ public class LoginController {
 	  //session.getAttribute("user").equals(null);
 	  User validUser = userService.validateUser(login,bindingResult);
 	  
-	  if(validUser == null){
+	  if(validUser == null || login.getUsername().equals(null)){
 		  User user = new User();
 		  modelMap.addAttribute("user",user);
 		  modelMap.addAttribute("invalidUser",login);
@@ -64,12 +64,12 @@ public class LoginController {
 //		  session.setAttribute("user", login);
 //	  }
 	 
-	 
+	  	  
 		  System.out.println(login.getUsername());
 		  modelMap.addAttribute("user",login);
 		  session.setAttribute("user", login);
 		  session.setAttribute("currentUser", validUser);
-		 
+
 	 
 	 return new ModelAndView("redirect:index");
 	 

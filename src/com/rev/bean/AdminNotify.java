@@ -24,6 +24,10 @@ public class AdminNotify
 	
 	public AdminNotify(){}
 	
+	public AdminNotify(String content){
+		this.content = content;
+	}
+	
 	public AdminNotify(int id, String content, int active) {
 		this.id = id;
 		this.content = content;

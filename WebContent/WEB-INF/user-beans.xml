@@ -24,7 +24,9 @@
 			<property name="basename" value="message"/>
 		</bean>
 			
-		
+	
+	<bean id ="adminService" class="com.rev.service.AdminServiceImpl"/>
+	<bean id="adminNotifyDao" class="com.rev.dao.AdminNotifyDaoImpl"/>	
 		
 	<bean id = "passwordValidator" class="com.rev.bean.Password"/>
 	

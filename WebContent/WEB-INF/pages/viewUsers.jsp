@@ -29,7 +29,8 @@
 <body class="container-fluid">
 
 <jsp:include page = "bannerAndNav.jsp" />
-	
+	<c:if test="${sessionScope.currentUser.getRole() != null }">
+	<c:if test="${sessionScope.currentUser.getRole() != 3 }">
 	<table class = "table">
 		<tr><th>ID</th><th>Username</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Cash</th></tr>
 		<c:forEach var = "u" items = "${allUsers}">
@@ -44,6 +45,7 @@
 		</c:forEach>
 	</table>
 		
-		
+	</c:if>
+	</c:if>	
 </body>
 </html>

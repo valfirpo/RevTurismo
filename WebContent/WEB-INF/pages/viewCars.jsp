@@ -26,6 +26,10 @@
 
 	<jsp:include page="bannerAndNav.jsp" />
 	
+	<c:if test="${sessionScope.currentUser.getRole() != null }">
+				
+	
+	
 	<c:if test="${currentUser.getRole() == 3}">
 		<div id="wl" class="well">
 			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
@@ -96,6 +100,7 @@
 
 		</tbody>
 	</table>
+</c:if>
 
 
 

@@ -24,6 +24,9 @@
 
 <jsp:include page = "bannerAndNav.jsp" />
 
+<c:if test="${sessionScope.currentUser.getRole() != null }">
+
+
 <div id = "jd" class = "row jumbotron">
 	<div id = "wl" class = "col-lg-6 well">
 
@@ -53,6 +56,6 @@
 		</c:choose>
 	</div>
 </div>
-
+</c:if>
 </body>
 </html>
