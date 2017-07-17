@@ -26,13 +26,13 @@
 
 	<jsp:include page="bannerAndNav.jsp" />
 	
-	<c:if test="${currentUser.getRole() == 3}">
+	<c:if test="${currentUser.getRole() >= 3}">
 		<div id="wl" class="well">
 			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
 				$${currentUser.getCash()}</h2>
 		</div>
 	</c:if>
-	<c:if test="${currentUser.getRole() == 3}">
+	<c:if test="${currentUser.getRole() >= 3}">
 
 		<h4>Available Cars</h4>
 		<table class = "table">

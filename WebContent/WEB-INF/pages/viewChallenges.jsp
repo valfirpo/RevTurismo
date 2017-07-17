@@ -26,7 +26,7 @@
 
 <jsp:include page = "bannerAndNav.jsp" />
 	
-	<c:if test="${currentUser.getRole()} >= 3">
+	<c:if test="${currentUser.getRole() >= 3}">
 		<div id = "wl" class = "well">
 			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
 					$ ${currentUser.getCash()}</h2>
@@ -52,7 +52,7 @@
 					<td>$ ${c.getEntryFee()}</td>
 					<td>$ ${c.getReward()}</td>
 					<c:choose>
-						<c:when test="${sessionScope.currentUser.getRole() == 3}">
+						<c:when test="${sessionScope.currentUser.getRole() >= 3}">
 							<td class="col-xs-2"><button
 									onclick="enterChallenge(${c.getId()}, ${c.getEntryFee()},${currentUser.getCash()})">Enter</button></td>
 						</c:when>
