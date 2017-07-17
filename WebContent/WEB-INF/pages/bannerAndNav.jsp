@@ -72,6 +72,7 @@
 			</c:choose>
 		
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="forum" style="color: #ffffff;"><span></span> Forum</a></li>				
 				<li><a href="logout" style="color: #ffffff;"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
 			</ul>
 		</c:if>
