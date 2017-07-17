@@ -54,7 +54,7 @@
 					<td>$ ${c.getEntryFee()}</td>
 					<td>$ ${c.getReward()}</td>
 					<c:choose>
-						<c:when test="${sessionScope.currentUser.getRole() == 3}">
+						<c:when test="${sessionScope.currentUser.getRole() >= 3}">
 							<td class="col-xs-2"><button
 									onclick="enterChallenge(${c.getId()}, ${c.getEntryFee()},${currentUser.getCash()})">Enter</button></td>
 						</c:when>
