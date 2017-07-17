@@ -30,13 +30,14 @@
 				
 	
 	
-	<c:if test="${currentUser.getRole() == 3}">
+	<c:if test="${currentUser.getRole() >= 3}">
+
 		<div id="wl" class="well">
 			<h2 id = "welcome2">${currentUser.getUsername()} current cash:
 				$${currentUser.getCash()}</h2>
 		</div>
 	</c:if>
-	<c:if test="${currentUser.getRole() == 3}">
+	<c:if test="${currentUser.getRole() >= 3}">
 
 		<h4>Available Cars</h4>
 		<table class = "table">
@@ -88,7 +89,8 @@
 						<td class="col-xs-2">${c.getTopSpeed()} MPH</td>
 						<td class="col-xs-1">${c.getAcceleration()}</td>
 						<c:choose>
-							<c:when test="${sessionScope.currentUser.getRole() == 3}">
+							<c:when test="${sessionScope.currentUser.getRole() >= 3}">
+							
 								<td class="col-xs-2"><button
 										onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
 							</c:when>
