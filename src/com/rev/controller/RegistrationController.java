@@ -51,6 +51,7 @@ public class RegistrationController  {
 	  session.setAttribute("user", user);
 	  session.setAttribute("password", user.getPassword());
 	  session.setAttribute("confirmPassword", user.getConfirmPassword());
+	  session.invalidate();
 	  return new ModelAndView("redirect:index");
   }
 //  public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response,
