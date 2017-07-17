@@ -89,6 +89,7 @@
 						<td class="col-xs-1">${c.getAcceleration()}</td>
 						<c:choose>
 							<c:when test="${sessionScope.currentUser.getRole() >= 3}">
+							
 								<td class="col-xs-2"><button
 										onclick="buyCar(${c.getId()}, ${c.getPrice()},${currentUser.getCash()})">Buy</button></td>
 							</c:when>
